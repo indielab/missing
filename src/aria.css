@@ -129,6 +129,7 @@ input[type=checkbox][role=switch] {
   grid-template-columns: repeat(2, 1rem);
   aspect-ratio: 2 / 1;
   margin-block: auto;
+  isolation: isolate;
 
   &::before, &::after {
     content: '';
@@ -152,6 +153,7 @@ input[type=checkbox][role=switch] {
     margin: var(--toggle-nub-margin);
     border-radius: 99999rem;
     background: var(--graphical-fg);
+    z-index: 2;
   }
 
   &:checked {
@@ -162,6 +164,16 @@ input[type=checkbox][role=switch] {
     &::after {
       transform: translateX(calc(100% + 2 * var(--toggle-nub-margin)));
       background: var(--bg);
+    }
+  }
+  
+  &:focus-visible {
+    &::before {
+      outline: .2em solid var(--accent);
+    }
+    &[checked]::before {
+      outline: .1em solid var(--accent);
+      outline-offset: .1em;
     }
   }
 
