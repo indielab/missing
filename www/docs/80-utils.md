@@ -214,7 +214,7 @@ The <dfn>`.<big>`</dfn> class makes things bigger, with special treatment for so
 The <dfn>`.big`</dfn> class will be removed in version 2.0.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></subtitle>Masquerade markups</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Masquerade markups</figcaption>
 
   ~~~ html
   <p>This is a paragraph.</p>
@@ -265,13 +265,13 @@ Use `<meta name=color-scheme content=light>`{.language-html} instead.
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Theme toggle markup</figcaption>
 
-  ~~~ css
-  :root:has([name=theme][value=light]:checked) { color-scheme: light      }
-  :root:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
-  :root:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
-  ~~~
-
   ~~~ html
+  <style>
+    :root:has([name=theme][value=light]:checked) { color-scheme: light      }
+    :root:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
+    :root:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+  </style>
+
   <fieldset>
     <legend>Select theme</legend>
     <div>
