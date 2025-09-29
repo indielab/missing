@@ -121,12 +121,19 @@
 
 
 input[type=checkbox][role=switch] {
+  --toggle-track-border-color: var(--graphical-fg);
+  --toggle-track-background: var(--bg);
+
+  --toggle-nub-margin: 2px;
+  --toggle-nub-background: var(--graphical-fg);
+
   all: unset;
   appearance: none;
 
   display: inline-grid;
   vertical-align: middle;
   grid-template-columns: repeat(2, 1rem);
+
   aspect-ratio: 2 / 1;
   margin-block: auto;
   isolation: isolate;
@@ -141,49 +148,41 @@ input[type=checkbox][role=switch] {
   &::before {
     grid-column: 1 / span 2;
     grid-row: 1;
-    border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
-    background: var(--bg);
+    border: var(--interactive-border-width) var(--interactive-border-style) var(--toggle-track-border-color);
+    background: var(--toggle-track-background);
     border-radius: 9999rem;
   }
 
   &::after {
-    --toggle-nub-margin: 2px;
     grid-column: 1;
     grid-row: 1;
     margin: var(--toggle-nub-margin);
     border-radius: 99999rem;
-    background: var(--graphical-fg);
+    background: var(--toggle-nub-background);
     z-index: 2;
   }
 
   &:checked {
-    &::before {
-      border-color: var(--accent);
-      background: var(--accent);
-    }
+    --toggle-track-border-color: var(--accent);
+    --toggle-track-background: var(--accent);
+    --toggle-nub-background: var(--bg);
     &::after {
       transform: translateX(calc(100% + 2 * var(--toggle-nub-margin)));
-      background: var(--bg);
-    }
-  }
-  
-  &:focus-visible {
-    &::before {
-      outline: .2em solid var(--accent);
-    }
-    &[checked]::before {
-      outline: .1em solid var(--accent);
-      outline-offset: .1em;
     }
   }
 
   &:indeterminate {
-    &::before {
-      border: var(--interactive-border-width) var(--interactive-border-style) var(--interactive-bg);
-    }
+    --toggle-track-border-color: var(--interactive-bg);
+    --toggle-nub-background: var(--interactive-bg);
     &::after {
       transform: translateX(calc(50% + var(--toggle-nub-margin)));
-      background: var(--interactive-bg);
+    }
+  }
+
+  &:focus-visible {
+    --toggle-track-border-color: var(--bg);
+    &::before {
+      outline: .2em solid var(--accent);
     }
   }
 
