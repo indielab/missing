@@ -631,6 +631,15 @@ strong > :where(
     /* c.f. strong > input:disabled::file-selector-button */
   }
 }
+strong:has(
+  button,
+  input[type="submit"],
+  input[type="reset"],
+  input[type="button"],
+  .\<button\>
+) {
+  line-height: 1.125em;
+}
 
 
 input::file-selector-button {
@@ -684,6 +693,9 @@ strong > input::file-selector-button {
 	color: var(--box-bg);
 	border-color: transparent;
 	font-weight: bold;
+}
+strong:has(input::file-selector-button) {
+  line-height: 1.125em;
 }
 strong > input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
   --fg: var(--box-bg);
