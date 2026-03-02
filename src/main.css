@@ -164,6 +164,12 @@ footer {
 body > header,
 body > footer,
 main + footer {
+	--eff-line-length: /* Effective line length for prose. */
+		min(
+			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+			var(--line-length)
+		);
+
 	padding: var(--rhythm, 1rlh) calc((100% - var(--eff-line-length)) / 2)
 }
 
@@ -279,6 +285,12 @@ figcaption {
 }
 
 main {
+	--eff-line-length: /* Effective line length for prose. */
+		min(
+			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+			var(--line-length)
+		);
+
 	max-inline-size: var(--eff-line-length);
 	inline-size: 100%;
 	margin-inline: auto;
@@ -329,6 +341,17 @@ small[role="note"] {
 	clear: inline-end;
 
 	--sidenote-width: 20ch;
+	--eff-line-length: /* Effective line length for prose. */
+		min(
+			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+			var(--line-length)
+		);
+	--gutter-width: /* Width of spaces at each side of page content. */
+		calc(
+			(
+				var(--full-width)        /* Viewport width */
+				- var(--eff-line-length) /* minus line width */
+			) / 2);                    /* Divide by 2: there are two page margins */
 
 	max-inline-size: var(--sidenote-width);
 	padding-inline: 1.5ch 1ch;

@@ -88,7 +88,7 @@ details,
 
 	@media (min-width: 75ch) {
 		display: grid;
-		grid-template-columns: 25ch auto;
+		grid-template-columns: var(--sidebar-width) auto;
 		inset: 0;
 
 		& > header {
@@ -100,7 +100,12 @@ details,
 		& > :nth-child(2) {
 			overflow: auto;
       scrollbar-width: auto;
-			--full-width: calc(100vw - 25ch);
+			--full-width: calc(100vw - var(--sidebar-width));
+    	--eff-line-length: /* Effective line length for prose. */
+    		min(
+    			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+    			var(--line-length)
+    		);
 			padding-top: var(--gap);
 		}
 	}
