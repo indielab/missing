@@ -734,10 +734,8 @@ textarea {
 	border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
 	border-radius: var(--interactive-border-radius);
 
-	vertical-align: top;
-
 	&:focus-visible {
-		border: var(--interactive-border-width) var(--interactive-border-style) var(--accent);
+		border-color: var(--accent);
 	}
 
 	&::placeholder {
@@ -772,37 +770,69 @@ input[type="file"] {
 }
 
 select {
-	background: var(--bg);
-	color: var(--fg);
+  scrollbar-color: var(--accent) transparent;
 
-	&[multiple] {
-		vertical-align: top;
-	}
+  &:is([multiple], [size]) {
+    padding: 0;
 
-	&:not([multiple]) {
-		/* UAs force `line-height: normal` instead of `inherit` */
-		height: calc(
-			2 * var(--interactive-border-width)  /* Top and bottom borders */
-			+ 3/2 * var(--rhythm, 1lh)           /* Plus line height and padding-block */
-		);
-	}
+    &:focus option:checked {
+      --force-bg-hack: linear-gradient(0deg, var(--accent) 0%, var(--accent) 100%);
+      background: var(--force-bg-hack);
+      color: var(--bg);
+    }
+  }
+  &:not([multiple], [size]) {
+    @supports (appearance: base-select) {
+      appearance: base-select;
+      field-sizing: fixed;  /* Someday this will size to widest option */
 
-	optgroup::before {
+      &::picker(select) {
+        appearance: base-select;
+        background: inherit;
+        border: inherit;
+        border-radius: inherit;
+      }
+
+      &::picker-icon {
+        --picker-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>');
+        background-color: currentColor;
+        mask-image: var(--picker-icon);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        opacity: 0.7;
+      }
+      & option::checkmark {
+        display: none;
+      }
+    }
+  }
+
+	optgroup {
 		color: var(--muted-fg);
 		font-style: normal;
+    font-weight: bold;
+    &::before {
+      padding-inline-start: calc(var(--gap) / 4);
+    }
+    & > option {
+      padding-inline: var(--gap);
+    }
 	}
 
 	& option {
-		background: inherit;
-		color: inherit;
-		border: inherit;
-
+    &:checked:not(:hover, :focus-visible) {
+      background: var(--interactive-bg);
+      color: var(--bg);
+    }
 		&:hover {
-			/* This currently only applies to select[multiple] */
 			background: var(--accent);
-			color: var(--bg);
+			color: var(--box-bg);
 		}
-	}
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
 }
 
 meter, progress {
