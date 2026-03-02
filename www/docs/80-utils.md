@@ -222,7 +222,7 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
  
   <div class="flex-row align-items:center">
     <button class="<big> bad">Big Bad Button</button>
-    <a class="bad <button>" href=#>&lt;a&gt; Bad Button</a>
+    <a class="bad <button>" href=#>&lt;a> Bad Button</a>
   </div>
   
   <aside class="<big>">
@@ -237,7 +237,7 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
  
   <div class="flex-row align-items:center">
     <button class="<big> bad">Big Bad Button</button>
-    <a class="bad <button>" href=#>&lt;a&gt; Bad Button</a>
+    <a class="bad <button>" href=#>&lt;a> Bad Button</a>
   </div>
   
   <aside class="<big>">

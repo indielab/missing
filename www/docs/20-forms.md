@@ -47,7 +47,7 @@ Input placeholders are styled with `text-align:end`{.language-css} to better dis
     <div>
       <label for=category>Category:</label>
       <select id=category placeholder="Select a category...">
-        <option>Blues</option>
+        <option>Blues
         <!-- ... -->
       </select>
     </div>
@@ -68,12 +68,12 @@ Input placeholders are styled with `text-align:end`{.language-css} to better dis
     <div>
       <label for=category>Category:</label>
       <select id=category placeholder="Select a category...">
-        <option>Blues</option>
-        <option>Dixieland</option>
-        <option>Swing</option>
-        <option>Bebop</option>
-        <option>Cool</option>
-        <option>Modal</option>
+        <option>Blues
+        <option>Dixieland
+        <option>Swing
+        <option>Bebop
+        <option>Cool
+        <option>Modal
       </select>
     </div>
     <div>
@@ -110,7 +110,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
     <thead>
       <tr><th><th><th><code>.info</code><th><code>.ok</code><th><code>.warn</code><th><code>.bad</code>
     <tbody>
-      <tr><th scope=row><code>&lt;button&gt;</code>
+      <tr><th scope=row><code>&lt;button></code>
           <td><button>Plain</button>
           <td><button class="ok">Open</button>
           <!-- ... -->
@@ -122,7 +122,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
           <td><button aria-pressed=true onclick="toggle(this)">Plain</button>
           <td><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button>
           <!-- ... -->
-      <tr><th scope=row><code>&lt;strong&gt;&lt;button&gt;</code>
+      <tr><th scope=row><code>&lt;strong>&lt;button></code>
           <td><strong><button>Plain</button></strong>
           <td><strong><button class="ok">Open</button></strong>
           <!-- ... -->
@@ -134,7 +134,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
           <td><strong><button aria-pressed=true onclick="toggle(this)">Plain</button></strong>
           <td><strong><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button></strong>
           <!-- ... -->
-      <tr><th scope=row><code>&lt;a class="&lt;button&gt;"&gt;</code>
+      <tr><th scope=row><code>&lt;a class="&lt;button>"></code>
           <td><a href=#button-table class="<button>">Plain</button>
           <td><a href=#button-table class="ok <button>">Open</button>
           <!-- ... -->
@@ -158,7 +158,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
     <thead>
       <tr><th><th><th><code>.info</code><th><code>.ok</code><th><code>.warn</code><th><code>.bad</code>
     <tbody>
-      <tr><th scope=row><code>&lt;button&gt;</code>
+      <tr><th scope=row><code>&lt;button></code>
           <td><button>Plain</button>
           <td><button class="info">Info</button>
           <td><button class="ok">Open</button>
@@ -176,7 +176,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
           <td><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button>
           <td><button aria-pressed=true class="warn" onclick="toggle(this)">Reset</button>
           <td><button aria-pressed=true class="bad" onclick="toggle(this)">Close</button>
-      <tr><th scope=row><code>&lt;strong&gt;&lt;button&gt;</code>
+      <tr><th scope=row><code>&lt;strong>&lt;button></code>
           <td><strong><button>Plain</button></strong>
           <td><strong><button class="info">Info</button></strong>
           <td><strong><button class="ok">Open</button></strong>
@@ -194,7 +194,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
           <td><strong><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button></strong>
           <td><strong><button aria-pressed=true class="warn" onclick="toggle(this)">Reset</button></strong>
           <td><strong><button aria-pressed=true class="bad" onclick="toggle(this)">Close</button></strong>
-      <tr><th scope=row><code>&lt;a class="&lt;button&gt;"&gt;</code>
+      <tr><th scope=row><code>&lt;a class="&lt;button>"></code>
           <td><a href=#button-table class="<button>">Plain</a></button>
           <td><a href=#button-table class="info <button>">Info</a></button>
           <td><a href=#button-table class="ok <button>">Open</a></button>
@@ -323,18 +323,36 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     <div>
     <label for=none>None:</label>
     <select id=none>
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+      <option>One
+      <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+      <option>Two
+      <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
     <!-- ... -->
     <div>
     <label for=bad>Bad:</label>
     <select id=bad class="bad">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
   </form>
@@ -345,9 +363,18 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     <!-- ... -->
     <label for=info>Info:
     <select id=info class="info color bg">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     <-- ... -->
   </form>
@@ -360,104 +387,302 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     <div>
     <label for=none>None:</label>
     <select id=none>
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
-    </select>
-    </div>
-    <div>
-    <label for=plain>Plain:</label>
-    <select id=plain class="plain">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
     <div>
     <label for=info>Info:</label>
     <select id=info class="info">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+     <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
     <div>
     <label for=ok>OK:</label>
     <select id=ok class="ok">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
     <div>
     <label for=warn>Warn:</label>
     <select id=warn class="warn">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
     <div>
     <label for=bad>Bad:</label>
     <select id=bad class="bad">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
+      <optgroup label="Scrollbar">
+        <option>Attempt
+        <option>to
+        <option>overflow
+        <option>the
+        <option>popover
+        <option>so
+        <option>that
+        <option>a
+        <option>wild
+        <option>scrollbar
+        <option>appears
     </select>
     </div>
   </form>
   <span class="aestheticbreak"></span>
   <form class="flex-switch">
-    <div>
-    <label for=none>None:</label>
-    <select id=none>
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
-    </select>
-    </div>
-    <div>
+  <div>
     <label for=plain>Plain:</label>
     <select id=plain class="plain bg color">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
     <div>
     <label for=info>Info:</label>
     <select id=info class="info bg color">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
     <div>
     <label for=ok>OK:</label>
     <select id=ok class="ok bg color">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
     <div>
     <label for=warn>Warn:</label>
     <select id=warn class="warn bg color">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
     </select>
     </div>
     <div>
     <label for=bad>Bad:</label>
     <select id=bad class="bad bg color">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
+      <optgroup label="Odds">
+        <option>One
+        <option>Three
+        <option>Five
+        <option>Seven
+        <option>Nine
+      <optgroup label="Evens">
+        <option>Two
+        <option>Four
+        <option>Six
+        <option>Eight
+        <option>Ten
+      <optgroup label="Scrollbar">
+        <option>Attempt
+        <option>to
+        <option>overflow
+        <option>the
+        <option>popover
+        <option>so
+        <option>that
+        <option>a
+        <option>wild
+        <option>scrollbar
+        <option>appears
     </select>
     </div>
   </form>
 
+</figure>
+
+Selects with either `size`{ .token .attr-name } or `multiple`{.token .attr-name} attributes will be styled as listboxes.
+A listbox defined in this way is subject to HTML parsing rules and does not allow rich content.
+Keep in mind that `<option selected>`{.language-html} specifies which option(s) should be selected by default.
+If you are dynamically setting selection, you should use `option.checked = true`{.language-js},
+which triggers the proper `:checked`{.token .attr-name} pseudo-class.
+Do not dynamically use the `selected`{.token .attr-name} or `aria-selected=true`{.token .attr-name} attributes.
+
+By default, the width of the element will agree with the width of its longest `<option>`{.language-html};
+to override this, you can use the `.width:100%` utility class or set .e.g `<select size=4 style="width:20ch;">`{.language-html}.
+[Colorways][colorways] are supported.
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Select listboxes</figcaption>
+
+  ~~~ html
+  <div class="flex-switch">
+    <div>
+      <label for=select:single>Mathematicians:</label>
+      <select id=select:single size=8>
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin-Louis Cauchy
+          <!-- ... -->
+      </select>
+      <p class="<small> crowded">Choose one</p>
+    </div>
+    <div>
+      <label for=select:multiple>Mathematicians:</label>
+      <select id=select:multiple size=8 multiple class="ok">
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin-Louis Cauchy
+          <!-- ... -->
+      </select>
+      <p class="<small> crowded">Choose multiple</p>
+    </div>
+  </div>
+[browser support]: https://caniuse.com/mdn-css_properties_appearance_base-select
+[custom selects]: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
+
+  ~~~
+
+  <hr>
+
+  <div class="flex-switch">
+    <div>
+      <label for=select:single>Mathematicians:</label>
+      <select id=select:single size=8>
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin-Louis Cauchy
+          <option>Leonhard Euler
+          <option>Joseph Fourier
+          <option>David Hilbert
+          <option>Karl Weierstrass
+        <optgroup label="Algebrists">
+          <option>Niels Abel
+          <option>Arthur Cayley
+          <option>Évariste Galois
+          <option>Sophus Lie
+          <option>Emmy Noether
+        <optgroup label="Topologists">
+          <option>Felix Hausdorff
+          <option>Felix Klein
+          <option>August Möbius
+          <option>Henri Poincaré
+          <option>Bernhard Riemann
+          <option>Andrei Tychonoff
+      </select>
+      <p class="<small> crowded">Choose one</p>
+    </div>
+    <div>
+      <label for=select:multiple>Mathematicians:</label>
+      <select id=select:multiple size=8 multiple class="ok">
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin-Louis Cauchy
+          <option>Leonhard Euler
+          <option>Joseph Fourier
+          <option>David Hilbert
+          <option selected>Karl Weierstrass
+        <optgroup label="Algebrists">
+          <option>Niels Abel
+          <option>Arthur Cayley
+          <option selected>Évariste Galois
+          <option>Sophus Lie
+          <option>Emmy Noether
+        <optgroup label="Topologists">
+          <option>Felix Hausdorff
+          <option>Felix Klein
+          <option>August Möbius
+          <option>Henri Poincaré
+          <option>Bernhard Riemann
+          <option>Andrei Tychonoff
+      </select>
+      <p class="<small> crowded">Choose multiple</p>
+    </div>
+  </div>
 </figure>
 
 
@@ -474,7 +699,7 @@ The element can be styled by setting `--border-width`, `--border-style`, and `--
 When not explicitly set, the element inherits from `--interactive-border-width`, `--interactive-border-style`, and `--tab-border-radius`.
 
 For full-width progress bars, use the `.width:100%` utility class.
-[Colorways](colorways) are supported.
+[Colorways][colorways] are supported.
 
 
 <figure>
