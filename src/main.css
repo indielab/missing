@@ -847,7 +847,7 @@ select {
       background: var(--interactive-bg);
       color: var(--bg);
     }
-		&:hover {
+		&:is(:hover, :focus-visible) {
 			background: var(--accent);
 			color: var(--box-bg);
 		}
