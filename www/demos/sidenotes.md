@@ -1,25 +1,28 @@
 ---
-draft: true
 title: Sidenotes
 ---
 
-Sidenotes are created with the `<small role=note>`{ .language-html } element.
+Sidenotes are created with the `<small role=note tabindex=0>`{ .language-html } element.
 Sidenotes are supplemental notes or comments placed in the margins of a page, typically alongside the main text.
 They provide additional information, context, or commentary related to the adjacent text.
+
+The width of a sidenote is set using the `--sidenote-width` variable (which defaults to `20ch`).
+Sidenotes will be clipped by the width of the page's margins and revealed during hover or focus events.
+On smaller screens, the notes will be floated inside the main text.
 
 Sidenotes must be visually and semantically distinct even when the viewport isn't wide enough to facilitate their normal placement.
 This page has a few sidenotes which are implemented using markup similar to the example below.
 
 <figure>
-<figcaption><sub-title class=allcaps>Example</sub-title>Sidenotes</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sidenote markup</figcaption>
 
 ~~~ html
-<small role=note>
+<small role=note tabindex=0>
 	This is the first sidenote.
 	Be default it will appear in the right-hand margin, provided the margin is larger than `--sidenote-width`.
 	The default value for `--sidenote-width` is `20ch`.
 </small>
-<small role=note style="--sidenote-width:40ch;">
+<small role=note tabindex=0 class="ok bg color" style="--sidenote-width:40ch;">
 	This is the second sidenote.
 	On large screens, it appears in the left-hand margin because the XYZ attribute is set.
 	Since I wanted to change the width of the sidenote, I set the `--sidenote-width` variable to 40ch.
@@ -31,7 +34,7 @@ This page has a few sidenotes which are implemented using markup similar to the 
 What follows now is some <i>lorem ipsum</i> so that we can demonstrate the sidenotes.
 You can adjust the viewport width in order to see how the sidenotes will display on mobile screens.
 
-<small role=note>
+<small role=note tabindex=0>
 This is the first sidenote.
 Be default it will appear in the right-hand margin, provided the margin is larger than `--sidenote-width`.
 The default value for `--sidenote-width` is `20ch`.
@@ -45,12 +48,6 @@ This is not 'Nam, this is bowling; there are rules.
 Careful, man, there's a beverage here.
 That's just, like, your opinion, man.
 
-<small role=note class="float:left" style="--sidenote-width: 40ch;">
-This is the second sidenote.
-On large screens, it appears in the left-hand margin because it has the <code>.float:left</code> class.
-Since I wanted to change the width of the sidenote, I set the <code>--sidenote-width</code> variable to 40ch.
-</small>
-
 My thinking about this case, which has been, like, a lot of ins and outs, a lot of what-have-yous.
 The bums will always lose.
 Obviously you're not a golfer.
@@ -62,6 +59,12 @@ You want a toe? I can get you a toe, believe me. There are ways, Dude.
 You don't have to do that, you know.
 I had a rough night and I hate the Eagles.
 What in God's name are you blathering about?
+
+<small role=note tabindex=0 class="float:left ok bg color" style="--sidenote-width: 40ch;">
+This is the second sidenote.
+On large screens, it appears in the left-hand margin because it has the <code>.float:left</code> class.
+Since I wanted to change the width of the sidenote, I set the <code>--sidenote-width</code> variable to 40ch.
+</small>
 
 I am the Walrus.
 Or was it, Karl Hungus?

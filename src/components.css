@@ -286,3 +286,79 @@ details,
     padding-inline: 0;
   }
 }
+
+small[role="note"] {
+  /***
+   Sidenote
+   ***/
+  display: block;
+
+  --sidenote-width: 20ch;
+  --eff-line-length: /* Effective line length for prose. */
+    min(
+      calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+      var(--line-length)
+    );
+  --gutter-width: /* Width of spaces at each side of page content. */
+    calc(
+      (
+        var(--full-width)        /* Viewport width */
+        - var(--eff-line-length) /* minus line width */
+      ) / 2);                    /* Divide by 2: there are two page margins */
+  --translate:
+    calc(
+      var(--sidenote-width)
+      - min(
+        var(--gutter-width) - 1em - 1ch,
+        var(--sidenote-width)
+      )
+    );
+
+
+  max-inline-size: var(--sidenote-width);
+  padding-block: 1ch;
+  padding-inline: 1.5ch 1ch;
+
+  font-family: var(--secondary-font);
+
+  background: var(--bg);
+
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) transparent;
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) transparent;
+  border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) transparent;
+  border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) transparent;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform .1s ease-in-out;
+  }
+
+  /* default to float:right */
+  float: inline-end;
+  clear: inline-end;
+  margin-inline: 0 calc(-1 * var(--sidenote-width) - 1ch);
+  --translate-x: calc(-1 * var(--translate));
+
+  &.float\:left {
+    float: inline-start;
+    clear: inline-start;
+    margin-inline: calc(-1 * var(--sidenote-width) - 1ch) 0;
+    --translate-x: var(--translate);
+  }
+
+  &:hover, &:focus-within {
+    border-color: var(--graphical-fg);
+    border-radius: var(--border-radius);
+    background: var(--box-bg);
+    transform: translateX(var(--translate-x));
+  }
+
+  @media (max-width: 768px) {
+    --translate-x: 0;
+    margin-inline: 1em 0;
+
+    &.float\:left {
+      --translate-x: 0;
+      margin-inline: 0 1em;
+    }
+  }
+}

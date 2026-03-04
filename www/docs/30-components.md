@@ -445,5 +445,34 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
 
 </figure>
 
+## Sidenotes
+
+Sidenotes are created with the `<small role=note tabindex=0>`{ .language-html } element.
+Sidenotes are supplemental notes or comments placed in the margins of a page, typically alongside the main text.
+They provide additional information, context, or commentary related to the adjacent text.
+
+The width of a sidenote is set using the `--sidenote-width` variable (which defaults to `20ch`).
+Sidenotes will be clipped by the width of the page's margins and revealed during hover or focus events.
+On smaller screens, the notes will be floated inside the main text.
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sidenote markup</figcaption>
+
+~~~ html
+<small role=note tabindex=0>
+	This is the first sidenote.
+	Be default it will appear in the right-hand margin, provided the margin is larger than `--sidenote-width`.
+	The default value for `--sidenote-width` is `20ch`.
+</small>
+<small role=note tabindex=0 class="ok bg color" style="--sidenote-width:40ch;">
+	This is the second sidenote.
+	On large screens, it appears in the left-hand margin because the XYZ attribute is set.
+	Since I wanted to change the width of the sidenote, I set the `--sidenote-width` variable to 40ch.
+</small>
+~~~
+
+**<a href=/demos/sidenotes class="<button>">Sidenote demo &rarr;</a>**
+</figure>
+
 
 [colorway]: /docs/colorways
