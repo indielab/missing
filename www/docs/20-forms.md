@@ -438,18 +438,16 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     <div>
     <label for=warn>Warn:</label>
     <select id=warn class="warn">
-      <optgroup label="Odds">
-        <option>One
-        <option>Three
-        <option>Five
-        <option>Seven
-        <option>Nine
-      <optgroup label="Evens">
-        <option>Two
-        <option>Four
-        <option>Six
-        <option>Eight
-        <option>Ten
+      <option>One
+      <option>Three
+      <option>Five
+      <option>Seven
+      <option>Nine
+      <option>Two
+      <option>Four
+      <option>Six
+      <option>Eight
+      <option>Ten
     </select>
     </div>
     <div>
@@ -538,18 +536,16 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     <div>
     <label for=warn>Warn:</label>
     <select id=warn class="warn bg color">
-      <optgroup label="Odds">
-        <option>One
-        <option>Three
-        <option>Five
-        <option>Seven
-        <option>Nine
-      <optgroup label="Evens">
-        <option>Two
-        <option>Four
-        <option>Six
-        <option>Eight
-        <option>Ten
+      <option>One
+      <option>Three
+      <option>Five
+      <option>Seven
+      <option>Nine
+      <option>Two
+      <option>Four
+      <option>Six
+      <option>Eight
+      <option>Ten
     </select>
     </div>
     <div>
@@ -595,9 +591,9 @@ Do not dynamically use the `selected`{.token .attr-name} or `aria-selected=true`
 By default, the width of the element will agree with the width of its longest `<option>`{.language-html};
 to override this, you can use the `.width:100%` utility class or set .e.g `<select size=4 style="width:20ch;">`{.language-html}.
 [Colorways][colorways] are supported.
-
+u
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Select listboxes</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Select listbox markup</figcaption>
 
   ~~~ html
   <div class="flex-switch">

@@ -741,13 +741,11 @@ input[type="file"] {
 }
 
 select {
-  scrollbar-color: var(--accent) transparent;
-
   &:is([multiple], [size]) {
     padding: 0;
 
     &:focus option:checked {
-      --force-bg-hack: linear-gradient(0deg, var(--accent) 0%, var(--accent) 100%);
+      --force-bg-hack: linear-gradient(0deg, var(--graphical-fg) 0%, var(--graphical-fg) 100%);
       background: var(--force-bg-hack);
       color: var(--bg);
     }
@@ -762,41 +760,52 @@ select {
         background: inherit;
         border: inherit;
         border-radius: inherit;
+        scrollbar-width: thin;
       }
 
       &::picker-icon {
-        --picker-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>');
         background-color: currentColor;
-        mask-image: var(--picker-icon);
+        mask-image: var(--chevron-icon);
         mask-repeat: no-repeat;
         mask-position: center;
+        mask-size: contain;
         opacity: 0.7;
       }
       & option::checkmark {
-        display: none;
+        content: "";
+        width: 1rem;
+        height: 1rem;
+        background-color: currentColor;
+        mask-image: var(--check-icon);
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        opacity: 0.7;
       }
     }
   }
 
-	optgroup {
+	& optgroup {
 		color: var(--muted-fg);
 		font-style: normal;
     font-weight: bold;
     &::before {
       padding-inline-start: calc(var(--gap) / 4);
     }
-    & > option {
-      padding-inline: var(--gap);
-    }
+    /*& > option {
+    /*  padding-inline: var(--gap);
+    /*  &::checkmark {
+    /*    margin-inline-start: calc(0px - var(--gap));
+    /*  }
+    /*}*/
 	}
 
 	& option {
-    &:checked:not(:hover, :focus-visible) {
-      background: var(--interactive-bg);
-      color: var(--bg);
-    }
+    /*&:checked:not(:hover, :focus-visible) {
+    /*  background: var(--bg);
+    /*  color: var(--accent);
+    /*}*/
 		&:is(:hover, :focus-visible) {
-			background: var(--accent);
+			background: var(--graphical-fg);
 			color: var(--box-bg);
 		}
     &:focus-visible {
