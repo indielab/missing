@@ -181,8 +181,8 @@ See this example:
     <header>
       <ul role="list">
         <li><a href=/>Home</a></li>
-        <li><a href=/>Profile</a></li>
-        <li><a href=/>Settings</a></li>
+        <li><a href=/profile>Profile</a></li>
+        <li><a href=/settings>Settings</a></li>
         <!-- ... -->
       </ul>
     </header>
@@ -214,11 +214,11 @@ The separator will be set to either `--breadcrumb-page` or `--breadcrumb-step` d
   ~~~ html
   <nav class="breadcrumbs" aria-label="Breadcrumbs">
     <ol>
-      <li><a href=#>Home</a></li>
-      <li><a href=#>User</a></li>
-      <li><a href=#>Advanced</a></li>
-      <li><a href=#>New All</a></li>
-      <li><a href=# aria-current=page>Quit Sibelius</a></li>
+      <li><a href=/>Home</a></li>
+      <li><a href=/user>User</a></li>
+      <li><a href=/advanced>Advanced</a></li>
+      <li><a href=/new>New All</a></li>
+      <li><a href=/quit aria-current=page>Quit Sibelius</a></li>
     </ol>
   </nav>
   ~~~
@@ -246,8 +246,8 @@ If you want to preserve the `<ol>`{.language-html} numbering, use the `type`{.to
     <strong class="<h1>">Checkout</strong>
     <nav class="breadcrumbs" aria-label="Breadcrumbs">
       <ol type=1>
-        <li><a href=#>Cart</a></li>
-        <li><a href=# aria-current=step>Account</a></li>
+        <li><a href=/cart>Cart</a></li>
+        <li><a href=/account aria-current=step>Account</a></li>
         <li>Info</li>
         <li>Payment</li>
         <li>Review</li>
@@ -309,10 +309,10 @@ example:
   <header class="navbar">
     <nav aria-label="Site sections">
       <ul role="list">
-        <li><a href=/><img alt="missing.js" src="/logo.png"></a>
+        <li><a href=#><img alt="missing.js" src="/logo.png"></a>
         <li><a href=/docs>Docs</a>
-        <li><a href=/docs>Contribute</a>
-        <li><a href=/docs>Donate</a>
+        <li><a href=/contribute>Contribute</a>
+        <li><a href=/donate>Donate</a>
       </ul>
     </nav>
     <nav aria-label="Social media links">
