@@ -473,7 +473,7 @@ Indeterminate `<progress>`{.language-html} elements will show a pending animatio
 The element can be styled by setting `--border-width`, `--border-style`, and `--border-radius` variables directly on the `<progress>`{.language-html} element.
 When not explicitly set, the element inherits from `--interactive-border-width`, `--interactive-border-style`, and `--tab-border-radius`.
 
-For full-width progress bars, use the `.width:100%` utility class.
+For full-width progress bars, use the `.inline-size:100%` utility class.
 [Colorways](colorways) are supported.
 
 
@@ -484,16 +484,16 @@ For full-width progress bars, use the `.width:100%` utility class.
   <div class="flex-column">
      
     <label for=p1 class="vh">Upload progress...</label>
-    <progress id=p1 value=0.5 class="width:100%"></progress>
+    <progress id=p1 value=0.5 class="inline-size:100%"></progress>
 
     <label for=p2>LCARS Scan...</label>
-    <progress id=p2 class="ok width:100%" value=0.25 style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
+    <progress id=p2 class="ok inline-size:100%" value=0.25 style="block-size: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
 
     <label for=p3>Virus progress...</label>
-    <progress id=p3 class="warn width:100%" value=0.75 style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
+    <progress id=p3 class="warn inline-size:100%" value=0.75 style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
 
     <label for=p4>Indeterminate Cylon</label>
-    <progress id=p4 class="bad" style="width: 3em;">Indeterminate Cylon</progress>
+    <progress id=p4 class="bad" style="inline-size: 3em;">Indeterminate Cylon</progress>
 
   </div>
   ~~~
@@ -503,16 +503,16 @@ For full-width progress bars, use the `.width:100%` utility class.
   <div class="flex-column">
 
     <label for=p1 class="vh">Upload progress...</label>
-    <progress id=p1 value=0.5 class="width:100%"></progress>
+    <progress id=p1 value=0.5 class="inline-size:100%"></progress>
 
     <label for=p2>LCARS Scan...</label>
-    <progress id=p2 class="ok width:100%" value=0.25 style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
+    <progress id=p2 class="ok inline-size:100%" value=0.25 style="block-size: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
 
     <label for=p3>Virus progress...</label>
-    <progress id=p3 class="warn width:100%" value=0.75 style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
+    <progress id=p3 class="warn inline-size:100%" value=0.75 style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
 
     <label for=p4>Indeterminate Cylon</label>
-    <progress id=p4 class="bad" style="width: 3em;">Indeterminate Cylon</progress>
+    <progress id=p4 class="bad" style="inline-size: 3em;">Indeterminate Cylon</progress>
 
   </div>
 

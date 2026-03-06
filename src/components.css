@@ -88,7 +88,7 @@ details,
 
 	@media (min-width: 75ch) {
 		display: grid;
-		grid-template-columns: 25ch auto;
+		grid-template-columns: var(--sidebar-width) auto;
 		inset: 0;
 
 		& > header {
@@ -100,8 +100,8 @@ details,
 		& > :nth-child(2) {
 			overflow: auto;
       scrollbar-width: auto;
-			--full-width: calc(100vw - 25ch);
-			padding-top: var(--gap);
+			--full-width: calc(100vi - var(--sidebar-width));
+			padding-block-start: var(--gap);
 		}
 	}
 }
@@ -155,12 +155,11 @@ details,
 	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--accent);
 
 	overflow-x: auto;
+	z-index: 5;
 
 	position: sticky;
-	z-index: 5;
-	top: 0;
-	left: 0;
-	right: 0;
+  inset-block-start: 0;
+	inset-inline: 0;
 
 	/* Inner layout */
 	display: flex;
@@ -172,7 +171,7 @@ details,
 		flex-flow: column;
 		align-items: start;
 
-		max-height: 90vh;
+		max-block-size: 90svb;
 		overflow-y: auto;
 
 		& ul[role="list"] { flex-flow: column; }
@@ -217,21 +216,22 @@ details,
 	}
 
 	& [aria-current=page]::after {
-		width: 100%;
-		height: 6px;
 		content: "";
 		display: block;
 		position: absolute;
-		bottom: calc(-1 * var(--gap));
 		background: currentcolor;
+
+		block-size: 6px;
+		inline-size: 100%;
+		inset-block-end: calc(-1 * var(--gap));
+    inset-inline: 0;
 	}
 
 	&.expanded [aria-current=page]::after {
-		width: 6px;
-		height: 100%;
-		position: absolute;
-		left: calc(-1 * var(--gap));
-		top: 0;
+		block-size: 100%;
+		inline-size: 6px;
+		inset-inline-start: calc(-1 * var(--gap));
+		inset-block: 0;
 	}
 }
 
@@ -251,8 +251,8 @@ details,
 	box-shadow: none;
 	line-height: var(--rhythm, 1rlh);
 	font-size: 24px;  /* WCAG target size AA */
-	width: 24px;
-	height: 24px;
+	inline-size: 24px;
+	block-size: 24px;
 	text-align: center;
 	border-radius: 50%;
 	transition: font-weight .2s ease-in-out;
@@ -281,8 +281,8 @@ details,
   &:is(.big, .\<big\>) {
     /* WCAG target size AAA */
     font-size: 44px;
-    width: 44px;
-    height: 44px;
+    inline-size: 44px;
+    block-size: 44px;
     padding-inline: 0;
   }
 }

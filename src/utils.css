@@ -49,6 +49,11 @@
 .mono-font, .monospace { font-family: var(--mono-font) }
 
 .massivetext {
+	--eff-line-length: /* Effective line length for prose. */
+		min(
+			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+			var(--line-length)
+		);
     font-size: calc(.13 * var(--eff-line-length));
 	line-height: 1em;
     letter-spacing: 0;
@@ -73,7 +78,7 @@
     display: block;
     margin: 0;
     padding: 0;
-    height: calc(.5 * var(--gap));
+    block-size: calc(.5 * var(--gap));
 }
 
 @media screen {

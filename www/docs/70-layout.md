@@ -15,6 +15,19 @@ Mechanisms of creating layouts.
 </details>
 
 
+## Writing Modes
+
+Use the <dfn>`.writing-mode:vertical-lr`</dfn> and <dfn>`.writing-mode:vertical-rl`</dfn> classes to enable vertical layouts.
+
+While missing.css prioritizes logical properties, a few components still rely on physical property values (like `transform()`{.language-css}) and require the writing mode classes in order to orient correctly:
+
+ - The `.fullbleed` and `.fullscreen` layout utilities,
+ - The `[role=switch]` input toggle, and
+ - `<progress>`{.language-html} bars (specifically the "indeterminate" animation when `@prefers-reduced-motion()`{.language-css} is not set).
+
+If you aren't using these specific components, missing.css will handle vertical writing-mode natively without the need for extra classes (assuming the author sets `writing-mode` somewhere in their css).
+
+
 ## Centering
 
 <dfn>`.text-align:center`</dfn> center-aligns text.
@@ -111,6 +124,8 @@ Add the <dfn>`.fullbleed`</dfn> class to make an element go outside its containe
 
 The <dfn>`.fullscreen`</dfn> class will size an element to fill the screen.
 
+When used with vertical writing modes, both of these classes require a parent element with either `.writing-mode:vertical-lr` or `.writing-mode:vertical-rl` set.
+
 
 ## Layout utilities
 
@@ -175,6 +190,7 @@ To remove padding or margin, use one of the following classes:
 
 Make an element full-width with the <dfn>`.width:100%`</dfn> class.
 Similarly with <dfn>`.height:100%`</dfn>.
+Logical variants <dfn>`.inline-size:100%`</dfn> and <dfn>`.block-size:100%`</dfn> are also available.
 
 [density utilities]: /docs/utils/#density
 
@@ -272,8 +288,7 @@ To set the aspect ratio of an element, use the `aspect-ratio`{.token .attr-name}
 <figure>
 
   ~~~html
-  <style>#aspect-ratio-example > .box { height: 10vh }</style>
-  <div id="aspect-ratio-example" class="flex-row flex-wrap:wrap">
+  <div id=aspect-ratio-example class="flex-row align-items:center overflow:auto">
     <div class="box" style="aspect-ratio: 1/1">1:1</div>
     <div class="box" style="aspect-ratio: 4/3">4:3</div>
     <div class="box" style="aspect-ratio: 16/9">16:9</div>
@@ -285,8 +300,7 @@ To set the aspect ratio of an element, use the `aspect-ratio`{.token .attr-name}
   </div>
   ~~~
 
-  <style>#aspect-ratio-example > .box { height: 10vh }</style>
-  <div id="aspect-ratio-example" class="flex-row flex-wrap:wrap">
+  <div id=aspect-ratio-example class="flex-row align-items:center overflow:auto">
     <div class="box" style="aspect-ratio: 1/1">1:1</div>
     <div class="box" style="aspect-ratio: 4/3">4:3</div>
     <div class="box" style="aspect-ratio: 16/9">16:9</div>
@@ -358,7 +372,7 @@ Pseudo-tables work nicely with description lists:
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Pseudo-table markup for description lists</figcaption>
 
   ~~~ html
-  <dl class="table rows" style="width: auto;">
+  <dl class="table rows" style="inline-size: auto;">
     <div><dt>Name:     <dd>Anakin Skywalker</div>
     <div><dt>Alias:    <dd>Darth Vader     </div>
     <div><dt>Species:  <dd>Human           </div>
@@ -370,7 +384,7 @@ Pseudo-tables work nicely with description lists:
 
   <hr>
 
-  <dl class="table rows" style="width: auto;">
+  <dl class="table rows" style="inline-size: auto;">
     <div><dt>Name:     <dd>Anakin Skywalker</div>
     <div><dt>Alias:    <dd>Darth Vader     </div>
     <div><dt>Species:  <dd>Human           </div>
@@ -415,11 +429,41 @@ Pseudo-tables work nicely with description lists:
 :   Set `left: 0`.
     See `.top`.
 
+<dfn>`.inset-block-start`</dfn>
+:   Set `inset-block-start: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-inline-end`</dfn>
+:   Set `inside-inline-end: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-block-end`</dfn>
+:   Set `inset-block-end: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-inline-start`</dfn>
+:   Set `inset-inline-start: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-block`</dfn>
+:   Set `inset-block: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-inline`</dfn>
+:   Set `inset-inline: 0`.
+    Use together with `.fixed` or `.sticky`.
+
 <dfn>`.float:left`</dfn>
 :   Set `float: left`.
 
 <dfn>`.float:right`</dfn>
 :   Set `float: right`.
+
+<dfn>`.float:inline-start`</dfn>
+:   Set `float: inline-start`.
+
+<dfn>`.float:inline-end`</dfn>
+:   Set `float: inline-end`.
 
 ## Printing
 
