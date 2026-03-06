@@ -57,27 +57,26 @@
 	margin-inline: auto;
 }
 
-.fullbleed:not([specificity-hack]) {
-    /* NOTE: Specificity hack needed for e.g. <table class="fullbleed table"> */
+.fullbleed,
+.fullscreen {
     position: relative;
-    max-width: none;
-    width: var(--full-width);
-    left: 50%;
-    transform: translateX(calc(-.5 * var(--full-width)));
+    max-inline-size: none;
+    inline-size: var(--full-width);
+    inset-inline-start: 50%;
+
+    transform: translateX(calc(-0.5 * var(--full-width)));
+    .writing-mode\:vertical-lr &,
+    .writing-mode\:vertical-rl & {
+      transform: translateY(calc(-0.5 * var(--full-width)));
+    }
 
     border-radius: 0;
     border-inline: none;
 }
 
 .fullscreen {
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    left: 50%;
-    transform: translateX(-50vw);
-
-    border-radius: 0;
-    border-inline: none;
+    max-block-size: none;
+    block-size: 100dvb;
 }
 
 .width\:100\%  { width:  100%; max-width:  100% }
