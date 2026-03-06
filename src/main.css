@@ -199,7 +199,8 @@ pre {
 	line-height: var(--rhythm, 1rlh);
 	tab-size: 2;
 
-	margin: var(--gap) 0;
+	margin-block: var(--gap);
+  margin-inline: 0;
 
 	overflow-x: auto;
 }
@@ -283,7 +284,7 @@ main {
 	inline-size: 100%;
 	margin-inline: auto;
 
-	&:first-child { padding-top: var(--gap); }
+	&:first-child { padding-block-start: var(--gap); }
 }
 
 /***
@@ -941,8 +942,9 @@ label[for] {
 fieldset {
 	position: relative;
 
-    padding: var(--gap);
-	margin: var(--gap) 0;
+  padding: var(--gap);
+	margin-block: var(--gap);
+  margin-inline: 0;
 	width: 100%;
 	border-radius: var(--border-radius);
 
@@ -967,9 +969,8 @@ details:not(specificity-hack) {
 }
 
 summary {
-	margin: calc(0px - var(--gap));
-	margin-top: calc(0px - var(--gap));
-	margin-bottom: 0;
+	margin-inline: calc(0px - var(--gap));
+	margin-block: calc(0px - var(--gap)) 0;
 	padding-inline: var(--gap);
 
 	font-family: var(--secondary-font);
