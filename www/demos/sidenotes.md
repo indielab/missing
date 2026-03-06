@@ -2,30 +2,32 @@
 title: Sidenotes
 ---
 
-Sidenotes are created with the `<small role=note tabindex=0>`{ .language-html } element.
+Sidenotes are created with the `<small role=note>`{ .language-html } element.
 Sidenotes are supplemental notes or comments placed in the margins of a page, typically alongside the main text.
 They provide additional information, context, or commentary related to the adjacent text.
 
 The width of a sidenote is set using the `--sidenote-width` variable (which defaults to `20ch`).
-Sidenotes will be clipped by the width of the page's margins and revealed during hover or focus events.
 On smaller screens, the notes will be floated inside the main text.
 
-Sidenotes must be visually and semantically distinct even when the viewport isn't wide enough to facilitate their normal placement.
+By default, sidenotes will be placed in the `inline-end`{.token .attr-name} side on larger screens and floated to `inline-end`{.token .attr-name} on small screens.
+Sidenotes will respect both the `[dir=rtl|ltr]`{.token .attr-name} attribute and `writing-mode`{.token .attr-name} CSS property.
+To switch sides apply the `.flip` class.
+
 This page has a few sidenotes which are implemented using markup similar to the example below.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sidenote markup</figcaption>
 
 ~~~ html
-<small role=note tabindex=0>
+<small role=note>
 	This is the first sidenote.
-	Be default it will appear in the right-hand margin, provided the margin is larger than `--sidenote-width`.
-	The default value for `--sidenote-width` is `20ch`.
+	By default it will float to the the inline-end side.
+	The default value for <code>--sidenote-width</code> is <code>20ch</code>.
 </small>
-<small role=note tabindex=0 class="ok bg color" style="--sidenote-width:40ch;">
+<small role=note class="ok bg color flip" style="--sidenote-width:40ch;">
 	This is the second sidenote.
-	On large screens, it appears in the left-hand margin because the XYZ attribute is set.
-	Since I wanted to change the width of the sidenote, I set the `--sidenote-width` variable to 40ch.
+	It will float to the inline-start side due to the <code>.flip</code> class.
+	Since I wanted to change the width of the sidenote, I set the <code>--sidenote-width</code> variable to <code>40ch</code>.
 </small>
 ~~~
 
@@ -34,10 +36,10 @@ This page has a few sidenotes which are implemented using markup similar to the 
 What follows now is some <i>lorem ipsum</i> so that we can demonstrate the sidenotes.
 You can adjust the viewport width in order to see how the sidenotes will display on mobile screens.
 
-<small role=note tabindex=0>
+<small role=note>
 This is the first sidenote.
-Be default it will appear in the right-hand margin, provided the margin is larger than `--sidenote-width`.
-The default value for `--sidenote-width` is `20ch`.
+By default it will float to the the inline-end side.
+The default value for <code>--sidenote-width</code> is <code>20ch</code>.
 </small>
 
 The Dude abides.
@@ -60,10 +62,10 @@ You don't have to do that, you know.
 I had a rough night and I hate the Eagles.
 What in God's name are you blathering about?
 
-<small role=note tabindex=0 class="float:left ok bg color" style="--sidenote-width: 40ch;">
+<small role=note class="ok bg color flip" style="--sidenote-width:40ch;">
 This is the second sidenote.
-On large screens, it appears in the left-hand margin because it has the <code>.float:left</code> class.
-Since I wanted to change the width of the sidenote, I set the <code>--sidenote-width</code> variable to 40ch.
+It will float to the inline-start side due to the <code>.flip</code> class.
+Since I wanted to change the width of the sidenote, I set the <code>--sidenote-width</code> variable to <code>40ch</code>.
 </small>
 
 I am the Walrus.
