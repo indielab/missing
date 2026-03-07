@@ -17,7 +17,7 @@ export default {
       permalink: mdAnchor.permalink.linkInsideHeader({
         placement: "before",
         symbol: "§",
-        class: "permalink-anchor float:right",
+        class: "permalink-anchor float:inline-end",
       }),
       level: 2,
     }],

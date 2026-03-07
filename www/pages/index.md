@@ -8,7 +8,7 @@ templateEngine: [vento, md]
 
 <h1 class="flex-row crowded">
   <img src="/img/logo/missing-logo.svg"
-    style="width: 1.5lh; aspect-ratio: 1/1;">
+    style="inline-size: 1.5lh; aspect-ratio: 1/1;">
   <span class="flex-column packed">
     <span class=allcaps>missing<wbr>.css<v-h>:</v-h></span> <sub-title>The Missing CSS Stylesheet</sub-title>
   </span>

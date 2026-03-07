@@ -15,7 +15,7 @@ apg:
 
 ## Notes
 
-Missing.css uses the `<table>`{ .language-html } element for tables; for full-width tables, use the `.width:100%` utility class.
+Missing.css uses the `<table>`{ .language-html } element for tables; for full-width tables, use the `.inline-size:100%` utility class.
 ["Pseudo-tables"][] can be created from other elements by applying the `.table` and `.rows` classes.
 
 ["Pseudo-tables"]: /docs/layout/#pseudo-tables
@@ -26,7 +26,7 @@ Missing.css uses the `<table>`{ .language-html } element for tables; for full-wi
 ## Example
 
 <figure>
-	<table class="width:100%">
+	<table class="inline-size:100%">
 		<caption>
 			Front-end web developer course 2021
 		</caption>

@@ -118,7 +118,7 @@ Missing.css provides this as the <dfn>`.permalink-anchor`</dfn> class.
 
   ~~~ html
   <h2 id=section-permalinks class="packed" tabindex=-1>
-    <a class="permalink-anchor float:right" href=#section-permalinks>§</a>
+    <a class="permalink-anchor float:inline-end" href=#section-permalinks>§</a>
     Section permalinks
   </h2>
   ~~~
@@ -126,7 +126,7 @@ Missing.css provides this as the <dfn>`.permalink-anchor`</dfn> class.
   <hr>
 
   <h2 id=section-permalinks tabindex=-1 class="packed">
-    <a href=#section-permalinks class="permalink-anchor float:right">§</a>
+    <a href=#section-permalinks class="permalink-anchor float:inline-end">§</a>
     Section permalinks
   </h2>
 

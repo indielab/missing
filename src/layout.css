@@ -1,3 +1,8 @@
+/**/
+
+.writing-mode\:vertical-lr { writing-mode:vertical-lr }
+.writing-mode\:vertical-rl { writing-mode:vertical-rl }
+
 .textcolumns {
   --col-width: 30ch;
 
@@ -29,8 +34,6 @@
   }
 }
 
-
-
 .text-align\:center {
     text-align: center;
 }
@@ -45,36 +48,41 @@
 /**/
 
 .container {
+	--eff-line-length: /* Effective line length for prose. */
+		min(
+			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+			var(--line-length)
+		);
 	max-inline-size: var(--eff-line-length);
 	margin-inline: auto;
 }
 
-.fullbleed:not([specificity-hack]) {
-    /* NOTE: Specificity hack needed for e.g. <table class="fullbleed table"> */
+.fullbleed,
+.fullscreen {
     position: relative;
-    max-width: none;
-    width: var(--full-width);
-    left: 50%;
-    transform: translateX(calc(-.5 * var(--full-width)));
+    max-inline-size: none;
+    inline-size: var(--full-width);
+    inset-inline-start: 50%;
+
+    transform: translateX(calc(-0.5 * var(--full-width)));
+    .writing-mode\:vertical-lr &,
+    .writing-mode\:vertical-rl & {
+      transform: translateY(calc(-0.5 * var(--full-width)));
+    }
 
     border-radius: 0;
     border-inline: none;
 }
 
 .fullscreen {
-    height: 100vh;
-
-    position: relative;
-    width: 100vw;
-    left: 50%;
-    transform: translateX(-50vw);
-
-    border-radius: 0;
-    border-inline: none;
+    max-block-size: none;
+    block-size: 100dvb;
 }
 
-.width\:100\%  { width:100%;  max-width: 100%  }
-.height\:100\% { height:100%; max-height: 100% }
+.width\:100\%  { width:  100%; max-width:  100% }
+.height\:100\% { height: 100%; max-height: 100% }
+.inline-size\:100\% { inline-size: 100%; max-inline-size: 100% }
+.block-size\:100\%  { block-size:  100%; max-block-size:  100% }
 
 /**/
 
@@ -192,7 +200,7 @@
 
 .flow-gap {
     & > :not(:last-child) {
-        margin-bottom: var(--gap);
+        margin-block-end: var(--gap);
     }
 }
 
@@ -204,7 +212,7 @@
 
 .table {
     display: table;
-    width: 100%;
+    inline-size: 100%;
     margin: 0;
 }
 
@@ -212,7 +220,7 @@
     display: table-row;
 
     &:not(:last-child):not([specificity-hack]) > * {
-        margin-bottom: var(--gap);
+        margin-block-end: var(--gap);
     }
 
     & > *:not([specificity-hack]) {
@@ -246,9 +254,17 @@
 .right  { right:  0 }
 .bottom { bottom: 0 }
 .left   { left:   0 }
+.inset-block-start  { inset-block-start:  0 }
+.inset-block-end    { inset-block-end:    0 }
+.inset-inline-start { inset-inline-start: 0 }
+.inset-inline-end   { inset-inline-end:   0 }
+.inset-block        { inset-block:  0 }
+.inset-inline       { inset-inline: 0 }
 
 .float\:left  { float: left  }
 .float\:right { float: right }
+.float\:inline-start { float: inline-start }
+.float\:inline-end   { float: inline-end   }
 
 .overflow\:auto     { overflow: auto;     }
 .overflow\:scroll   { overflow: scroll;   }
@@ -275,7 +291,7 @@
 
   main, .container {
     max-inline-size: unset;
-    width: auto;
+    inline-size: auto;
   }
 
   h1, h2, h3, h4, h5, h6,
