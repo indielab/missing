@@ -170,7 +170,7 @@ main + footer {
 			var(--line-length)
 		);
 	padding-block: var(--rhythm, 1rlh);
-  padding-inline: calc((100% - var(--eff-line-length)) / 2);
+  padding-inline: calc((var(--full-width) - var(--eff-line-length)) / 2);
 }
 
 address {
