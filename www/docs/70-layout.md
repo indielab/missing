@@ -18,6 +18,7 @@ Mechanisms of creating layouts.
 ## Writing Modes
 
 Use the <dfn>`.writing-mode:vertical-lr`</dfn> and <dfn>`.writing-mode:vertical-rl`</dfn> classes to enable vertical layouts.
+If used, we recommended placing them on the `<html>`{.language-html} element for best results.
 
 While missing.css prioritizes logical properties, a few components still rely on physical property values (like `transform()`{.language-css}) and require the writing mode classes in order to orient correctly:
 
