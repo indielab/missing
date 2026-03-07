@@ -142,9 +142,9 @@ h6:target {
 		content: "";
 		display: block;
 		position: absolute;
-		left: -.5em;
-		width: 4px;
-		height: 100%;
+		inset-inline-start: -.5em;
+		inline-size: 4px;
+		block-size: 100%;
 		background: var(--accent);
 	}
 }
@@ -169,8 +169,8 @@ main + footer {
 			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
 			var(--line-length)
 		);
-
-	padding: var(--rhythm, 1rlh) calc((100% - var(--eff-line-length)) / 2)
+	padding-block: var(--rhythm, 1rlh);
+  padding-inline: calc((var(--full-width) - var(--eff-line-length)) / 2);
 }
 
 address {
@@ -205,7 +205,8 @@ pre {
 	line-height: var(--rhythm, 1rlh);
 	tab-size: 2;
 
-	margin: var(--gap) 0;
+	margin-block: var(--gap);
+  margin-inline: 0;
 
 	overflow-x: auto;
 }
@@ -227,7 +228,6 @@ blockquote {
 	}
 
 	& footer {
-		text-align: right;
 		text-align: end;
 	}
 }
@@ -271,7 +271,7 @@ dl {
 }
 
 figure {
-	max-width: 100%;
+	max-inline-size: 100%;
 	margin-inline: 0;
 
     /* SEE components/box.css */
@@ -290,12 +290,11 @@ main {
 			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
 			var(--line-length)
 		);
-
 	max-inline-size: var(--eff-line-length);
 	inline-size: 100%;
 	margin-inline: auto;
 
-	&:first-child { padding-top: var(--gap); }
+	&:first-child { padding-block-start: var(--gap); }
 }
 
 /***
@@ -329,53 +328,6 @@ a, .\<a\> {
 		text-decoration: 2px solid underline;
 		cursor: pointer;
 		outline: none;
-	}
-}
-
-small[role="note"] {
-	/***
-	 Sidenote
-	 ***/
-	display: block;
-	float: inline-end;
-	clear: inline-end;
-
-	--sidenote-width: 20ch;
-	--eff-line-length: /* Effective line length for prose. */
-		min(
-			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
-			var(--line-length)
-		);
-	--gutter-width: /* Width of spaces at each side of page content. */
-		calc(
-			(
-				var(--full-width)        /* Viewport width */
-				- var(--eff-line-length) /* minus line width */
-			) / 2);                    /* Divide by 2: there are two page margins */
-
-	max-inline-size: var(--sidenote-width);
-	padding-inline: 1.5ch 1ch;
-
-	margin-inline-end: calc(1em - var(--sidenote-width));
-	margin-block-end: var(--rhythm, 1rlh);
-
-	font-family: var(--secondary-font);
-
-	background: var(--bg);
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) transparent;
-	border-block-end: var(--border-block-end-width) var(--border-block-end-style) transparent;
-	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) transparent;
-	border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) transparent;
-
-	transition: transform .1s ease-in-out;
-
-	&:hover, &:focus-within {
-		border-color: var(--graphical-fg);
-		border-radius: var(--border-radius);
-		transform: translateX(calc(
-			0px - var(--sidenote-width)
-			+ min(var(--gutter-width), var(--sidenote-width))
-		))
 	}
 }
 
@@ -423,7 +375,8 @@ kbd kbd /*
 */ {
 	display: inline-block;
 
-	padding: 0 .3em;
+	padding-block: 0
+  padding-inline: .3em;
 	font-size: .8em;
 	line-height: 1.1em;
 
@@ -541,14 +494,15 @@ label :is(input, select):not([specificity-hack]) {
 ):not(.\<a\>) {
   /* Any changes made here must also be made to ::file-selector-button below */
 	display: inline-block;
-	padding: 0 calc(var(--rhythm, 1rlh) / 4);
+	padding-block: 0;
+  padding-inline: calc(var(--rhythm, 1rlh) / 4);
 	vertical-align: middle;
 	box-sizing: border-box;
 
 	font-size: .8rem;
 	line-height: 1.125em;
 	font-family: var(--secondary-font);
-	min-height: var(--rhythm, 1rlh);
+	min-block-size: var(--rhythm, 1rlh);
 
 	background: var(--interactive-bg);
 	color: var(--fg);
@@ -670,14 +624,15 @@ input::file-selector-button {
    * we have to duplicate styles from above. */
 
 	display: inline-block;
-	padding: 0 calc(var(--rhythm, 1rlh) / 4);
+	padding-block: 0;
+  padding-inline: calc(var(--rhythm, 1rlh) / 4);
 	vertical-align: middle;
 	box-sizing: border-box;
 
 	font-size: .8rem;
 	line-height: 1.125em;
 	font-family: var(--secondary-font);
-	min-height: var(--rhythm, 1rlh);
+	min-block-size: var(--rhythm, 1rlh);
 
 	background: var(--interactive-bg);
 	color: var(--fg);
@@ -769,21 +724,22 @@ textarea {
 }
 
 input[type="range"] {
-	width: 100%;
+	inline-size: 100%;
 	padding: calc(var(--gap) / 4);
 }
 
 input[type="color"] {
 	padding: 0;
 	margin: 0;
-	height: calc(1.5 * var(--rhythm, 1rlh));
+	block-size: calc(1.5 * var(--rhythm, 1rlh));
 
 	border: none;
 	background: none;
 }
 
 input[type="file"] {
-	padding: calc(var(--gap) / 4) 0;
+	padding-block: calc(var(--gap) / 4);
+  padding-inline: 0;
 	font: inherit;
 	line-height: calc(var(--rhythm, 1rlh) / 2);
 	&::file-selector-button {
@@ -974,17 +930,31 @@ progress {
   }
   &:not([value]) {
     /* Indeterminate state */
-    --track-bg-color: linear-gradient(to right,
+    --track-animation: progress-indeterminate 4s infinite ease-in-out;
+
+    --track-size: 225% 100%;
+    --track-animation-direction: to right;
+    --track-bg-position-start: right;
+    --track-bg-position-end: left;
+    .writing-mode\:vertical-lr &,
+    .writing-mode\:vertical-rl & {
+      --track-size: 100% 225%;
+      --track-animation-direction: to bottom;
+      --track-bg-position-start: bottom;
+      --track-bg-position-end: top;
+    }
+
+    --track-bg-color: linear-gradient(
+      var(--track-animation-direction),
       var(--box-bg) 45%,
       var(--accent) 0%,
       var(--accent) 55%,
       var(--box-bg) 0%
     );
-    --track-size: 225% 100%;
-    --track-bg-position: right;
-    --track-animation: progress-loading 4s infinite ease-in-out;
+
     @media (prefers-reduced-motion) {
-      --track-bg-position: center;
+      --track-bg-position-start: center;
+      --track-bg-position-end: center;
       --track-animation: none;
     }
 
@@ -996,7 +966,7 @@ progress {
         position: absolute;
         background: var(--track-bg-color);
         background-size: var(--track-size);
-        background-position: var(--track-bg-position);
+        background-position: var(--track-bg-position-start);
         animation: var(--track-animation);
       }
     }
@@ -1004,7 +974,7 @@ progress {
       &::-webkit-progress-bar {
         background: var(--track-bg-color);
         background-size: var(--track-size);
-        background-position: var(--track-bg-position);
+        background-position: var(--track-bg-position-start);
         animation: var(--track-animation);
       }
     }
@@ -1012,14 +982,14 @@ progress {
       &::-moz-progress-bar {
         background: var(--track-bg-color);
         background-size: var(--track-size);
-        background-position: var(--track-bg-position);
+        background-position: var(--track-bg-position-start);
         animation: var(--track-animation);
       }
     }
   }
 }
-@keyframes progress-loading {
-  50% { background-position: left; }
+@keyframes progress-indeterminate {
+  50% { background-position: var(--track-bg-end) }
 }
 
 label[for] {
@@ -1030,9 +1000,10 @@ label[for] {
 fieldset {
 	position: relative;
 
-    padding: var(--gap);
-	margin: var(--gap) 0;
-	width: 100%;
+  padding: var(--gap);
+	margin-block: var(--gap);
+  margin-inline: 0;
+	inline-size: 100%;
 	border-radius: var(--border-radius);
 
 	& > legend + * { margin-block-start: 0 }
@@ -1056,9 +1027,8 @@ details:not(specificity-hack) {
 }
 
 summary {
-	margin: calc(0px - var(--gap));
-	margin-top: calc(0px - var(--gap));
-	margin-bottom: 0;
+	margin-inline: calc(0px - var(--gap));
+	margin-block: calc(0px - var(--gap)) 0;
 	padding-inline: var(--gap);
 
 	font-family: var(--secondary-font);

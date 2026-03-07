@@ -27,7 +27,7 @@ Other uses include providing instructions for interactive elements or detailed d
 ## Container
 
 <dfn>`.container`</dfn>
-:   Imposes a maximum width on an element and centers it.
+:   Imposes a maximum width (`inline-size`) on an element and centers it.
 
 The `<main>`{.language-html} element does the same, but carries semantic baggage that might not be appropriate for all contexts.
 
@@ -48,7 +48,7 @@ We provide the following utility classes that set `--density`:
 | <dfn>`.airy`</dfn>        | `--density` = 3                            |
 | <dfn>`.autodensity`</dfn> | sets density based on viewport width       |
 
-{ .width:100% }
+{ .inline-size:100% }
 
 You can also use the following classes to set density on child elements while maintaining a separate density for the containing element:
 

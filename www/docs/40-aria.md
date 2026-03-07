@@ -55,8 +55,7 @@ To get the actual behavior of an accessible tabset, you can use [Missing.js &sec
       >Channels</button>
     <button role=tab aria-controls=users
       >Users</button>
-  </div>
-  
+  </div> 
   <div id=servers         role=tabpanel>This is tab 1. <strong>JavaScript sold separately!</strong></div>
   <div id=channels hidden role=tabpanel>You are enjoying tab 2.</div>
   <div id=users    hidden role=tabpanel><img alt="placeholder cat" src=https://biber.denizaksimsek.com/img/IMG_2022-07-05_07-16-48-400.webp></div>
@@ -237,8 +236,10 @@ To get the actual behavior of an accessible feed, you can use [Missing.js &sect;
 
 ## Toggle Switch
 
-Use `switch`{.token .attr-value} role with `<input type=checkbox>`{.language-html}.
+Use <dfn>`[role=switch]`{.token .attr-value}</dfn> with `<input type=checkbox>`{.language-html}.
+
 The indeterminate state is supported, but it must be set with JavaScript.
+When used with vertical writing modes, toggle switches require a parent element with either `.writing-mode:vertical-lr` or `.writing-mode:vertical-rl` set.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Toggle switch markup</figcaption>

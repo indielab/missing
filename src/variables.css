@@ -82,7 +82,7 @@
 	--density: 1;
 
 	/* Width */
-	--full-width: 100vw;
+	--full-width: 100vi;
   --sidebar-width: 25ch;
 }
 

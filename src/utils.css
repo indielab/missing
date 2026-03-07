@@ -78,7 +78,7 @@
     display: block;
     margin: 0;
     padding: 0;
-    height: calc(.5 * var(--gap));
+    block-size: calc(.5 * var(--gap));
 }
 
 @media screen {
