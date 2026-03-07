@@ -171,6 +171,7 @@ Alternatively, you can use `role=toolbar`{.token .attr-name}.
 
 Use the <dfn>`.sidebar-layout`</dfn> class to create a sidebar/main layout.
 Put sidebar content in a `<header>`{.language-html} element directly inside `.sidebar-layout`{.language-css}, and the next element will house the rest of the page.
+The width of the sidebar can be set using the `--sidebar-width` variable.
 See this example:
 
 <figure>

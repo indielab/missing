@@ -119,6 +119,11 @@ details,
 			overflow: auto;
       scrollbar-width: auto;
 			--full-width: calc(100vi - var(--sidebar-width));
+      --eff-line-length: /* Effective line length for prose. */
+    		min(
+    			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+    			var(--line-length)
+    		);
 			padding-block-start: var(--gap);
 		}
 
@@ -139,6 +144,11 @@ details,
 			overflow: auto;
       scrollbar-width: auto;
 			--full-width: calc(100vi - var(--sidebar-width));
+    	--eff-line-length: /* Effective line length for prose. */
+    		min(
+    			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+    			var(--line-length)
+    		);
 			padding-block-start: var(--gap);
 		}
 	}

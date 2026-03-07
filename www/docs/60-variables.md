@@ -117,6 +117,7 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   Maximum line length for prose.
 
 
+
 ## Borders
    
 <dfn>`--border-width`</dfn> {#var-border-width}
@@ -255,6 +256,10 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 <dfn>`--col-width`</dfn> {#var-col-width}
 :   Sets the width of a column for `.textcolumns`.
     Default is `30ch`{.token .attr-value}.
+
+<dfn>`--sidebar-width`</dfn> {#var-sidebar-width}
+:   Sets the width of the sidebar for the `.sidebar-layout` component.
+    Default is `25ch`{.token .attr-value}.
 
 <dfn>`--grid-row-width`</dfn> {#var-grid-row-width}
 :   Sets the width of a row in a `.grid`.

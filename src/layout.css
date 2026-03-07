@@ -53,6 +53,7 @@
 			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
 			var(--line-length)
 		);
+
 	max-inline-size: var(--eff-line-length);
 	margin-inline: auto;
 }
