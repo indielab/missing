@@ -125,7 +125,8 @@ Add the <dfn>`.fullbleed`</dfn> class to make an element go outside its containe
 
 The <dfn>`.fullscreen`</dfn> class will size an element to fill the screen.
 
-When used with vertical writing modes, both of these classes require a parent element with either `.writing-mode:vertical-lr` or `.writing-mode:vertical-rl` set. These classes will not work on flex children (e.g. children of `.flex-row`, `.flex-column`, or `.flex-switch` containers).
+When used with vertical writing modes, both of these classes require a parent element with either `.writing-mode:vertical-lr` or `.writing-mode:vertical-rl` set.
+These classes will not work on flex children (e.g. children of `.flex-row`, `.flex-column`, or `.flex-switch` containers).
 
 
 ## Layout utilities

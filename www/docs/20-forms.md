@@ -476,6 +476,8 @@ When not explicitly set, the element inherits from `--interactive-border-width`,
 For full-width progress bars, use the `.inline-size:100%` utility class.
 [Colorways](colorways) are supported.
 
+When used with vertical writing modes, the indeterminate state requires a parent element with either `.writing-mode:vertical-lr` or `.writing-mode:vertical-rl` set.
+
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Progress bar markup</figcaption>

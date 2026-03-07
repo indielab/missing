@@ -239,7 +239,7 @@ To get the actual behavior of an accessible feed, you can use [Missing.js &sect;
 Use <dfn>`[role=switch]`{.token .attr-value}</dfn> with `<input type=checkbox>`{.language-html}.
 
 The indeterminate state is supported, but it must be set with JavaScript.
-Vertical writing modes are supported, but there must be a parent element with `.writing-mode:vertical-lr` or `.writing-mode:vertical-rl` set.
+When used with vertical writing modes, toggle switches require a parent element with either `.writing-mode:vertical-lr` or `.writing-mode:vertical-rl` set.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Toggle switch markup</figcaption>
