@@ -77,7 +77,17 @@ details,
 }
 
 .sidebar-layout {
+  --border:
+    var(--border-inline-end-width)
+    var(--border-inline-end-style)
+    var(--graphical-fg);
+
 	& header {
+    border-inline: none;
+    border-block: none;
+    border-block-end: var(--border);
+    border-radius: 0;
+
 		& li {
 			margin-block: calc(.5 * var(--gap));
 		}
@@ -87,14 +97,41 @@ details,
 		}
 	}
 
+  .writing-mode\:vertical-lr &,
+  .writing-mode\:vertical-rl & {
+    /* Vertical writing modes should not have the < 75ch width layout */
+    /* Just duplicate the styles from the media query for now */
+    display: grid;
+    grid-template-columns: var(--sidebar-width) auto;
+    inset: 0;
+
+		display: grid;
+		grid-template-columns: var(--sidebar-width) auto;
+		inset: 0;
+
+		& > header {
+			border-block-end: none;
+			border-inline-end: var(--border);
+			margin: 0;
+		}
+
+		& > :nth-child(2) {
+			overflow: auto;
+      scrollbar-width: auto;
+			--full-width: calc(100vi - var(--sidebar-width));
+			padding-block-start: var(--gap);
+		}
+
+  }
+
 	@media (min-width: 75ch) {
 		display: grid;
 		grid-template-columns: var(--sidebar-width) auto;
 		inset: 0;
 
 		& > header {
-			border-block: none;
-			border-inline-start: none;
+			border-block-end: none;
+			border-inline-end: var(--border);
 			margin: 0;
 		}
 
