@@ -1,4 +1,7 @@
-/**/
+
+/***
+ Typography
+***/
 
 .writing-mode\:vertical-lr { writing-mode:vertical-lr }
 .writing-mode\:vertical-rl { writing-mode:vertical-rl }
@@ -45,12 +48,19 @@
 .align-content\:center { align-content: center }
 .align-content\:end    { align-content: end    }
 
-/**/
+.big, .\<big\> {
+    font-size: 1.4em;
+    line-height: calc(1.5 * var(--rhythm, 1rlh));
+}
+
+/***
+ Box model
+***/
 
 .container {
-	--eff-line-length: /* Effective line length for prose. */
+	--eff-line-length:
 		min(
-			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+			calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
 			var(--line-length)
 		);
 
@@ -85,9 +95,6 @@
 .inline-size\:100\% { inline-size: 100%; max-inline-size: 100% }
 .block-size\:100\%  { block-size:  100%; max-block-size:  100% }
 
-/**/
-
-/* margin-trim had better be implemented soon */
 :is(
     body,
     .box,
@@ -103,6 +110,7 @@
     td,
     th
 ) {
+    /* margin-trim had better be implemented soon */
     &>:first-child:first-child:first-child:first-child,
     &>:first-child>:first-child:first-child:first-child,
     &>:first-child>:first-child>:first-child:first-child,
@@ -114,8 +122,6 @@
     &>:last-child>:last-child>:last-child:last-child,
     &>:last-child>:last-child>:last-child>:last-child { margin-block-end: 0; }
 }
-
-/**/
 
 .padding\:0 { padding: 0 }
 .padding { padding: var(--gap) }
@@ -137,14 +143,7 @@
 .padding-end\:0 { padding-block-end: 0; padding-inline-end: 0 }
 .padding-end { padding-block-end: var(--gap); padding-inline-end: var(--gap) }
 
-
-/* NOTE:
- * Specificity hack is needed when parent container has e.g. .flex-row.
- * TODO: Eventually use cascade layers to avoid this hack.
- *
- * In order to support e.g. class="margin:0 margin-block-end:auto",
- * we must be careful what order we define these utils in. */
-
+/* Specificity hack is needed when parent container has e.g. .flex-row. */
 .margin\:0:not([specificity-hack]) { margin: 0 }
 .margin:not([specificity-hack]) { margin: var(--gap) }
 
@@ -198,55 +197,54 @@
   margin-inline-end: auto;
 }
 
-
 .flow-gap {
     & > :not(:last-child) {
         margin-block-end: var(--gap);
     }
 }
 
-/**/
+.nested-list :where(ul, ol, dl) { margin-block: 0 }
 
 .inline { display: inline }
 .block { display: block }
 .contents { display: contents }
 
 .table {
-    display: table;
-    inline-size: 100%;
-    margin: 0;
+  display: table;
+  inline-size: 100%;
+  margin: 0;
 }
 
 .row, .rows > * {
-    display: table-row;
+  display: table-row;
 
-    &:not(:last-child):not([specificity-hack]) > * {
-        margin-block-end: var(--gap);
-    }
+  &:not(:last-child):not([specificity-hack]) > * {
+      margin-block-end: var(--gap);
+  }
 
-    & > *:not([specificity-hack]) {
-        display: table-cell;
-        vertical-align: top;
-    }
+  & > *:not([specificity-hack]) {
+      display: table-cell;
+      vertical-align: top;
+  }
 
-    & > * + *:not([specificity-hack]) {
-        margin-inline-start: var(--gap);
-        display: inline-block;
-    }
+  & > * + *:not([specificity-hack]) {
+      margin-inline-start: var(--gap);
+      display: inline-block;
+  }
 }
 
-/**/
+.overflow\:auto     { overflow: auto;     }
+.overflow\:scroll   { overflow: scroll;   }
+.overflow-x\:scroll { overflow-x: scroll; }
+.overflow-y\:scroll { overflow-y: scroll; }
+.overflow\:clip     { overflow: clip;     }
+.overflow-x\:clip   { overflow-x: clip;   }
+.overflow-y\:clip   { overflow-y: clip;   }
 
-.big, .\<big\> {
-    font-size: 1.4em;
-    line-height: calc(1.5 * var(--rhythm, 1rlh));
-}
 
-/**/
-
-.nested-list :where(ul, ol, dl) { margin-block: 0 }
-
-/**/
+/***
+ Positioning
+***/
 
 .fixed  { position: fixed  }
 .sticky { position: sticky }
@@ -267,15 +265,9 @@
 .float\:inline-start { float: inline-start }
 .float\:inline-end   { float: inline-end   }
 
-.overflow\:auto     { overflow: auto;     }
-.overflow\:scroll   { overflow: scroll;   }
-.overflow-x\:scroll { overflow-x: scroll; }
-.overflow-y\:scroll { overflow-y: scroll; }
-.overflow\:clip     { overflow: clip;     }
-.overflow-x\:clip   { overflow-x: clip;   }
-.overflow-y\:clip   { overflow-y: clip;   }
-
-/**/
+/***
+ Printing
+***/
 
 @media print {
   :root {

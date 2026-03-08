@@ -45,7 +45,6 @@
 	background: var(--box-bg);
 }
 
-/* Order matters, e.g. class="border:none border-block-end" */
 .border\:none { border: none }
 .border {
   border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);

@@ -45,21 +45,7 @@ details,
 }
 
 .sub-title, sub-title {
-	/***
-	 Meant for use in headings. Make sure to also use visually-hidden punctuation
-	 to mark the subtitle as shown below:
-
-	1 | <h1>
-	2 | 	Foo Bar<v-h>:</v-h>
-	3 | 	<sub-title>How I Learned To Stop Worrying and Love Baz</sub-title>
-	4 | </h1>
-
-	1 | <h1>
-	2 | 	<sub-title class="-allcaps">Breaking News</sub-title><v-h>:</v-h>
-	3 | 	Bad Thing Happens
-	4 | <h1>
-	 ***/
-
+  /* Heading subtitle */
 	display: block;
 
 	font-weight: normal;
@@ -99,8 +85,10 @@ details,
 
   .writing-mode\:vertical-lr &,
   .writing-mode\:vertical-rl & {
-    /* Vertical writing modes should not have the < 75ch width layout */
-    /* Just duplicate the styles from the media query for now */
+    /***
+     Vertical writing modes should not have the < 75ch width layout.
+     Just duplicate the styles from the media query for now.
+     ***/
     display: grid;
     grid-template-columns: var(--sidebar-width) auto;
     inset: 0;
@@ -119,9 +107,9 @@ details,
 			overflow: auto;
       scrollbar-width: auto;
 			--full-width: calc(100vi - var(--sidebar-width));
-      --eff-line-length: /* Effective line length for prose. */
+      --eff-line-length:
     		min(
-    			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+    			calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
     			var(--line-length)
     		);
 			padding-block-start: var(--gap);
@@ -144,9 +132,9 @@ details,
 			overflow: auto;
       scrollbar-width: auto;
 			--full-width: calc(100vi - var(--sidebar-width));
-    	--eff-line-length: /* Effective line length for prose. */
+    	--eff-line-length:
     		min(
-    			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+    			calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
     			var(--line-length)
     		);
 			padding-block-start: var(--gap);
@@ -209,7 +197,6 @@ details,
   inset-block-start: 0;
 	inset-inline: 0;
 
-	/* Inner layout */
 	display: flex;
 	flex-flow: row;
 	align-items: center;
@@ -298,9 +285,9 @@ details,
 	padding: 0;
 	box-shadow: none;
 	line-height: var(--rhythm, 1rlh);
-	font-size: 24px;  /* WCAG target size AA */
-	inline-size: 24px;
-	block-size: 24px;
+	font-size: var(--wcag-target-size-aa);
+	inline-size: var(--wcag-target-size-aa);
+	block-size: var(--wcag-target-size-aa);
 	text-align: center;
 	border-radius: 50%;
 	transition: font-weight .2s ease-in-out;
@@ -327,23 +314,20 @@ details,
   }
 
   &:is(.big, .\<big\>) {
-    /* WCAG target size AAA */
-    font-size: 44px;
-    inline-size: 44px;
-    block-size: 44px;
+    font-size: var(--wcag-target-size-aaa);
+    inline-size: var(--wcag-target-size-aaa);
+    block-size: var(--wcag-target-size-aaa);
     padding-inline: 0;
   }
 }
 
 small[role="note"] {
-  /***
-   Sidenote
-   ***/
+  /* Sidenote */
   --full-width: 100vi;
   --sidenote-width: 20ch;
   --gutter-width: max(
-    var(--rhythm, 1rlh),                          /* gutter min */
-    (var(--full-width) - var(--line-length)) / 2  /* gutter max */
+    var(--rhythm, 1rlh),
+    (var(--full-width) - var(--line-length)) / 2
   );
   --margin-inline: calc(
     0px - min(
@@ -373,13 +357,11 @@ small[role="note"] {
     background: var(--box-bg);
   }
 
-  /* default to inline-end side */
   float: inline-end;
   clear: inline-end;
   margin-inline: 1ch var(--margin-inline);
   text-align: start;
 
-  /* flip to inline-start side */
   &.flip {
     float: inline-start;
     clear: inline-start;

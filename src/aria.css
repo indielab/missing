@@ -5,17 +5,6 @@
 }
 
 [role="tab"]:not([specificity-hack]) {
-    /* button-specific resets */
-    font-size: 1em;
-	  line-height: var(--rhythm, 1.4rem);
-    border: none;
-    box-shadow: none;
-    &:is(:hover, :focus-visible, :active, :disabled) {
-      filter: none;
-      box-shadow: none;
-    }
-
-    /* tab styles */
     margin: 0;
     position: relative;
     inset-block-end: calc(-1 * var(--border-block-start-width));
@@ -25,6 +14,17 @@
     border-start-end-radius: var(--tab-border-radius);
     border-end-start-radius: 0;
     border-end-end-radius: 0;
+
+    &:is(button) {
+      /* button-specific resets */
+      font-size: 1em;
+  	  line-height: var(--rhythm, 1.4rem);
+      box-shadow: none;
+      &:is(:hover, :focus-visible, :active, :disabled) {
+        filter: none;
+        box-shadow: none;
+      }
+    }
 
     &:active, &[aria-selected="true"] {
         background: var(--box-bg);
@@ -43,8 +43,7 @@
 }
 
 [role="tabpanel"] {
-    /* SEE components/box.css */
-
+    /* extends components/box.css */
     margin-block-start: 0;
     border-start-start-radius: 0;
     border-start-end-radius: 0;
@@ -52,7 +51,7 @@
 }
 
 [role="menu"] {
-    /* SEE components/box.css */
+    /* extends components/box.css */
     position: absolute;
 
     z-index: 10;
@@ -84,9 +83,10 @@
 }
 
 [role=listbox] {
-    /* This has been removed from docs, but we keep the styling here as a
-     * reference for future implementation.
-     */
+    /***
+     This has been removed from docs.
+     The styling is kept as reference for future implementation.
+    **/
     list-style: none;
 
     [role=option] {
@@ -219,14 +219,12 @@ input[type=checkbox][role=switch] {
     padding-block: calc(var(--gap) / 4 + (var(--rhythm, 1rlh) - 1em) / 2);
   }
 
-  :is(label:has(> &)) {
-    /* Lightning CSS requires :is() when nested selector doesn't start with & */
+  label:has(> &) {
     display: flex;
     gap: var(--gap);
     flex-direction: row;
   }
-  :is(label:has(+ &)) {
-    /* Lightning CSS requires :is() when nested selector doesn't start with & */
+  label:has(+ &) {
     inline-size: 100%;
   }
 

@@ -2,9 +2,6 @@
 /***
  4.1 The document element
  https://html.spec.whatwg.org/multipage/semantics.html#the-root-element
-
- 4.3 Sections
- https://html.spec.whatwg.org/multipage/sections.html
  ***/
 
 html {
@@ -16,14 +13,18 @@ html {
 
 	scroll-padding-block-start: calc(4 * var(--gap));
   scrollbar-color: var(--accent) transparent;
-}
-html, body {
   scrollbar-width: auto;
-  & * { scrollbar-width: thin; }
 }
 
+/***
+ 4.3 Sections
+ https://html.spec.whatwg.org/multipage/sections.html
+ ***/
+
 body {
-	margin: 0;
+  margin: 0;
+  scrollbar-width: auto;
+  & * { scrollbar-width: thin; }
 }
 
 header, footer, section + section {
@@ -158,9 +159,9 @@ footer {
 body > header,
 body > footer,
 main + footer {
-	--eff-line-length: /* Effective line length for prose. */
+	--eff-line-length:
 		min(
-			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+			calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
 			var(--line-length)
 		);
 	padding-block: var(--rhythm, 1rlh);
@@ -265,10 +266,9 @@ dl {
 }
 
 figure {
+  /* extends components/box.css */
 	max-inline-size: 100%;
 	margin-inline: 0;
-
-    /* SEE components/box.css */
 }
 figcaption {
 	margin-block: var(--gap);
@@ -279,9 +279,9 @@ figcaption {
 }
 
 main {
-	--eff-line-length: /* Effective line length for prose. */
+	--eff-line-length:
 		min(
-			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
+			calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
 			var(--line-length)
 		);
 	max-inline-size: var(--eff-line-length);
@@ -294,12 +294,7 @@ main {
 /***
  4.5 Text-level semantics
  https://html.spec.whatwg.org/multipage/text-level-semantics.html
-
- 4.7 Edits
- https://html.spec.whatwg.org/multipage/edits.html
  ***/
-
-/* Text-level semantics */
 
 a, .\<a\> {
 	color: var(--link-fg, var(--accent));
@@ -311,8 +306,10 @@ a, .\<a\> {
   font-family: inherit;
 	text-decoration: 1px dotted underline;
 
-	/* button-specific resets */
-  padding: 0;
+  &:is(button) {
+  	/* button-specific resets */
+    padding: 0;
+  }
 
 	.list-of-links & {
 		text-decoration: none;
@@ -355,18 +352,19 @@ samp {
 	color: var(--ok-fg);
 }
 
-kbd kbd /*
-	We apply the key-like styling to a nested kbd element, a pattern shown in
-	WHATWG HTML for marking up keyboard input:
+kbd kbd {
+  /***
+   We apply the key-like styling to a nested kbd element, a pattern shown in
+   WHATWG HTML for marking up keyboard input:
 
-	> Here the kbd element is used to indicate keys to press:
-	>   ~~~ html
-	>   <p>To make George eat an apple, press <kbd><kbd>Shift</kbd> + <kbd>F3</kbd></kbd></p>
-	>   ~~~
+   > Here the kbd element is used to indicate keys to press:
+   >   ~~~ html
+   >   <p>To make George eat an apple, press <kbd><kbd>Shift</kbd> + <kbd>F3</kbd></kbd></p>
+   >   ~~~
 
-	The plain kbd element can also be used for clicking menus (<kbd>File |
-	New...</kbd>) or voice input (<kbd>Hey Siri, </kbd>)
-*/ {
+   The plain kbd element can also be used for clicking menus (<kbd>File |
+   New...</kbd>) or voice input (<kbd>Hey Siri, </kbd>)
+   ***/
 	display: inline-block;
 
 	padding-block: 0;
@@ -395,7 +393,10 @@ mark {
 	color: var(--warn-fg);
 }
 
-/* Edits */
+/***
+ 4.7 Edits
+ https://html.spec.whatwg.org/multipage/edits.html
+ ***/
 
 ins {
 	background: var(--ok-bg);
@@ -504,13 +505,19 @@ label :is(input, select):not([specificity-hack]) {
 	box-shadow: var(--shadow);
 	border-radius: var(--interactive-border-radius);
 
-	/* a-specific resets */
-	color: var(--fg);
-	text-decoration: none;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-  cursor: default;
+  :is(a) {
+  	/* a-specific resets */
+  	color: var(--fg);
+  	text-decoration: none;
+  	display: inline-flex;
+  	justify-content: center;
+  	align-items: center;
+    cursor: default;
+
+    &:hover, &:focus {
+		  text-decoration: none;
+    }
+  }
 
   &:is(.plain, .info, .ok, .warn, .bad) {
     /* Must define these before pseudo-classes */
@@ -523,10 +530,6 @@ label :is(input, select):not([specificity-hack]) {
 		filter: brightness(1.1);
 		box-shadow: var(--shadow-focus);
   }
-  &:hover, &:focus {
-		/* a-specific resets */
-		text-decoration: none;
-	}
 
 	&:active {
 		box-shadow: var(--shadow-active);
@@ -613,8 +616,10 @@ strong:has(
 
 
 input::file-selector-button {
-  /* CSS nesting does not support pseudo-elements such as ::file-selector-button, so
-   * we have to duplicate styles from above. */
+  /**
+   CSS nesting does not support pseudo-elements such as ::file-selector-button.
+   We have to duplicate styles from above.
+  **/
 
 	display: inline-block;
 	padding-block: 0;
@@ -641,9 +646,6 @@ input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
 input::file-selector-button:is(:hover, :focus-visible) {
 	filter: brightness(1.1);
 	box-shadow: var(--shadow-focus);
-
-	/* a-specific resets */
-	text-decoration: none;
 }
 input::file-selector-button:active {
 	box-shadow: var(--shadow-active);
@@ -753,7 +755,7 @@ select {
   &:not([multiple], [size]) {
     @supports (appearance: base-select) {
       appearance: base-select;
-      field-sizing: fixed;  /* Someday this will size to widest option */
+      field-sizing: fixed;  /* Someday this will size to widest <option> */
 
       &::picker(select) {
         appearance: base-select;
@@ -1021,8 +1023,7 @@ fieldset {
  ***/
 
 details:not(specificity-hack) {
-    /* SEE components/box.css */
-
+  /* extends components/box.css */
 	padding-block-start: 0;
 	&:not([open]) { padding-block-end: 0; }
 }
@@ -1048,7 +1049,7 @@ summary {
 }
 
 dialog {
-    /* SEE components/box.css */
+    /* extends components/box.css */
 
     inset-inline: 0;
 
