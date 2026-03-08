@@ -38,19 +38,19 @@
 }
 
 .text-align\:center {
-    text-align: center;
+  text-align: center;
 }
 
 .center {
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 }
 .align-content\:center { align-content: center }
 .align-content\:end    { align-content: end    }
 
 .big, .\<big\> {
-    font-size: 1.4em;
-    line-height: calc(1.5 * var(--rhythm, 1rlh));
+  font-size: 1.4em;
+  line-height: calc(1.5 * var(--rhythm, 1rlh));
 }
 
 /***
@@ -58,36 +58,36 @@
 ***/
 
 .container {
-	--eff-line-length:
-		min(
-			calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
-			var(--line-length)
-		);
+  --eff-line-length:
+    min(
+      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      var(--line-length)
+    );
 
-	max-inline-size: var(--eff-line-length);
-	margin-inline: auto;
+  max-inline-size: var(--eff-line-length);
+  margin-inline: auto;
 }
 
 .fullbleed,
 .fullscreen {
-    position: relative;
-    max-inline-size: none;
-    inline-size: var(--full-width);
-    inset-inline-start: 50%;
+  position: relative;
+  max-inline-size: none;
+  inline-size: var(--full-width);
+  inset-inline-start: 50%;
 
-    transform: translateX(calc(-0.5 * var(--full-width)));
-    .writing-mode\:vertical-lr &,
-    .writing-mode\:vertical-rl & {
-      transform: translateY(calc(-0.5 * var(--full-width)));
-    }
+  transform: translateX(calc(-0.5 * var(--full-width)));
+  .writing-mode\:vertical-lr &,
+  .writing-mode\:vertical-rl & {
+    transform: translateY(calc(-0.5 * var(--full-width)));
+  }
 
-    border-radius: 0;
-    border-inline: none;
+  border-radius: 0;
+  border-inline: none;
 }
 
 .fullscreen {
-    max-block-size: none;
-    block-size: 100dvb;
+  max-block-size: none;
+  block-size: 100dvb;
 }
 
 .width\:100\%  { width:  100%; max-width:  100% }
@@ -96,31 +96,31 @@
 .block-size\:100\%  { block-size:  100%; max-block-size:  100% }
 
 :is(
-    body,
-    .box,
-    [role=menu],
-    .sidebar-layout > header,
-    [role=tabpanel],
-    figure,
-    details,
-    dialog,
-    aside,
-    fieldset,
-    dd,
-    td,
-    th
+  body,
+  .box,
+  [role=menu],
+  .sidebar-layout > header,
+  [role=tabpanel],
+  figure,
+  details,
+  dialog,
+  aside,
+  fieldset,
+  dd,
+  td,
+  th
 ) {
-    /* margin-trim had better be implemented soon */
-    &>:first-child:first-child:first-child:first-child,
-    &>:first-child>:first-child:first-child:first-child,
-    &>:first-child>:first-child>:first-child:first-child,
-    &>:first-child>:first-child>:first-child>:first-child { margin-block-start: 0; }
+  /* margin-trim had better be implemented soon */
+  &>:first-child:first-child:first-child:first-child,
+  &>:first-child>:first-child:first-child:first-child,
+  &>:first-child>:first-child>:first-child:first-child,
+  &>:first-child>:first-child>:first-child>:first-child { margin-block-start: 0; }
 
 
-    &>:last-child:last-child:last-child:last-child,
-    &>:last-child>:last-child:last-child:last-child,
-    &>:last-child>:last-child>:last-child:last-child,
-    &>:last-child>:last-child>:last-child>:last-child { margin-block-end: 0; }
+  &>:last-child:last-child:last-child:last-child,
+  &>:last-child>:last-child:last-child:last-child,
+  &>:last-child>:last-child>:last-child:last-child,
+  &>:last-child>:last-child>:last-child>:last-child { margin-block-end: 0; }
 }
 
 .padding\:0 { padding: 0 }
@@ -198,9 +198,9 @@
 }
 
 .flow-gap {
-    & > :not(:last-child) {
-        margin-block-end: var(--gap);
-    }
+  & > :not(:last-child) {
+    margin-block-end: var(--gap);
+  }
 }
 
 .nested-list :where(ul, ol, dl) { margin-block: 0 }
@@ -219,17 +219,17 @@
   display: table-row;
 
   &:not(:last-child):not([specificity-hack]) > * {
-      margin-block-end: var(--gap);
+    margin-block-end: var(--gap);
   }
 
   & > *:not([specificity-hack]) {
-      display: table-cell;
-      vertical-align: top;
+    display: table-cell;
+    vertical-align: top;
   }
 
   & > * + *:not([specificity-hack]) {
-      margin-inline-start: var(--gap);
-      display: inline-block;
+    margin-inline-start: var(--gap);
+    display: inline-block;
   }
 }
 
