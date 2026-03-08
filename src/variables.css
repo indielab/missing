@@ -106,9 +106,3 @@
 * {
   --gap: calc(var(--rhythm, 1rlh) * var(--density));
 }
-
-* {
-  @supports (accent-color: #000) {
-    accent-color: var(--accent);
-  }
-}

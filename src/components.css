@@ -93,10 +93,6 @@ details,
     grid-template-columns: var(--sidebar-width) auto;
     inset: 0;
 
-    display: grid;
-    grid-template-columns: var(--sidebar-width) auto;
-    inset: 0;
-
     & > header {
       border-block-end: none;
       border-inline-end: var(--border);
@@ -163,7 +159,6 @@ details,
     display: inline list-item;
     &:not(:last-child)::after {
       content: var(--separator, var(--breadcrumb-page)) / '';
-      content: var(--separator, var(--breadcrumb-page));
       display: inline;
     }
   }
@@ -227,12 +222,9 @@ details,
     display: flex;
     flex-flow: row;
     gap: var(--rhythm, 1rlh);
+    padding-inline-start: 0;
 
     & * { flex-shrink: 0 }
-  }
-
-  & nav ul[role=list] {
-    padding-inline-start: 0;
   }
 
   & :is(a:not(.\<button\>, .chip), .\<a\>) {
