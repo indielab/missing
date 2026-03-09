@@ -9,6 +9,7 @@ esbuild = "0.25.8"
 
 
 [tasks]
+setup = { run = ["mise install", "mise generate git-pre-commit --write"] }
 build = { depends = ["build:*"] }
 lint = { depends = ["lint:*"] }
 serve = { depends = ["lume -s"] }
@@ -22,6 +23,12 @@ serve = { depends = ["lume -s"] }
 
 lume = { hide = true, run = "cd www && echo \"import 'lume/cli.ts'\" | deno run --unstable -A -" }
 
+"pre-commit" = { hide = true, run = "mise run lint" }
 
 [alias]
 esbuild = "npm:esbuild"
+
+
+[settings]
+experimental = true  # Enable `mise generate git-pre-commit`
+idiomatic_version_file_enable_tools = []
