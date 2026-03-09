@@ -41,6 +41,10 @@ const result = await stylelint.lint({
       'declaration-block-no-duplicate-properties': [true, { disableFix: true }],
       'declaration-block-no-duplicate-custom-properties': [true, { disableFix: true }],
       'no-duplicate-selectors': [true, { disableFix: true }],
+      'selector-nested-pattern': ["&", {
+        message: (s) => `Expected nested selector "${s}" to contain the nesting selector (&).`,
+        disableFix: true,
+      }],
       'csstools/use-logical': [true, { disableFix: true }],
 
       /** WIP: Use recess ordering

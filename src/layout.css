@@ -31,7 +31,7 @@
       }
     }
 
-    > div:has(dt):has(dd) {
+    & > div:has(dt):has(dd) {
       break-inside: avoid-column;
     }
   }

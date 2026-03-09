@@ -509,7 +509,7 @@ label :is(input, select):not([specificity-hack]) {
   box-shadow: var(--shadow);
   border-radius: var(--interactive-border-radius);
 
-  :is(a) {
+  &:is(a) {
     /* a-specific resets */
     color: var(--fg);
     text-decoration: none;
