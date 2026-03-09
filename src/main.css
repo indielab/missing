@@ -17,6 +17,8 @@ html {
 
   & * {
     @supports (accent-color: #000) { accent-color: var(--accent) }
+    scrollbar-color: var(--accent) transparent;
+    scrollbar-width: thin;
   }
 }
 
@@ -28,7 +30,6 @@ html {
 body {
   margin: 0;
   scrollbar-width: auto;
-  & * { scrollbar-width: thin; }
 }
 
 header, footer, section + section {
@@ -817,6 +818,9 @@ select {
       outline: none;
     }
   }
+}
+
+textarea {
 }
 
 meter, progress {

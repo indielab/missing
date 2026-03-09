@@ -3,14 +3,12 @@
   --box-bg: var(--plain-bg);
   --accent: var(--plain-fg);
   --graphical-fg: var(--plain-graphical-fg);
-  scrollbar-color: var(--accent) transparent;
 }
 
 .info {
   --box-bg: var(--info-bg);
   --accent: var(--info-fg);
   --graphical-fg: var(--info-graphical-fg);
-  scrollbar-color: var(--accent) transparent;
 }
 
 .ok {
@@ -18,7 +16,6 @@
   --accent: var(--ok-fg);
   --muted-accent: light-dark(var(--green-7), var(--green-5));
   --graphical-fg: var(--ok-graphical-fg);
-  scrollbar-color: var(--accent) transparent;
 }
 
 .warn {
@@ -26,7 +23,6 @@
   --accent: var(--warn-fg);
   --muted-accent: light-dark(var(--yellow-7), var(--yellow-5));
   --graphical-fg: var(--warn-graphical-fg);
-  scrollbar-color: var(--accent) transparent;
 }
 
 .bad {
@@ -34,7 +30,6 @@
   --accent: var(--bad-fg);
   --muted-accent: light-dark(var(--red-7), var(--red-5));
   --graphical-fg: var(--bad-graphical-fg);
-  scrollbar-color: var(--accent) transparent;
 }
 
 .color {
