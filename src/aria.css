@@ -1,127 +1,126 @@
 
-[role="tablist"] {
-    display: flex;
-    gap: .5ch;
+[role=tablist] {
+  display: flex;
+  gap: .5ch;
 }
 
-[role="tab"]:not([specificity-hack]) {
+[role=tab]:not([specificity-hack]) {
+  margin: 0;
+  position: relative;
+  inset-block-end: calc(-1 * var(--border-block-start-width));
+
+  border: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+  border-start-start-radius: var(--tab-border-radius);
+  border-start-end-radius: var(--tab-border-radius);
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+
+  &:is(button) {
     /* button-specific resets */
     font-size: 1em;
-	  line-height: var(--rhythm, 1.4rem);
-    border: none;
+    line-height: var(--rhythm, 1.4rem);
     box-shadow: none;
     &:is(:hover, :focus-visible, :active, :disabled) {
       filter: none;
       box-shadow: none;
     }
+  }
 
-    /* tab styles */
-    margin: 0;
-    position: relative;
-    inset-block-end: calc(-1 * var(--border-block-start-width));
+  &:active, &[aria-selected=true] {
+    background: var(--box-bg);
+    border-block-end: var(--border-block-start-width) var(--border-block-start-style) transparent;
+  }
 
-    border: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
-    border-start-start-radius: var(--tab-border-radius);
-    border-start-end-radius: var(--tab-border-radius);
-    border-end-start-radius: 0;
-    border-end-end-radius: 0;
+  &:hover {
+    background-color: var(--box-bg);
+  }
 
-    &:active, &[aria-selected="true"] {
-        background: var(--box-bg);
-        border-block-end: var(--border-block-start-width) var(--border-block-start-style) transparent;
-    }
-
-    &:hover {
-        background-color: var(--box-bg);
-    }
-
-    &:focus-visible {
-        color: var(--accent);
-        text-decoration: underline;
-    }
-
+  &:focus-visible {
+    color: var(--accent);
+    text-decoration: underline;
+  }
 }
 
-[role="tabpanel"] {
-    /* SEE components/box.css */
-
-    margin-block-start: 0;
-    border-start-start-radius: 0;
-    border-start-end-radius: 0;
-    z-index: 1;
+[role=tabpanel] {
+  /* extends components/box.css */
+  margin-block-start: 0;
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  z-index: 1;
 }
 
-[role="menu"] {
-    /* SEE components/box.css */
-    position: absolute;
+[role=menu] {
+  /* extends components/box.css */
+  position: absolute;
 
-    z-index: 10;
-    
-    padding-block: calc(var(--gap) / 2);
-    padding-inline: 0;
-    margin-block: 1px 0;
-    margin-inline: 0;
+  z-index: 10;
 
-    display: flex;
-    flex-flow: column nowrap;
+  padding-block: calc(var(--gap) / 2);
+  padding-inline: 0;
+  margin-block: 1px 0;
+  margin-inline: 0;
+
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 [role=menuitem] {
-    padding-block: 0;
-    padding-inline: calc(var(--gap) / 2);
+  padding-block: 0;
+  padding-inline: calc(var(--gap) / 2);
 
-    display: block;
+  display: block;
 
-    text-decoration: none;
-    border-radius: 0;
+  text-decoration: none;
+  border-radius: 0;
 
-    color: var(--fg);
+  color: var(--fg);
 
-    &:focus, &:active {
-        background: var(--accent);
-        color: var(--bg);
-    }
+  &:focus, &:active {
+    background: var(--accent);
+    color: var(--bg);
+  }
 }
 
 [role=listbox] {
-    /* This has been removed from docs, but we keep the styling here as a
-     * reference for future implementation.
-     */
-    list-style: none;
+  /***
+     This has been removed from docs.
+     The styling is kept as reference for future implementation.
+    **/
+  list-style: none;
 
-    [role=option] {
-        margin-inline: calc(-1 * var(--gap));
-        padding-inline: var(--gap);
-        border-radius: 0;
+  & [role=option] {
+    margin-inline: calc(-1 * var(--gap));
+    padding-inline: var(--gap);
+    border-radius: 0;
+  }
+
+  & [role=option][aria-selected=true] {
+    background: var(--interactive-bg);
+  }
+
+  & [role=option].active {
+    --temporary-bg: var(--accent);
+    --temporary-fg: var(--bg);
+    --temporary-accent: var(--muted-accent); /* TODO: was `parent-var` */
+    --temporary-muted-accent: var(--box-bg); /* TODO: was `parent-var` */
+
+    background: var(--temporary-bg);
+    color: var(--temporary-fg);
+
+    & > * {
+      --bg: var(--temporary-bg);
+      --fg: var(--temporary-fg);
+      --accent: var(--temporary-accent);
+      --muted-accent: var(--temporary-muted-accent);
     }
-
-    [role=option][aria-selected=true] {
-        background: var(--interactive-bg);
-    }
-
-    [role=option].active {
-        --temporary-bg: var(--accent);
-        --temporary-fg: var(--bg);
-        --temporary-accent: var(--muted-accent); /* TODO: was `parent-var` */
-        --temporary-muted-accent: var(--box-bg); /* TODO: was `parent-var` */
-
-        background: var(--temporary-bg);
-        color: var(--temporary-fg);
-        
-        > * {
-            --bg: var(--temporary-bg);
-            --fg: var(--temporary-fg);
-            --accent: var(--temporary-accent);
-            --muted-accent: var(--temporary-muted-accent);
-        }
-    }
+  }
 }
 
 
-[aria-orientation="vertical"] {
-    flex-direction: column;
-    inline-size: fit-content;
-    text-align: center;
+[aria-orientation=vertical] {
+  flex-direction: column;
+  inline-size: fit-content;
+  text-align: center;
 }
 
 
@@ -219,15 +218,12 @@ input[type=checkbox][role=switch] {
     padding-block: calc(var(--gap) / 4 + (var(--rhythm, 1rlh) - 1em) / 2);
   }
 
-  :is(label:has(> &)) {
-    /* Lightning CSS requires :is() when nested selector doesn't start with & */
+  label:has(> &) {
     display: flex;
     gap: var(--gap);
     flex-direction: row;
   }
-  :is(label:has(+ &)) {
-    /* Lightning CSS requires :is() when nested selector doesn't start with & */
+  label:has(+ &) {
     inline-size: 100%;
   }
-
 }

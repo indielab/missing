@@ -591,7 +591,7 @@ Do not dynamically use the `selected`{.token .attr-name} or `aria-selected=true`
 By default, the width of the element will agree with the width of its longest `<option>`{.language-html};
 to override this, you can use the `.width:100%` utility class or set .e.g `<select size=4 style="width:20ch;">`{.language-html}.
 [Colorways][colorways] are supported.
-u
+
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Select listbox markup</figcaption>
 

@@ -7,17 +7,19 @@
 figure,
 details,
 :where(dialog) {
-    margin-block: var(--gap);
-    margin-inline: 0;
-    padding: var(--gap);
-    overflow: clip;
+  margin-block: var(--gap);
+  margin-inline: 0;
+  padding: var(--gap);
+  overflow: clip;
 
-    border-radius: var(--border-radius);
-    background: var(--box-bg);
-    border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
-    border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
-    border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
-    border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
+  border-radius: var(--border-radius);
+  background: var(--box-bg);
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
+  border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
+  border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
+
+  scrollbar-color: var(--accent) transparent;
 }
 
 .titlebar {
@@ -28,12 +30,12 @@ details,
   padding-inline: var(--gap);
 
   font: inherit;
-	font-family: var(--secondary-font);
+  font-family: var(--secondary-font);
   font-weight: bold;
 
   background: var(--graphical-fg);
   color: var(--bg);
-	text-shadow: 0 .1em .2em var(--fg);
+  text-shadow: 0 .1em .2em var(--fg);
   overflow-y: clip;
 
   & a {
@@ -45,35 +47,21 @@ details,
 }
 
 .sub-title, sub-title {
-	/***
-	 Meant for use in headings. Make sure to also use visually-hidden punctuation
-	 to mark the subtitle as shown below:
+  /* Heading subtitle */
+  display: block;
 
-	1 | <h1>
-	2 | 	Foo Bar<v-h>:</v-h>
-	3 | 	<sub-title>How I Learned To Stop Worrying and Love Baz</sub-title>
-	4 | </h1>
+  font-weight: normal;
 
-	1 | <h1>
-	2 | 	<sub-title class="-allcaps">Breaking News</sub-title><v-h>:</v-h>
-	3 | 	Bad Thing Happens
-	4 | <h1>
-	 ***/
-
-	display: block;
-
-	font-weight: normal;
-
-	color: var(--muted-fg);
+  color: var(--muted-fg);
 }
 
 
 .tool-bar, [role=toolbar] {
-	display: flex;
-	flex-flow: row wrap;
-	gap: calc(var(--gap) / 2);
+  display: flex;
+  flex-flow: row wrap;
+  gap: calc(var(--gap) / 2);
 
-	& > * { margin: 0; }
+  & > * { margin: 0; }
 }
 
 .sidebar-layout {
@@ -82,268 +70,257 @@ details,
     var(--border-inline-end-style)
     var(--graphical-fg);
 
-	& header {
+  & header {
     border-inline: none;
     border-block: none;
     border-block-end: var(--border);
     border-radius: 0;
 
-		& li {
-			margin-block: calc(.5 * var(--gap));
-		}
+    & li {
+      margin-block: calc(.5 * var(--gap));
+    }
 
-		& a {
-			font-weight: bold;
-		}
-	}
+    & a {
+      font-weight: bold;
+    }
+  }
 
   .writing-mode\:vertical-lr &,
   .writing-mode\:vertical-rl & {
-    /* Vertical writing modes should not have the < 75ch width layout */
-    /* Just duplicate the styles from the media query for now */
+    /***
+     Vertical writing modes should not have the < 75ch width layout.
+     Just duplicate the styles from the media query for now.
+     ***/
     display: grid;
     grid-template-columns: var(--sidebar-width) auto;
     inset: 0;
 
-		display: grid;
-		grid-template-columns: var(--sidebar-width) auto;
-		inset: 0;
+    & > header {
+      border-block-end: none;
+      border-inline-end: var(--border);
+      margin: 0;
+    }
 
-		& > header {
-			border-block-end: none;
-			border-inline-end: var(--border);
-			margin: 0;
-		}
-
-		& > :nth-child(2) {
-			overflow: auto;
+    & > :nth-child(2) {
+      overflow: auto;
       scrollbar-width: auto;
-			--full-width: calc(100vi - var(--sidebar-width));
-      --eff-line-length: /* Effective line length for prose. */
-    		min(
-    			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
-    			var(--line-length)
-    		);
-			padding-block-start: var(--gap);
-		}
-
+      --full-width: calc(100vi - var(--sidebar-width));
+      --eff-line-length:
+        min(
+          calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+          var(--line-length)
+        );
+      padding-block-start: var(--gap);
+    }
   }
 
-	@media (min-width: 75ch) {
-		display: grid;
-		grid-template-columns: var(--sidebar-width) auto;
-		inset: 0;
+  @media (min-width: 75ch) {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) auto;
+    inset: 0;
 
-		& > header {
-			border-block-end: none;
-			border-inline-end: var(--border);
-			margin: 0;
-		}
+    & > header {
+      border-block-end: none;
+      border-inline-end: var(--border);
+      margin: 0;
+    }
 
-		& > :nth-child(2) {
-			overflow: auto;
+    & > :nth-child(2) {
+      overflow: auto;
       scrollbar-width: auto;
-			--full-width: calc(100vi - var(--sidebar-width));
-    	--eff-line-length: /* Effective line length for prose. */
-    		min(
-    			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
-    			var(--line-length)
-    		);
-			padding-block-start: var(--gap);
-		}
-	}
+      --full-width: calc(100vi - var(--sidebar-width));
+      --eff-line-length:
+        min(
+          calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+          var(--line-length)
+        );
+      padding-block-start: var(--gap);
+    }
+  }
 }
 
 .breadcrumbs[aria-label] {
 
-    font-family: var(--secondary-font);
+  font-family: var(--secondary-font);
 
-    &:has([aria-current="page"]) {
-      --separator: var(--breadcrumb-page);
-    }
-    &:has([aria-current="step"]) {
-      --separator: var(--breadcrumb-step);
-    }
+  &:has([aria-current=page]) {
+    --separator: var(--breadcrumb-page);
+  }
+  &:has([aria-current=step]) {
+    --separator: var(--breadcrumb-step);
+  }
 
-    & ul, & ol {
-        padding-inline-start: 0;
-    }
-    & :is(ul, ol):not([type]) {
-        list-style-type: "";
-    }
+  & ul, & ol {
+    padding-inline-start: 0;
+  }
+  & :is(ul, ol):not([type]) {
+    list-style-type: "";
+  }
 
-    & li {
-        display: inline list-item;
-        &:not(:last-child)::after {
-            content: var(--separator, var(--breadcrumb-page)) / '';
-            content: var(--separator, var(--breadcrumb-page));
-            display: inline;
-        }
+  & li {
+    display: inline list-item;
+    &:not(:last-child)::after {
+      content: var(--separator, var(--breadcrumb-page)) / '';
+      display: inline;
     }
+  }
 
-    & [aria-current="page"], & [aria-current="step"] {
-        font-weight: bold;
-    }
+  & [aria-current=page], & [aria-current=step] {
+    font-weight: bold;
+  }
 }
 
 .chip, chip {
-	font-family: var(--secondary-font);
-    border: var(--chip-border-width) var(--chip-border-style) var(--accent);
-    background: var(--box-bg);
-    border-radius: calc(var(--rhythm, 1rlh) / 2);
-    padding-inline: calc(var(--rhythm, 1rlh) / 2);
+  font-family: var(--secondary-font);
+  border: var(--chip-border-width) var(--chip-border-style) var(--accent);
+  background: var(--box-bg);
+  border-radius: calc(var(--rhythm, 1rlh) / 2);
+  padding-inline: calc(var(--rhythm, 1rlh) / 2);
 }
 
 .navbar {
-	padding: var(--rhythm, 1rlh);
+  padding: var(--rhythm, 1rlh);
 
-	font-family: var(--secondary-font);
+  font-family: var(--secondary-font);
 
-	background: var(--box-bg);
-	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--accent);
+  background: var(--box-bg);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--accent);
 
-	overflow-x: auto;
-	z-index: 5;
+  overflow-x: auto;
+  z-index: 5;
 
-	position: sticky;
+  position: sticky;
   inset-block-start: 0;
-	inset-inline: 0;
+  inset-inline: 0;
 
-	/* Inner layout */
-	display: flex;
-	flex-flow: row;
-	align-items: center;
-	gap: var(--gap);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: var(--gap);
 
-	&.expanded {
-		flex-flow: column;
-		align-items: start;
+  &.expanded {
+    flex-flow: column;
+    align-items: start;
 
-		max-block-size: 90svb;
-		overflow-y: auto;
+    max-block-size: 90svb;
+    overflow-y: auto;
 
-		& ul[role="list"] { flex-flow: column; }
-	}
+    & ul[role=list] { flex-flow: column; }
+  }
 
-	& * {
-		flex-shrink: 0;
-		margin-block: 0;
-	}
+  & * {
+    flex-shrink: 0;
+    margin-block: 0;
+  }
 
-	&:not(.expanded) {
-		& > :first-child, & nav > :first-child { margin-inline-start: auto; }
-		& >  :last-child, & nav >  :last-child { margin-inline-end:   auto; }
-	}
+  &:not(.expanded) {
+    & > :first-child, & nav > :first-child { margin-inline-start: auto; }
+    & >  :last-child, & nav >  :last-child { margin-inline-end:   auto; }
+  }
 
-	& hr { align-self: stretch; }
+  & hr { align-self: stretch; }
 
-	& nav ul[role="list"] {
-		display: flex;
-		flex-flow: row;
-		gap: var(--rhythm, 1rlh);
+  & nav ul[role=list] {
+    display: flex;
+    flex-flow: row;
+    gap: var(--rhythm, 1rlh);
+    padding-inline-start: 0;
 
-		& * { flex-shrink: 0 }
-	}
+    & * { flex-shrink: 0 }
+  }
 
-	& nav ul[role="list"] {
-		padding-inline-start: 0;
-	}
+  & :is(a:not(.\<button\>, .chip), .\<a\>) {
+    font-weight: bold;
+    text-decoration: none;
+    padding-inline: .2em;
 
-	& :is(a:not(.\<button\>, .chip), .\<a\>) {
-		font-weight: bold;
-		text-decoration: none;
-		padding-inline: .2em;
-
-	  &:hover, &:focus {
-  		text-decoration: underline;
+    &:hover, &:focus {
+      text-decoration: underline;
     }
-	}
+  }
 
-	& [aria-current=page] {
-		position: relative;
-	}
+  & [aria-current=page] {
+    position: relative;
+  }
 
-	& [aria-current=page]::after {
-		content: "";
-		display: block;
-		position: absolute;
-		background: currentcolor;
+  & [aria-current=page]::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: currentcolor;
 
-		block-size: 6px;
-		inline-size: 100%;
-		inset-block-end: calc(-1 * var(--gap));
+    block-size: 6px;
+    inline-size: 100%;
+    inset-block-end: calc(-1 * var(--gap));
     inset-inline: 0;
-	}
+  }
 
-	&.expanded [aria-current=page]::after {
-		block-size: 100%;
-		inline-size: 6px;
-		inset-inline-start: calc(-1 * var(--gap));
-		inset-block: 0;
-	}
+  &.expanded [aria-current=page]::after {
+    block-size: 100%;
+    inline-size: 6px;
+    inset-inline-start: calc(-1 * var(--gap));
+    inset-block: 0;
+  }
 }
 
 .permalink-anchor {
-    display: none;
+  display: none;
 
-    *:hover > & {
-        display: initial;
-    }
+  *:hover > & {
+    display: initial;
+  }
 }
 
 .iconbutton {
-	border: none;
-	background: none;
-	color: currentcolor;
-	padding: 0;
-	box-shadow: none;
-	line-height: var(--rhythm, 1rlh);
-	font-size: 24px;  /* WCAG target size AA */
-	inline-size: 24px;
-	block-size: 24px;
-	text-align: center;
-	border-radius: 50%;
-	transition: font-weight .2s ease-in-out;
+  border: none;
+  background: none;
+  color: currentcolor;
+  padding: 0;
+  box-shadow: none;
+  line-height: var(--rhythm, 1rlh);
+  font-size: var(--wcag-target-size-aa);
+  inline-size: var(--wcag-target-size-aa);
+  block-size: var(--wcag-target-size-aa);
+  text-align: center;
+  border-radius: 50%;
+  transition: font-weight .2s ease-in-out;
 
-	&:hover, &:focus-visible {
-		box-shadow: none;
-		outline: var(--interactive-border-width) var(--interactive-border-style) var(--accent);
-		outline-offset: 6px;
-	}
+  &:hover, &:focus-visible {
+    box-shadow: none;
+    outline: var(--interactive-border-width) var(--interactive-border-style) var(--accent);
+    outline-offset: 6px;
+  }
 
-	&:active {
-		box-shadow: none;
-		outline-offset: 3px;
-		background: none;
-	}
+  &:active {
+    box-shadow: none;
+    outline-offset: 3px;
+    background: none;
+  }
 
-	&[aria-pressed=true] {
-		box-shadow: none;
-		transform: none;
-	}
+  &[aria-pressed=true] {
+    box-shadow: none;
+    transform: none;
+  }
 
   &:is(.plain, .info, .ok, .warn, .bad) {
     color: var(--accent);
   }
 
   &:is(.big, .\<big\>) {
-    /* WCAG target size AAA */
-    font-size: 44px;
-    inline-size: 44px;
-    block-size: 44px;
+    font-size: var(--wcag-target-size-aaa);
+    inline-size: var(--wcag-target-size-aaa);
+    block-size: var(--wcag-target-size-aaa);
     padding-inline: 0;
   }
 }
 
-small[role="note"] {
-  /***
-   Sidenote
-   ***/
+small[role=note] {
+  /* Sidenote */
   --full-width: 100vi;
   --sidenote-width: 20ch;
   --gutter-width: max(
-    var(--rhythm, 1rlh),                          /* gutter min */
-    (var(--full-width) - var(--line-length)) / 2  /* gutter max */
+    var(--rhythm, 1rlh),
+    (var(--full-width) - var(--line-length)) / 2
   );
   --margin-inline: calc(
     0px - min(
@@ -373,18 +350,15 @@ small[role="note"] {
     background: var(--box-bg);
   }
 
-  /* default to inline-end side */
   float: inline-end;
   clear: inline-end;
   margin-inline: 1ch var(--margin-inline);
   text-align: start;
 
-  /* flip to inline-start side */
   &.flip {
     float: inline-start;
     clear: inline-start;
     margin-inline: var(--margin-inline) 1ch;
     text-align: end;
   }
-
 }

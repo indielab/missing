@@ -1,89 +1,91 @@
 :root {
-	/* Colors */
-	--fg: light-dark(var(--gray-12), var(--gray-0)); /* Text. */
-	--muted-fg: light-dark(var(--gray-10), var(--gray-2)); /* Secondary text color.
+  /* Colors */
+  --fg: light-dark(var(--gray-12), var(--gray-0)); /* Text. */
+  --muted-fg: light-dark(var(--gray-10), var(--gray-2)); /* Secondary text color.
 	Will be used with a background of --bg, --box-bg, and --interactive-bg -- check contrast! */
-	--faded-fg: light-dark(var(--gray-6), var(--gray-7)); /* Disabled text color. */
-	--graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not be used as a text color. */
+  --faded-fg: light-dark(var(--gray-6), var(--gray-7)); /* Disabled text color. */
+  --graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not be used as a text color. */
 
-	--plain-fg: light-dark(var(--blue-10), var(--blue-2));
-	--info-fg: light-dark(var(--blue-11), var(--blue-2));
-	--ok-fg: light-dark(var(--green-11), var(--green-2));
-	--bad-fg: light-dark(var(--red-11), var(--red-2));
-	--warn-fg: light-dark(var(--yellow-11), var(--yellow-2));
+  --plain-fg: light-dark(var(--blue-10), var(--blue-2));
+  --info-fg: light-dark(var(--blue-11), var(--blue-2));
+  --ok-fg: light-dark(var(--green-11), var(--green-2));
+  --bad-fg: light-dark(var(--red-11), var(--red-2));
+  --warn-fg: light-dark(var(--yellow-11), var(--yellow-2));
 
-	--plain-graphical-fg: light-dark(var(--gray-6), var(--gray-6));
-	--info-graphical-fg: light-dark(var(--blue-6), var(--blue-6));
-	--ok-graphical-fg: light-dark(var(--green-6), var(--green-6));
-	--bad-graphical-fg: light-dark(var(--red-6), var(--red-6));
-	--warn-graphical-fg: light-dark(var(--yellow-6), var(--yellow-6));
+  --plain-graphical-fg: light-dark(var(--gray-6), var(--gray-6));
+  --info-graphical-fg: light-dark(var(--blue-6), var(--blue-6));
+  --ok-graphical-fg: light-dark(var(--green-6), var(--green-6));
+  --bad-graphical-fg: light-dark(var(--red-6), var(--red-6));
+  --warn-graphical-fg: light-dark(var(--yellow-6), var(--yellow-6));
 
-	--bg: light-dark(var(--gray-0), var(--gray-12)); /* Page background. */
-	--box-bg: var(--plain-bg); /* Background for blocks: cards, admonitions etc. */
-	--interactive-bg: light-dark(var(--gray-4), var(--gray-8)); /* Background for interactive elements. */
-	--pressed-interactive-bg: var(--bg); /* Background for interactive elements with [aria-pressed|expanded=true] */
+  --bg: light-dark(var(--gray-0), var(--gray-12)); /* Page background. */
+  --box-bg: var(--plain-bg); /* Background for blocks: cards, admonitions etc. */
+  --interactive-bg: light-dark(var(--gray-4), var(--gray-8)); /* Background for interactive elements. */
+  --pressed-interactive-bg: var(--bg); /* Background for interactive elements with [aria-pressed|expanded=true] */
 
-	--plain-bg: light-dark(var(--gray-1), var(--gray-11));
-	--info-bg: light-dark(var(--blue-1), var(--blue-12));
-	--ok-bg: light-dark(var(--green-1), var(--green-12));
-	--bad-bg: light-dark(var(--red-1), var(--red-12));
-	--warn-bg: light-dark(var(--yellow-1), var(--yellow-12));
+  --plain-bg: light-dark(var(--gray-1), var(--gray-11));
+  --info-bg: light-dark(var(--blue-1), var(--blue-12));
+  --ok-bg: light-dark(var(--green-1), var(--green-12));
+  --bad-bg: light-dark(var(--red-1), var(--red-12));
+  --warn-bg: light-dark(var(--yellow-1), var(--yellow-12));
 
-	--accent: light-dark(var(--blue-10), var(--blue-2)); /* Accent color.
+  --accent: light-dark(var(--blue-10), var(--blue-2)); /* Accent color.
 	Will be used *as a text color* with a background of --box-bg and --pressed-interactive-bg -- check contrast! */
-	--muted-accent: light-dark(var(--blue-7), var(--blue-5)); /* Muted accent color. Will not be used for text. */
+  --muted-accent: light-dark(var(--blue-7), var(--blue-5)); /* Muted accent color. Will not be used for text. */
 
-	/* Lengths */
-	--rhythm: 1.4rem; /* Deprecated, but must provide in case people use it in calc() */
-	--line-length: 40rem; /* Maximum line length for prose. */
+  /* Lengths */
+  --rhythm: 1.4rem; /* Deprecated, but must provide in case people use it in calc() */
+  --line-length: 40rem; /* Maximum line length for prose. */
 
-	/* Borders */
-	--border-width: 1px; /* Single value; set for uniform border widths */
-	--border-block-start-width: var(--border-width);
-	--border-block-end-width: var(--border-width);
-	--border-inline-start-width: var(--border-width);
-	--border-inline-end-width: var(--border-width);
-	--border-style: solid; /* Single value; set for uniform border styles */
-	--border-block-start-style: var(--border-style);
-	--border-block-end-style: var(--border-style);
-	--border-inline-start-style: var(--border-style);
-	--border-inline-end-style: var(--border-style);
-	--border-radius: .2rem; /* Accepts multiple values, e.g. 1em 0 */
+  /* Borders */
+  --border-width: 1px; /* Single value; set for uniform border widths */
+  --border-block-start-width: var(--border-width);
+  --border-block-end-width: var(--border-width);
+  --border-inline-start-width: var(--border-width);
+  --border-inline-end-width: var(--border-width);
+  --border-style: solid; /* Single value; set for uniform border styles */
+  --border-block-start-style: var(--border-style);
+  --border-block-end-style: var(--border-style);
+  --border-inline-start-style: var(--border-style);
+  --border-inline-end-style: var(--border-style);
+  --border-radius: .2rem; /* Accepts multiple values, e.g. 1em 0 */
 
-	--interactive-border-width: var(--border-width); /* Single value */
-	--interactive-border-style: var(--border-style); /* Single value */
-	--interactive-border-radius: .2rem; /* Single value */
+  --interactive-border-width: var(--border-width); /* Single value */
+  --interactive-border-style: var(--border-style); /* Single value */
+  --interactive-border-radius: .2rem; /* Single value */
 
-	--chip-border-width: var(--border-width); /* Single value */
-	--chip-border-style: var(--border-style); /* Single value */
+  --chip-border-width: var(--border-width); /* Single value */
+  --chip-border-style: var(--border-style); /* Single value */
 
-	--tab-border-radius: .4em; /* Single value */
+  --tab-border-radius: .4em; /* Single value */
 
-	/* Interactive shadows */
-	--shadow: 0 2px 4px -2px var(--fg);
-	--shadow-focus: 0 3px 6px -2px var(--fg);
-	--shadow-active: none;
-	--shadow-disabled: none;
-	--pressed-shadow: 0 2px 4px -1px var(--fg) inset;
-	--pressed-shadow-focus:  1 1px 3px -1px var(--fg) inset;
-	--pressed-shadow-active: 0 1px 5px -1px var(--fg) inset;
+  /* Interactive shadows */
+  --shadow: 0 2px 4px -2px var(--fg);
+  --shadow-focus: 0 3px 6px -2px var(--fg);
+  --shadow-active: none;
+  --shadow-disabled: none;
+  --pressed-shadow: 0 2px 4px -1px var(--fg) inset;
+  --pressed-shadow-focus:  1 1px 3px -1px var(--fg) inset;
+  --pressed-shadow-active: 0 1px 5px -1px var(--fg) inset;
 
-	/* Fonts */
-	--main-font: 'Source Sans 3', 'Source Sans Pro', -apple-system, system-ui, sans-serif;
-	--secondary-font: var(--main-font); /* UI elements and captions */
-	--display-font: var(--secondary-font); /* Headings */
-	--mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from shrinking this */
+  /* Fonts */
+  --main-font: 'Source Sans 3', 'Source Sans Pro', -apple-system, system-ui, sans-serif;
+  --secondary-font: var(--main-font); /* UI elements and captions */
+  --display-font: var(--secondary-font); /* Headings */
+  --mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from shrinking this */
 
-	/* Markers */
-	--breadcrumb-page: ' / ';
-	--breadcrumb-step: ' › ';
+  /* Markers */
+  --breadcrumb-page: ' / ';
+  --breadcrumb-step: ' › ';
 
-	/* Density */
-	--density: 1;
+  /* Density */
+  --density: 1;
 
-	/* Width */
-	--full-width: 100vi;
+  /* Width */
+  --full-width: 100vi;
   --sidebar-width: 25ch;
+  --wcag-target-size-aa: 24px;
+  --wcag-target-size-aaa: 44px;
 
   /* Icons */
   --chevron-icon: url(
@@ -94,19 +96,13 @@
   );
 }
 
-/* Respect the deprecated .-dark-theme and .-no-dark-theme classes */
 :root:not(:has(meta[name=color-scheme])) {
-	&.-dark-theme    { color-scheme: dark  }
-	&.-no-dark-theme { color-scheme: light }
-	&:not(.-dark-theme, .-no-dark-theme) { color-scheme: light dark }
+  /* Deprecated classes */
+  &.-dark-theme    { color-scheme: dark  }
+  &.-no-dark-theme { color-scheme: light }
+  &:not(.-dark-theme, .-no-dark-theme) { color-scheme: light dark }
 }
 
 * {
-	--gap: calc(var(--rhythm, 1rlh) * var(--density));
-}
-
-* {
-	@supports (accent-color: #000) {
-		accent-color: var(--accent);
-	}
+  --gap: calc(var(--rhythm, 1rlh) * var(--density));
 }

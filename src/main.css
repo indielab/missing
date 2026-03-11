@@ -2,113 +2,118 @@
 /***
  4.1 The document element
  https://html.spec.whatwg.org/multipage/semantics.html#the-root-element
+ ***/
 
+html {
+  font-family: var(--main-font);
+  line-height: var(--rhythm, 1.4rem);
+
+  background: var(--bg);
+  color: var(--fg);
+
+  scroll-padding-block-start: calc(4 * var(--gap));
+  scrollbar-color: var(--accent) transparent;
+  scrollbar-width: auto;
+
+  & * {
+    @supports (accent-color: #000) { accent-color: var(--accent) }
+    scrollbar-color: var(--accent) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+/***
  4.3 Sections
  https://html.spec.whatwg.org/multipage/sections.html
  ***/
 
-html {
-	font-family: var(--main-font);
-	line-height: var(--rhythm, 1.4rem);
-
-	background: var(--bg);
-	color: var(--fg);
-
-	scroll-padding-block-start: calc(4 * var(--gap));
-  scrollbar-color: var(--accent) transparent;
-}
-html, body {
-  scrollbar-width: auto;
-  & * { scrollbar-width: thin; }
-}
-
 body {
-	margin: 0;
+  margin: 0;
+  scrollbar-width: auto;
 }
 
 header, footer, section + section {
-	margin-block: calc(2 * var(--gap));
+  margin-block: calc(2 * var(--gap));
 }
 
 nav {
-	& :is(a:not(.\<button\>), .\<a\>) {
-		text-decoration: none;
-		color: var(--accent);
-	}
+  & :is(a:not(.\<button\>), .\<a\>) {
+    text-decoration: none;
+    color: var(--accent);
+  }
 }
 
 aside {
-	font-size: .8em;
-	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
-	--gap: calc(var(--rhythm, 1rlh) * var(--density) * 2 / 3);
+  font-size: .8em;
+  line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+  --gap: calc(var(--rhythm, 1rlh) * var(--density) * 2 / 3);
 
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
-	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
-	padding-block: var(--gap);
-	margin-block: calc(var(--gap) * 3 / 2);
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
+  padding-block: var(--gap);
+  margin-block: calc(var(--gap) * 3 / 2);
 
-	&.bg {
-		padding-inline: var(--gap);
-	}
+  &.bg {
+    padding-inline: var(--gap);
+  }
 
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5,
-	& h6 {
-		font-size: 1em;
-		text-transform: none;
-		letter-spacing: normal;
-	}
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    font-size: 1em;
+    text-transform: none;
+    letter-spacing: normal;
+  }
 
-	&:is(.big, .\<big\>) {
-		/* Pull quote */
-		background: none;
-		border: none;
-		border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--muted-fg);
-		border-radius: 0;
-		padding: 0;
-		padding-inline-start: var(--rhythm, 1rlh);
-		font-style: italic;
-		color: var(--accent);
-	}
+  &:is(.big, .\<big\>) {
+    /* Pull quote */
+    background: none;
+    border: none;
+    border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--muted-fg);
+    border-radius: 0;
+    padding: 0;
+    padding-inline-start: var(--rhythm, 1rlh);
+    font-style: italic;
+    color: var(--accent);
+  }
 }
 
 h1, h2, h3, h4, h5, h6,
 .\<h1\>, .\<h2\>, .\<h3\>, .\<h4\>, .\<h5\>, .\<h6\> {
-	margin-block-end: var(--gap);
-	font-family: var(--display-font);
-	font-size: 1em;
-	margin-block-start: calc(2 * var(--gap));
-	position: relative;
+  font-family: var(--display-font);
+  font-size: 1em;
+  margin-block: calc(2 * var(--gap)) var(--gap);
+  position: relative;
 }
 
 h1, .\<h1\> {
-	font-size: 2em;
-	text-transform: none;
-	line-height: calc(2 * var(--rhythm, 1rlh));
-	letter-spacing: 0;
+  font-size: 2em;
+  text-transform: none;
+  line-height: calc(2 * var(--rhythm, 1rlh));
+  letter-spacing: 0;
 }
 
 h2, .\<h2\> {
-	font-size: 1.6em;
-	text-transform: none;
-	line-height: calc(1.5 * var(--rhythm, 1rlh));
-	letter-spacing: 0;
+  font-size: 1.6em;
+  text-transform: none;
+  line-height: calc(1.5 * var(--rhythm, 1rlh));
+  letter-spacing: 0;
 }
 
 h3, .\<h3\> {
-	font-size: 1.17em;
-	line-height: calc(1 * var(--rhythm, 1rlh));
+  font-size: 1.17em;
+  line-height: calc(1 * var(--rhythm, 1rlh));
 }
 
 h4, .\<h4\>, h5, .\<h5\>, h6, .\<h6\> {
-	font-size: 1em;
-	text-transform: none;
-	line-height: calc(1 * var(--rhythm, 1rlh));
-	letter-spacing: 0;
-	margin-block-start: var(--gap);
+  font-size: 1em;
+  text-transform: none;
+  line-height: calc(1 * var(--rhythm, 1rlh));
+  letter-spacing: 0;
+  margin-block-start: var(--gap);
 }
 
 h1 + h2,
@@ -122,7 +127,7 @@ h3:first-child,
 h4:first-child,
 h5:first-child,
 h6:first-child {
-	margin-block-start: var(--gap);
+  margin-block-start: var(--gap);
 }
 
 h1:target,
@@ -131,44 +136,44 @@ h3:target,
 h4:target,
 h5:target,
 h6:target {
-	outline: none;
-	&::before {
-		content: "";
-		display: block;
-		position: absolute;
-		inset-inline-start: -.5em;
-		inline-size: 4px;
-		block-size: 100%;
-		background: var(--accent);
-	}
+  outline: none;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset-inline-start: -.5em;
+    inline-size: 4px;
+    block-size: 100%;
+    background: var(--accent);
+  }
 }
 
 header {
-	font-family: var(--display-font);
-	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
+  font-family: var(--display-font);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
 }
 
 footer {
-	font-family: var(--secondary-font);
-	font-size: .8em;
-	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+  font-family: var(--secondary-font);
+  font-size: .8em;
+  line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
 }
 
 body > header,
 body > footer,
 main + footer {
-	--eff-line-length: /* Effective line length for prose. */
-		min(
-			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
-			var(--line-length)
-		);
-	padding-block: var(--rhythm, 1rlh);
+  --eff-line-length:
+    min(
+      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      var(--line-length)
+    );
+  padding-block: var(--rhythm, 1rlh);
   padding-inline: calc((var(--full-width) - var(--eff-line-length)) / 2);
 }
 
 address {
-	--density: 0;
+  --density: 0;
 }
 
 /***
@@ -177,67 +182,67 @@ address {
  ***/
 
 p {
-	margin-block: var(--gap);
+  margin-block: var(--gap);
 }
 
 hr {
-	color: inherit;
-	margin-inline: 0;
-	margin-block: var(--gap);
+  color: inherit;
+  margin-inline: 0;
+  margin-block: var(--gap);
 
-	flex: 0 1 0px;
-	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--accent);
-	block-size: auto;
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--accent);
-	border-block-end: none;
-	border-inline-end: none;
+  flex: 0 1 0px;
+  border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--accent);
+  block-size: auto;
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--accent);
+  border-block-end: none;
+  border-inline-end: none;
 }
 
 pre {
-	font-family: var(--mono-font);
-	font-size: .9em;
-	line-height: var(--rhythm, 1rlh);
-	tab-size: 2;
+  font-family: var(--mono-font);
+  font-size: .9em;
+  line-height: var(--rhythm, 1rlh);
+  tab-size: 2;
 
-	margin-block: var(--gap);
+  margin-block: var(--gap);
   margin-inline: 0;
 
-	overflow-x: auto;
+  overflow-x: auto;
 }
 
 blockquote {
-	margin-inline: 0 var(--gap);
-	padding-inline: var(--gap) 0;
-	margin-block: var(--gap);
+  margin-inline: 0 var(--gap);
+  padding-inline: var(--gap) 0;
+  margin-block: var(--gap);
 
-	font-size: 1.1em;
-	line-height: var(--rhythm, 1rlh);
-	font-style: italic;
+  font-size: 1.1em;
+  line-height: var(--rhythm, 1rlh);
+  font-style: italic;
 
-	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
-	color: var(--muted-fg);
+  border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
+  color: var(--muted-fg);
 
-	& em, & cite, & dfn, & var, & i, & address {
-		font-style: normal;
-	}
+  & em, & cite, & dfn, & var, & i, & address {
+    font-style: normal;
+  }
 
-	& footer {
-		text-align: end;
-	}
+  & footer {
+    text-align: end;
+  }
 }
 
 ul, ol {
-	padding-inline-start: var(--rhythm, 1rlh);
-	margin-block: var(--gap);
+  padding-inline-start: var(--rhythm, 1rlh);
+  margin-block: var(--gap);
 
-	& & {
-		padding-inline-start: var(--gap);
-	}
+  & & {
+    padding-inline-start: var(--gap);
+  }
 
-	&[role="list"], &[role="listbox"] {
-		padding-inline-start: 0;
-		list-style: none;
-	}
+  &[role=list], &[role=listbox] {
+    padding-inline-start: 0;
+    list-style: none;
+  }
 }
 
 ul {
@@ -247,164 +252,164 @@ ol {
 }
 
 dl {
-	margin-block: var(--gap);
+  margin-block: var(--gap);
 }
-	dt {
-		font-weight: bold;
-		font-family: var(--secondary-font);
-	}
+dt {
+  font-weight: bold;
+  font-family: var(--secondary-font);
+}
 
-	dd {
-		margin-inline-start: var(--rhythm, 1rlh);
-	}
+dd {
+  margin-inline-start: var(--rhythm, 1rlh);
+}
 
 @supports selector(li::marker) {
   li::marker {
-  	font-family: var(--secondary-font);
+    font-family: var(--secondary-font);
   }
 }
 
 figure {
-	max-inline-size: 100%;
-	margin-inline: 0;
-
-    /* SEE components/box.css */
+  /* extends components/box.css */
+  max-inline-size: 100%;
+  margin-inline: 0;
 }
 figcaption {
-	margin-block: var(--gap);
+  margin-block: var(--gap);
 
-	font-family: var(--secondary-font);
+  font-family: var(--secondary-font);
 
-	color: var(--muted-fg);
+  color: var(--muted-fg);
 }
 
 main {
-	--eff-line-length: /* Effective line length for prose. */
-		min(
-			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
-			var(--line-length)
-		);
-	max-inline-size: var(--eff-line-length);
-	inline-size: 100%;
-	margin-inline: auto;
+  --eff-line-length:
+    min(
+      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      var(--line-length)
+    );
+  max-inline-size: var(--eff-line-length);
+  inline-size: 100%;
+  margin-inline: auto;
 
-	&:first-child { padding-block-start: var(--gap); }
+  &:first-child { padding-block-start: var(--gap); }
 }
 
 /***
  4.5 Text-level semantics
  https://html.spec.whatwg.org/multipage/text-level-semantics.html
+ ***/
 
+a, .\<a\> {
+  color: var(--link-fg, var(--accent));
+  border-radius: var(--interactive-border-radius);
+  outline-offset: 1px;
+  background: none;
+  border: none;
+  font-size: 1em;
+  font-family: inherit;
+  text-decoration: 1px dotted underline;
+
+  &:is(button) {
+    /* button-specific resets */
+    padding: 0;
+  }
+
+  .list-of-links & {
+    text-decoration: none;
+  }
+
+  &:hover, &:focus {
+    text-decoration: 2px solid underline;
+    cursor: pointer;
+    outline: none;
+  }
+}
+
+small, .\<small\> {
+  font-size: .8em;
+  line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+}
+
+s {
+  color: var(--bad-fg);
+}
+
+q {
+  font-style: italic;
+
+  & em, & cite, & dfn, & var, & i, & address {
+    font-style: normal;
+  }
+}
+
+time {
+  font-variant-numeric: tabular-nums;
+}
+
+code, samp, kbd {
+  font-family: var(--mono-font);
+  font-style: normal;
+}
+
+samp {
+  color: var(--ok-fg);
+}
+
+kbd kbd {
+  /***
+   We apply the key-like styling to a nested kbd element, a pattern shown in
+   WHATWG HTML for marking up keyboard input:
+
+   > Here the kbd element is used to indicate keys to press:
+   >   ~~~ html
+   >   <p>To make George eat an apple, press <kbd><kbd>Shift</kbd> + <kbd>F3</kbd></kbd></p>
+   >   ~~~
+
+   The plain kbd element can also be used for clicking menus (<kbd>File |
+   New...</kbd>) or voice input (<kbd>Hey Siri, </kbd>)
+   ***/
+  display: inline-block;
+
+  padding-block: 0;
+  padding-inline: .3em;
+  font-size: .8em;
+  line-height: 1.1em;
+
+  background: var(--interactive-bg);
+  border: 1px outset var(--graphical-fg);
+  border-block-end-width: 3px;
+  border-radius: var(--interactive-border-radius);
+}
+
+sub {
+  vertical-align: bottom;
+  line-height: 1;
+}
+
+sup {
+  vertical-align: top;
+  line-height: 1;
+}
+
+mark {
+  background: var(--warn-bg);
+  color: var(--warn-fg);
+}
+
+/***
  4.7 Edits
  https://html.spec.whatwg.org/multipage/edits.html
  ***/
 
-/* Text-level semantics */
-
-a, .\<a\> {
-	color: var(--link-fg, var(--accent));
-	border-radius: var(--interactive-border-radius);
-	outline-offset: 1px;
-	background: none;
-	border: none;
-	font-size: 1em;
-  font-family: inherit;
-	text-decoration: 1px dotted underline;
-
-	/* button-specific resets */
-  padding: 0;
-
-	.list-of-links & {
-		text-decoration: none;
-	}
-
-	&:hover, &:focus {
-		text-decoration: 2px solid underline;
-		cursor: pointer;
-		outline: none;
-	}
-}
-
-small, .\<small\> {
-	font-size: .8em;
-	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
-}
-
-s {
-	color: var(--bad-fg);
-}
-
-q {
-	font-style: italic;
-
-	& em, & cite, & dfn, & var, & i, & address {
-		font-style: normal;
-	}
-}
-
-time {
-	font-variant-numeric: tabular-nums;
-}
-
-code, samp, kbd {
-	font-family: var(--mono-font);
-	font-style: normal;
-}
-
-samp {
-	color: var(--ok-fg);
-}
-
-kbd kbd /*
-	We apply the key-like styling to a nested kbd element, a pattern shown in
-	WHATWG HTML for marking up keyboard input:
-
-	> Here the kbd element is used to indicate keys to press:
-	>   ~~~ html
-	>   <p>To make George eat an apple, press <kbd><kbd>Shift</kbd> + <kbd>F3</kbd></kbd></p>
-	>   ~~~
-
-	The plain kbd element can also be used for clicking menus (<kbd>File |
-	New...</kbd>) or voice input (<kbd>Hey Siri, </kbd>)
-*/ {
-	display: inline-block;
-
-	padding-block: 0;
-  padding-inline: .3em;
-	font-size: .8em;
-	line-height: 1.1em;
-
-	background: var(--interactive-bg);
-	border: 1px outset var(--graphical-fg);
-	border-block-end-width: 3px;
-	border-radius: var(--interactive-border-radius);
-}
-
-sub {
-	vertical-align: bottom;
-	line-height: 1;
-}
-
-sup {
-	vertical-align: top;
-	line-height: 1;
-}
-
-mark {
-	background: var(--warn-bg);
-	color: var(--warn-fg);
-}
-
-/* Edits */
-
 ins {
-	background: var(--ok-bg);
-	color: var(--ok-fg);
+  background: var(--ok-bg);
+  color: var(--ok-fg);
 }
 
 del {
-	background: var(--bad-bg);
-	color: var(--bad-fg);
+  background: var(--bad-bg);
+  color: var(--bad-fg);
 }
 
 /***
@@ -413,9 +418,9 @@ del {
  ***/
 
 img, video, audio, iframe, object, embed {
-	max-inline-size: 100%;
-	inline-size: max-content;
-	block-size: auto;
+  max-inline-size: 100%;
+  inline-size: max-content;
+  block-size: auto;
 }
 :is(object, embed)[type="image/svg+xml"] {
   /* https://issues.chromium.org/issues/40811132 */
@@ -428,19 +433,19 @@ img, video, audio, iframe, object, embed {
  ***/
 
 table {
-	font-variant-numeric: tabular-nums;
-	font: inherit;
+  font-variant-numeric: tabular-nums;
+  font: inherit;
 }
 
 caption {
-	text-align: start;
-	font-family: var(--secondary-font);
-	font-style: italic;
+  text-align: start;
+  font-family: var(--secondary-font);
+  font-style: italic;
 }
 
 tbody {
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--faded-fg);
-	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--faded-fg);
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--faded-fg);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--faded-fg);
 }
 
 thead {
@@ -454,20 +459,20 @@ tr {
 }
 
 td, th {
-	vertical-align: top;
+  vertical-align: top;
 
-	&:not(:last-child) {
-		padding-inline-end: var(--rhythm, 1rlh);
-	}
+  &:not(:last-child) {
+    padding-inline-end: var(--rhythm, 1rlh);
+  }
 }
 
-	td {
-	}
+td {
+}
 
-	th {
-		font-family: var(--secondary-font);
-		text-align: start;
-	}
+th {
+  font-family: var(--secondary-font);
+  text-align: start;
+}
 
 /***
  4.10 Forms
@@ -476,41 +481,47 @@ td, th {
 
 input { display: block; }
 label :is(input, select):not([specificity-hack]) {
-	display: inline; padding-block: 0;
+  display: inline; padding-block: 0;
 }
 
 :where(
   button,
-  input[type="submit"],
-  input[type="reset"],
-  input[type="button"],
+  input[type=submit],
+  input[type=reset],
+  input[type=button],
   .\<button\>
 ):not(.\<a\>) {
   /* Any changes made here must also be made to ::file-selector-button below */
-	display: inline-block;
-	padding-block: 0;
+  display: inline-block;
+  padding-block: 0;
   padding-inline: calc(var(--rhythm, 1rlh) / 4);
-	vertical-align: middle;
-	box-sizing: border-box;
+  vertical-align: middle;
+  box-sizing: border-box;
 
-	font-size: .8rem;
-	line-height: 1.125em;
-	font-family: var(--secondary-font);
-	min-block-size: var(--rhythm, 1rlh);
+  font-size: .8rem;
+  line-height: 1.125em;
+  font-family: var(--secondary-font);
+  min-block-size: var(--rhythm, 1rlh);
 
-	background: var(--interactive-bg);
-	color: var(--fg);
-	border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
-	box-shadow: var(--shadow);
-	border-radius: var(--interactive-border-radius);
+  background: var(--interactive-bg);
+  color: var(--fg);
+  border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
+  box-shadow: var(--shadow);
+  border-radius: var(--interactive-border-radius);
 
-	/* a-specific resets */
-	color: var(--fg);
-	text-decoration: none;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-  cursor: default;
+  &:is(a) {
+    /* a-specific resets */
+    color: var(--fg);
+    text-decoration: none;
+    display: inline-flex;  /* TODO: Above we have display: inline-block */
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
 
   &:is(.plain, .info, .ok, .warn, .bad) {
     /* Must define these before pseudo-classes */
@@ -519,46 +530,42 @@ label :is(input, select):not([specificity-hack]) {
     --fg: var(--accent);
   }
 
-	&:hover, &:focus-visible {
-		filter: brightness(1.1);
-		box-shadow: var(--shadow-focus);
+  &:hover, &:focus-visible {
+    filter: brightness(1.1);
+    box-shadow: var(--shadow-focus);
   }
-  &:hover, &:focus {
-		/* a-specific resets */
-		text-decoration: none;
-	}
 
-	&:active {
-		box-shadow: var(--shadow-active);
-	}
+  &:active {
+    box-shadow: var(--shadow-active);
+  }
 
-	&:active:is([aria-pressed], [aria-expanded]) {
-		color: var(--accent);
-		box-shadow: var(--pressed-shadow-active);
-	}
+  &:active:is([aria-pressed], [aria-expanded]) {
+    color: var(--accent);
+    box-shadow: var(--pressed-shadow-active);
+  }
 
-	&:where([aria-pressed="true"], [aria-expanded="true"]) {
-		box-shadow: var(--pressed-shadow);
-		background: var(--pressed-interactive-bg);
-		color: var(--accent);
+  &:where([aria-pressed=true], [aria-expanded=true]) {
+    box-shadow: var(--pressed-shadow);
+    background: var(--pressed-interactive-bg);
+    color: var(--accent);
 
-		&:hover, &:focus-visible {
-			box-shadow: var(--pressed-shadow-focus);
-		}
-	}
+    &:hover, &:focus-visible {
+      box-shadow: var(--pressed-shadow-focus);
+    }
+  }
 
-	&:disabled {
+  &:disabled {
     cursor: not-allowed;
-		--fg: var(--muted-fg);
-		box-shadow: var(--shadow-disabled);
-	}
+    --fg: var(--muted-fg);
+    box-shadow: var(--shadow-disabled);
+  }
 
-	&:is(.big, .\<big\>) {
-		min-block-size: calc(1.5 * var(--rhythm, 1rlh));
-		font-size: 1rem;
-		padding-inline: calc(.5 * var(--rhythm, 1rlh));
-		line-height: var(--rhythm, 1rlh);
-	}
+  &:is(.big, .\<big\>) {
+    min-block-size: calc(1.5 * var(--rhythm, 1rlh));
+    font-size: 1rem;
+    padding-inline: calc(.5 * var(--rhythm, 1rlh));
+    line-height: var(--rhythm, 1rlh);
+  }
 }
 a.\<button\>:not([specificity-hack]) {
   /* ¯\_(ツ)_/¯ */
@@ -567,35 +574,35 @@ a.\<button\>:not([specificity-hack]) {
 
 strong > :where(
   button,
-  input[type="submit"],
-  input[type="reset"],
-  input[type="button"],
+  input[type=submit],
+  input[type=reset],
+  input[type=button],
   .\<button\>
 ):not(.\<a\>) {
-	background: var(--accent);
-	color: var(--box-bg);
-	border-color: transparent;
-	font-weight: bold;
+  background: var(--accent);
+  color: var(--box-bg);
+  border-color: transparent;
+  font-weight: bold;
 
   &:is(.plain, .info, .ok, .warn, .bad) {
     --fg: var(--box-bg);
   }
 
-	&:active:is([aria-pressed], [aria-expanded]) {
+  &:active:is([aria-pressed], [aria-expanded]) {
     color: var(--graphical-fg);
-		box-shadow: var(--pressed-shadow-active);
-	}
+    box-shadow: var(--pressed-shadow-active);
+  }
 
-	&:where([aria-pressed="true"], [aria-expanded="true"]) {
-		box-shadow: var(--pressed-shadow);
-		background: var(--pressed-interactive-bg);
-		color: var(--graphical-fg);
+  &:where([aria-pressed=true], [aria-expanded=true]) {
+    box-shadow: var(--pressed-shadow);
+    background: var(--pressed-interactive-bg);
+    color: var(--graphical-fg);
     border-color: var(--muted-fg);
 
-		&:hover, &:focus-visible {
-			box-shadow: var(--pressed-shadow-focus);
-		}
-	}
+    &:hover, &:focus-visible {
+      box-shadow: var(--pressed-shadow-focus);
+    }
+  }
 
   &:disabled {
     /* c.f. strong > input:disabled::file-selector-button */
@@ -603,9 +610,9 @@ strong > :where(
 }
 strong:has(
   button,
-  input[type="submit"],
-  input[type="reset"],
-  input[type="button"],
+  input[type=submit],
+  input[type=reset],
+  input[type=button],
   .\<button\>
 ) {
   line-height: 1.125em;
@@ -613,25 +620,27 @@ strong:has(
 
 
 input::file-selector-button {
-  /* CSS nesting does not support pseudo-elements such as ::file-selector-button, so
-   * we have to duplicate styles from above. */
+  /**
+   CSS nesting does not support pseudo-elements such as ::file-selector-button.
+   We have to duplicate styles from above.
+  **/
 
-	display: inline-block;
-	padding-block: 0;
+  display: inline-block;
+  padding-block: 0;
   padding-inline: calc(var(--rhythm, 1rlh) / 4);
-	vertical-align: middle;
-	box-sizing: border-box;
+  vertical-align: middle;
+  box-sizing: border-box;
 
-	font-size: .8rem;
-	line-height: 1.125em;
-	font-family: var(--secondary-font);
-	min-block-size: var(--rhythm, 1rlh);
+  font-size: .8rem;
+  line-height: 1.125em;
+  font-family: var(--secondary-font);
+  min-block-size: var(--rhythm, 1rlh);
 
-	background: var(--interactive-bg);
-	color: var(--fg);
-	border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
-	box-shadow: var(--shadow);
-	border-radius: var(--interactive-border-radius);
+  background: var(--interactive-bg);
+  color: var(--fg);
+  border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
+  box-shadow: var(--shadow);
+  border-radius: var(--interactive-border-radius);
 }
 input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
   --interactive-bg: var(--box-bg);
@@ -639,31 +648,28 @@ input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
   --fg: var(--accent);
 }
 input::file-selector-button:is(:hover, :focus-visible) {
-	filter: brightness(1.1);
-	box-shadow: var(--shadow-focus);
-
-	/* a-specific resets */
-	text-decoration: none;
+  filter: brightness(1.1);
+  box-shadow: var(--shadow-focus);
 }
 input::file-selector-button:active {
-	box-shadow: var(--shadow-active);
+  box-shadow: var(--shadow-active);
 }
 input:disabled::file-selector-button {
   cursor: not-allowed;
-	--fg: var(--muted-fg);
-	box-shadow: var(--shadow-disabled);
+  --fg: var(--muted-fg);
+  box-shadow: var(--shadow-disabled);
 }
 input:is(.big, .\<big\>)::file-selector-button {
-	min-block-size: calc(1.5 * var(--rhythm, 1rlh));
-	font-size: 1rem;
-	padding-inline: calc(.5 * var(--rhythm, 1rlh));
-	line-height: var(--rhythm, 1rlh);
+  min-block-size: calc(1.5 * var(--rhythm, 1rlh));
+  font-size: 1rem;
+  padding-inline: calc(.5 * var(--rhythm, 1rlh));
+  line-height: var(--rhythm, 1rlh);
 }
 strong > input::file-selector-button {
-	background: var(--accent);
-	color: var(--box-bg);
-	border-color: transparent;
-	font-weight: bold;
+  background: var(--accent);
+  color: var(--box-bg);
+  border-color: transparent;
+  font-weight: bold;
 }
 strong:has(input::file-selector-button) {
   line-height: 1.125em;
@@ -677,67 +683,67 @@ strong > input:disabled::file-selector-button {
 
 
 input:not([type]),
-input[type="text"],
-input[type="search"],
-input[type="tel"],
-input[type="url"],
-input[type="email"],
-input[type="password"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="number"],
+input[type=text],
+input[type=search],
+input[type=tel],
+input[type=url],
+input[type=email],
+input[type=password],
+input[type=date],
+input[type=month],
+input[type=week],
+input[type=time],
+input[type=datetime],
+input[type=datetime-local],
+input[type=number],
 select,
 textarea {
-	padding: calc(var(--rhythm, 1rlh) / 4);
-	vertical-align: top;
+  padding: calc(var(--rhythm, 1rlh) / 4);
+  vertical-align: top;
 
-	font-size: 1rem;
-	line-height: inherit;
-	font-family: var(--main-font);
+  font-size: 1rem;
+  line-height: inherit;
+  font-family: var(--main-font);
 
-	background: var(--bg);
-	color: var(--fg);
-	border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
-	border-radius: var(--interactive-border-radius);
+  background: var(--bg);
+  color: var(--fg);
+  border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
+  border-radius: var(--interactive-border-radius);
 
-	&:focus-visible {
-		border-color: var(--accent);
-	}
+  &:focus-visible {
+    border-color: var(--accent);
+  }
 
-	&::placeholder {
-		color: var(--muted-fg);
-		opacity: 1;
-		text-align: end;
-	}
+  &::placeholder {
+    color: var(--muted-fg);
+    opacity: 1;
+    text-align: end;
+  }
 }
 
-input[type="range"] {
-	inline-size: 100%;
-	padding: calc(var(--gap) / 4);
+input[type=range] {
+  inline-size: 100%;
+  padding: calc(var(--gap) / 4);
 }
 
-input[type="color"] {
-	padding: 0;
-	margin: 0;
-	block-size: calc(1.5 * var(--rhythm, 1rlh));
+input[type=color] {
+  padding: 0;
+  margin: 0;
+  block-size: calc(1.5 * var(--rhythm, 1rlh));
 
-	border: none;
-	background: none;
+  border: none;
+  background: none;
 }
 
-input[type="file"] {
-	padding-block: calc(var(--gap) / 4);
+input[type=file] {
+  padding-block: calc(var(--gap) / 4);
   padding-inline: 0;
-	font: inherit;
-	line-height: calc(var(--rhythm, 1rlh) / 2);
-	&::file-selector-button {
-		margin-block: .1em 0;
-		margin-inline-end: 1ch;
-	}
+  font: inherit;
+  line-height: calc(var(--rhythm, 1rlh) / 2);
+  &::file-selector-button {
+    margin-block: .1em 0;
+    margin-inline-end: 1ch;
+  }
 }
 
 select {
@@ -753,7 +759,7 @@ select {
   &:not([multiple], [size]) {
     @supports (appearance: base-select) {
       appearance: base-select;
-      field-sizing: fixed;  /* Someday this will size to widest option */
+      field-sizing: fixed;  /* Someday this will size to widest <option> */
 
       &::picker(select) {
         appearance: base-select;
@@ -773,8 +779,8 @@ select {
       }
       & option::checkmark {
         content: "";
-        width: 1rem;
-        height: 1rem;
+        inline-size: 1rem;
+        block-size: 1rem;
         background-color: currentColor;
         mask-image: var(--check-icon);
         mask-repeat: no-repeat;
@@ -784,9 +790,9 @@ select {
     }
   }
 
-	& optgroup {
-		color: var(--muted-fg);
-		font-style: normal;
+  & optgroup {
+    color: var(--muted-fg);
+    font-style: normal;
     font-weight: bold;
     &::before {
       padding-inline-start: calc(var(--gap) / 4);
@@ -797,22 +803,24 @@ select {
     /*    margin-inline-start: calc(0px - var(--gap));
     /*  }
     /*}*/
-	}
+  }
 
-	& option {
+  & option {
     /*&:checked:not(:hover, :focus-visible) {
     /*  background: var(--bg);
     /*  color: var(--accent);
     /*}*/
-		&:is(:hover, :focus-visible) {
-			background: var(--graphical-fg);
-			color: var(--box-bg);
-		}
+    &:is(:hover, :focus-visible) {
+      background: var(--graphical-fg);
+      color: var(--box-bg);
+    }
     &:focus-visible {
       outline: none;
     }
   }
+}
 
+textarea {
 }
 
 meter, progress {
@@ -828,7 +836,7 @@ meter, progress {
   ) {
     appearance: none;
 
-  	box-sizing: border-box;
+    box-sizing: border-box;
     display: inline-block;
     position: relative;
 
@@ -994,26 +1002,25 @@ progress {
 }
 
 label[for] {
-	display: block;
-	padding-block: calc(var(--gap) / 4);
+  display: block;
+  padding-block: calc(var(--gap) / 4);
 }
 
 fieldset {
-	position: relative;
+  position: relative;
 
   padding: var(--gap);
-	margin-block: var(--gap);
+  margin-block: var(--gap);
   margin-inline: 0;
-	inline-size: 100%;
-	border-radius: var(--border-radius);
+  inline-size: 100%;
+  border-radius: var(--border-radius);
 
-	& > legend + * { margin-block-start: 0 }
+  & > legend + * { margin-block-start: 0 }
 
   border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
   border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
   border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
   border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
-
 }
 /***
  4.11 Interactive elements
@@ -1021,26 +1028,25 @@ fieldset {
  ***/
 
 details:not(specificity-hack) {
-    /* SEE components/box.css */
-
-	padding-block-start: 0;
-	&:not([open]) { padding-block-end: 0; }
+  /* extends components/box.css */
+  padding-block-start: 0;
+  &:not([open]) { padding-block-end: 0; }
 }
 
 summary {
-	margin-inline: calc(0px - var(--gap));
-	margin-block: calc(0px - var(--gap)) 0;
-	padding-inline: var(--gap);
+  margin-inline: calc(0px - var(--gap));
+  margin-block: calc(0px - var(--gap)) 0;
+  padding-inline: var(--gap);
 
-	font-family: var(--secondary-font);
-	font-weight: bold;
+  font-family: var(--secondary-font);
+  font-weight: bold;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	&:focus-visible, &:active {
-		filter: brightness(.8);
-		outline: none;
-	}
+  &:focus-visible, &:active {
+    filter: brightness(.8);
+    outline: none;
+  }
 }
 
 @supports selector(::details-content) {
@@ -1048,32 +1054,32 @@ summary {
 }
 
 dialog {
-    /* SEE components/box.css */
+  /* extends components/box.css */
 
-    inset-inline: 0;
+  inset-inline: 0;
 
-	block-size: fit-content;
-    inline-size: fit-content;
+  block-size: fit-content;
+  inline-size: fit-content;
 
-	margin: auto !important;
+  margin: auto !important;
 
-    background-color: var(--bg);
-    color: var(--fg);
-	border-color: var(--fg);
+  background-color: var(--bg);
+  color: var(--fg);
+  border-color: var(--fg);
 }
 
 dialog:is([open], [popover])::backdrop {
-	display: block;
-	background: black;
-	opacity: .4;
-	animation: bg 2s;
+  display: block;
+  background: black;
+  opacity: .4;
+  animation: bg 2s;
 }
 
 @keyframes bg {
-	from { background: transparent; }
+  from { background: transparent; }
 }
 
 dialog:not([popover], [open]),
 [popover]:not(:popover-open) {
-    display: none;
+  display: none;
 }

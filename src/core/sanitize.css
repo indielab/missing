@@ -11,8 +11,8 @@
 *,
 ::before,
 ::after {
-    box-sizing: border-box; /* 1 */
-    background-repeat: no-repeat; /* 2 */
+  box-sizing: border-box; /* 1 */
+  background-repeat: no-repeat; /* 2 */
 }
 
 /**
@@ -22,8 +22,8 @@
 
 ::before,
 ::after {
-    text-decoration: inherit; /* 1 */
-    vertical-align: inherit; /* 2 */
+  text-decoration: inherit; /* 1 */
+  vertical-align: inherit; /* 2 */
 }
 
 /**
@@ -34,11 +34,11 @@
  */
 
 :root {
-    cursor: default; /* 1 */
-    overflow-wrap: break-word; /* 3 */
-    -webkit-tap-highlight-color: transparent; /* 5 */
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
+  cursor: default; /* 1 */
+  overflow-wrap: break-word; /* 3 */
+  -webkit-tap-highlight-color: transparent; /* 5 */
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 }
 
 /* Text-level semantics
@@ -49,8 +49,7 @@
  */
 
 abbr[title] {
-    text-decoration: underline;
-    text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 /**
@@ -58,7 +57,7 @@ abbr[title] {
  */
 
 strong, b {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 /**
@@ -66,7 +65,7 @@ strong, b {
  */
 
 small {
-    font-size: 80%;
+  font-size: 80%;
 }
 
 /* Embedded content
@@ -77,7 +76,7 @@ small {
  */
 
 audio, canvas, iframe, img, svg, video {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 /**
@@ -85,7 +84,7 @@ audio, canvas, iframe, img, svg, video {
  */
 
 svg:not([fill]) {
-    fill: currentColor;
+  fill: currentColor;
 }
 
 /* Tabular data
@@ -98,9 +97,9 @@ svg:not([fill]) {
  */
 
 table {
-    border-collapse: collapse; /* 1 */
-    border-color: currentColor; /* 2 */
-    text-indent: 0; /* 3 */
+  border-collapse: collapse; /* 1 */
+  border-color: currentColor; /* 2 */
+  text-indent: 0; /* 3 */
 }
 
 /* Forms
@@ -111,15 +110,15 @@ table {
  */
 
 button, input, select {
-    margin: 0;
+  margin: 0;
 }
 
 /**
  * Correct the inability to style buttons in iOS and Safari.
  */
 
-button, [type="button"], [type="reset"], [type="submit"] {
-    -webkit-appearance: button;
+button, [type=button], [type=reset], [type=submit] {
+  -webkit-appearance: button;
 }
 
 /**
@@ -127,7 +126,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
  */
 
 fieldset {
-    border: 1px solid #a0a0a0;
+  border: 1px solid #a0a0a0;
 }
 
 /**
@@ -135,7 +134,7 @@ fieldset {
  */
 
 progress {
-    vertical-align: baseline;
+  vertical-align: baseline;
 }
 
 /**
@@ -143,22 +142,22 @@ progress {
  */
 
 textarea {
-    margin: 0; /* 1 */
+  margin: 0; /* 1 */
 }
 
 /**
  * 1. Correct the odd appearance in Chrome, Edge, and Safari.
  */
 
-[type="search"] {
-    -webkit-appearance: textfield; /* 1 */
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
 }
 
 /**
  * Correct input focus rings in Safari.
  */
 input {
-    outline-offset: 0;
+  outline-offset: 0;
 }
 
 /**
@@ -167,7 +166,7 @@ input {
 
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
-    block-size: auto;
+  block-size: auto;
 }
 
 /**
@@ -175,8 +174,8 @@ input {
  */
 
 ::-webkit-input-placeholder {
-    color: inherit;
-    opacity: 0.54;
+  color: inherit;
+  opacity: 0.54;
 }
 
 /**
@@ -184,7 +183,7 @@ input {
  */
 
 ::-webkit-search-decoration {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 /**
@@ -193,31 +192,31 @@ input {
  */
 
 ::-webkit-file-upload-button {
-    -webkit-appearance: button; /* 1 */
-    font: inherit; /* 2 */
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
 }
 
 /* Interactive
  * ========================================================================== */
 
 [hidden] {
-    display: none !important;
+  display: none !important;
 }
 
 :focus-visible {
-    outline: .2em solid var(--accent);
-    z-index: 2;
+  outline: .2em solid var(--accent);
+  z-index: 2;
 }
 
-    iframe:focus-visible,
-    html:focus-visible,
-    body:focus-visible {
-        outline: none;
-    }
+iframe:focus-visible,
+html:focus-visible,
+body:focus-visible {
+  outline: none;
+}
 
 :target {
-    outline: .2em solid var(--fg);
-    z-index: 2;
+  outline: .2em solid var(--fg);
+  z-index: 2;
 }
 
 /*
@@ -225,7 +224,7 @@ input {
  */
 
 details > summary:first-of-type {
-    display: list-item;
+  display: list-item;
 }
 
 /* Accessibility
@@ -235,8 +234,8 @@ details > summary:first-of-type {
  * Change the cursor on busy elements in all browsers (opinionated).
  */
 
-[aria-busy="true"] {
-    cursor: progress;
+[aria-busy=true] {
+  cursor: progress;
 }
 
 /*
@@ -244,11 +243,11 @@ details > summary:first-of-type {
  * inoperable elements in all browsers (opinionated).
  */
 
-[aria-disabled="true"], [disabled] {
-    cursor: not-allowed;
+[aria-disabled=true], [disabled] {
+  cursor: not-allowed;
 }
 
 
 datalist {
-    display: none !important;
+  display: none !important;
 }
