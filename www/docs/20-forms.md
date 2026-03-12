@@ -322,7 +322,7 @@ You can also use `<optgroup disabled>`{.language-html} to disable an entire grou
 The width of the `<select>`{.language-html} element will agree with the width of its longest `<option>`{.language-html};
 use the `.width:100%` utility class or set .e.g `<select size=4 style="width:20ch;">`{.language-html} to change this.
 
-Depending on the attributes specified, `<select>` elements can be divided into the following categories:
+Depending on the attributes specified, `<select>`{.language-html} elements can be divided into the following categories:
 
 - Single-select dropdowns,
 - Single-select listboxes,
