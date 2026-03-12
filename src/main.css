@@ -747,80 +747,202 @@ input[type=file] {
 }
 
 select {
-  &:is([multiple], [size]) {
-    padding: 0;
+  /***
+   15.5.16 Rendering: The select element
+   https://html.spec.whatwg.org/multipage/rendering.html#the-select-element-2
 
-    &:focus option:checked {
-      --force-bg-hack: linear-gradient(0deg, var(--graphical-fg) 0%, var(--graphical-fg) 100%);
-      background: var(--force-bg-hack);
-      color: var(--bg);
-    }
+   - Revisit the spec above once browserlist supports base-select,
+     since some of the styles are just for e.g. Firefox.
+
+   - It's possible that a pseudo-element (e.g. :is-listbox) will eventually
+     be implemented, until then we follow the guidance of:
+     https://github.com/whatwg/html/issues/8189#issuecomment-2877242732
+
+   - Eventually, `field-sizing: fixed` will re-implement the automagic
+     width of the base appearance select.
+
+   - Keep in mind that `appearance: base-select` changes the keyboard
+     controls of a multiple select to be more accessible.
+
+   - While the spec change has relaxed the parsing rules for `<select>`,
+     deno-dom and html5ever have not updated to the spec yet (see this
+     issue for more: https://github.com/b-fuze/deno-dom/issues/199).
+     This means we cannot display <select><button><selectedcontent> or
+     <optgroup><legend> in our docs yet.
+
+  ***/
+
+  --hover-color: color-mix(currentColor 10%, transparent);
+  --checked-color: color-mix(var(--graphical-fg) 20%, transparent);
+  --active-color: color-mix(var(--graphical-fg) 50%, transparent);
+  --padding: calc(var(--rhythm, 1rlh) / 4);
+  --indented: 1em;
+
+  &[multiple],
+  &[size]:not([size="1"]) {
+    /* Renders as a listbox */
+    padding: unset;
   }
-  &:not([multiple], [size]) {
-    @supports (appearance: base-select) {
+
+  @supports (appearance: base-select) {
+    appearance: base-select;
+    field-sizing: fixed;
+    display: inline-flex !important;
+
+    &::picker(select) {
       appearance: base-select;
-      field-sizing: fixed;  /* Someday this will size to widest <option> */
 
-      &::picker(select) {
-        appearance: base-select;
-        background: inherit;
-        border: inherit;
-        border-radius: inherit;
-        scrollbar-width: thin;
-      }
+      color: inherit;
+      background: inherit;
+      border: inherit;
+      border-radius: inherit;
+      scrollbar-width: inherit;
+    }
 
-      &::picker-icon {
-        background-color: currentColor;
-        mask-image: var(--chevron-icon);
-        mask-repeat: no-repeat;
-        mask-position: center;
-        mask-size: contain;
-        opacity: 0.7;
-      }
-      & option::checkmark {
-        content: "";
-        inline-size: 1rem;
-        block-size: 1rem;
-        background-color: currentColor;
+    &::picker-icon {
+      background-color: var(--accent);
+      opacity: 0.7;
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-image: var(--chevron-icon);
+    }
+
+    & > button:first-child {
+      /* Force UA styles */
+      all: unset;
+      display: contents;
+      interactivity: inert;
+      white-space: normal;
+    }
+
+    & > optgroup > legend {
+      /* Force UA styles */
+      all: unset;
+      display: block;
+      unicode-bidi: isolate;
+      padding-inline: var(--padding);
+    }
+
+    &[multiple][size=1] {
+      padding: var(--padding);  /* Add back */
+    }
+  }
+
+  @supports selector(option::checkmark) {
+    & option::checkmark {
+      content: "";
+      visibility: hidden;  /* must opt in */
+
+      block-size: 1em;
+      aspect-ratio: 1 / 1;
+
+      background-color: var(--accent);
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      opacity: 0.7;
+    }
+
+    &:not([multiple], .checks, .checkboxes) {
+      /* Default for single select is no checkmarks */
+      & option::checkmark { display: none }
+    }
+
+    &:is([multiple], .checks, .checkboxes) {
+      /* Default for multi-select is checkmarks */
+      & option:checked::checkmark {
+        visibility: visible;
         mask-image: var(--check-icon);
-        mask-repeat: no-repeat;
-        mask-size: contain;
-        opacity: 0.7;
+      }
+      & > optgroup > option {
+        padding-inline-start: var(--padding);
+      }
+    }
+
+    &.checkboxes {
+      & option:not(:checked)::checkmark {
+        visibility: visible;
+        mask-image: var(--square-icon);
+      }
+      & option:checked::checkmark {
+        visibility: visible;
+        mask-image: var(--square-check-icon);
+      }
+    }
+
+    &.flip {
+      & option::checkmark {
+        order: 1;
+        margin-inline-start: auto;
+      }
+      & > optgroup > option {
+        padding-inline-start: var(--indented);
       }
     }
   }
 
-  & optgroup {
+  & > optgroup {
     color: var(--muted-fg);
     font-style: normal;
-    font-weight: bold;
-    &::before {
-      padding-inline-start: calc(var(--gap) / 4);
+    font-weight: bolder;
+
+    &:disabled {
+      cursor: not-allowed;
+      filter: grayscale(1);
+      opacity: 0.7;
     }
-    /*& > option {
-    /*  padding-inline: var(--gap);
-    /*  &::checkmark {
-    /*    margin-inline-start: calc(0px - var(--gap));
-    /*  }
-    /*}*/
+
+    & > option {
+      padding-inline: var(--indented) var(--padding);
+    }
   }
 
   & option {
-    /*&:checked:not(:hover, :focus-visible) {
-    /*  background: var(--bg);
-    /*  color: var(--accent);
-    /*}*/
-    &:is(:hover, :focus-visible) {
-      background: var(--graphical-fg);
-      color: var(--box-bg);
-    }
+    color: var(--fg);
+    font-weight: normal;
+    padding-inline: var(--padding);
+
     &:focus-visible {
-      outline: none;
+      outline: 2px dotted var(--graphical-fg);
+    }
+    &:enabled:hover {
+      background-color: var(--hover-color);
+    }
+    &:enabled:checked {
+      background-color: var(--checked-color);
+    }
+    &:enabled:checked:hover,
+    &:enabled:active {
+      background-color: var(--active-color);
+    }
+    :not(optgroup:disabled &):disabled {
+      cursor: not-allowed;
+      filter: grayscale(1);
+      opacity: 0.7;
     }
   }
-}
 
-textarea {
+  @supports not (appearance: base-select) {
+    & > optgroup::before {
+      padding-inline: var(--padding);
+    }
+
+    &:focus option:checked {
+      /**
+       We can override UA's `background-color: SelectedItem !important` with a gradient.
+       In order for this to work, the chosen color cannot be color-mixed with transparent.
+
+       We can't override `color: SelectedItemText !important`, which is an inversion of
+       foreground text, so we use `--graphical-fg` to provide sufficient contrast.
+      **/
+      background: linear-gradient(
+        0deg,
+        var(--graphical-fg) 0%,
+        var(--graphical-fg) 100%
+      );
+    }
+  }
 }
 
 meter, progress {
