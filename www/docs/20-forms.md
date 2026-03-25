@@ -326,7 +326,7 @@ Depending on the attributes specified, `<select>`{.language-html} elements can b
 
 - single-select dropdowns,
 - single-select listboxes,
-- sulti-select listboxes, and
+- multi-select listboxes, and
 - multi-select dropdowns.
 
 Checkmarks can be enabled by using the `.checks` or `.checkboxes` variant classes on the `<select>`{.language-html} (provided the viewer's browser supports them).
