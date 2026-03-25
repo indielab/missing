@@ -493,6 +493,7 @@ label :is(input, select):not([specificity-hack]) {
 ):not(.\<a\>) {
   /* Any changes made here must also be made to ::file-selector-button below */
   display: inline-flex;
+  align-items: center;
   padding-block: 0;
   padding-inline: calc(var(--rhythm, 1rlh) / 4);
   vertical-align: middle;
