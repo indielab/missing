@@ -303,97 +303,78 @@ Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-l
         <div><label><input type=radio name=color value="0000ff"> Blue</label></div>
       </div>
     </div>
-  </form>
-</figure>
+  </form></figure>
 
 
-## Select
+## Selects
 
 Missing.css will attempt to style `<select>`{.language-html} elements consistently across browsers.
-[Colorway][colorways] support is limited until [browser support][] for [custom selects][] improves.
+Support for the new [customizable select][] API is implemented, as are [colorways][].
 
-[browser support]: https://caniuse.com/mdn-css_properties_appearance_base-select
-[custom selects]: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
+**Warning**:&emsp;While [browser support][] is improving, please be aware that many browsers still force their native dropdown select picker styles.
+In the spirit of progressive enhancement, missing.css implements a few hacks to add partial colorway support to unsupported browsers.
+Once a browser supports `appearance: base-select`{.language-css}, appearance will be standardized.
+Please be sure to review your implementation across multiple browsers.{.warn .box}
+
+**Tip**:&emsp;Closing tags for `<optgroup>`{.language-html} and `<option>`{.language-html} can typically be omitted.
+You can also use `<optgroup disabled>`{.language-html} to disable an entire group of `<options>`{.language-html}.{.info .box}
+
+The width of the `<select>`{.language-html} element will agree with the width of its longest `<option>`{.language-html};
+use the `.width:100%` utility class or set .e.g `<select size=4 style="width:20ch;">`{.language-html} to change this.
+
+Depending on the attributes specified, `<select>`{.language-html} elements can be divided into the following categories:
+
+- single-select dropdowns,
+- single-select listboxes,
+- sulti-select listboxes, and
+- multi-select dropdowns.
+
+Checkmarks can be enabled by using the `.checks` or `.checkboxes` variant classes on the `<select>`{.language-html} (provided the viewer's browser supports them).
+Checkmarks will be placed on the inline-start side unless the `.flip`{.language-css} utilty class is also added to the `<select>`{.language-html}.
+By default, `<options>`{.language-html} inside of a single-select will be rendered without their `::checkmark`{.language-css} pseudo-element and multi-selects will be equivalent to `<select multiple class="checks">`.
+
+Each of the examples below highlights a different combination of these classes and attributes.
+
+### Single-select dropdowns
+
+Select elements without the `multiple`{.token .attr-name} or `size`{.token .attr-name} attributes will render as single-select dropdowns.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Select dropdown markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Single-select dropdown markup</figcaption>
 
   ~~~ html
   <form class="flex-switch">
+    <!-- ... -->
     <div>
-    <label for=none>None:</label>
-    <select id=none>
-      <optgroup label="Odds">
-      <option>One
-      <option>Three
-        <option>Five
-        <option>Seven
-        <option>Nine
-      <optgroup label="Evens">
-      <option>Two
-      <option>Four
-        <option>Six
-        <option>Eight
-        <option>Ten
+    <label for=single:dropdown:warn:bg>Warn:</label>
+    <select id=single:dropdown:warn:bg class="warn bg flip checkboxes">
+      <optgroup label="Enabled">
+        <option>One
+        <option>Three
+        <!-- ... -->
+      <optgroup label="Disabled" disabled>
+        <option>Two
+        <option>Four
+        <!-- ... -->
     </select>
     </div>
     <!-- ... -->
-    <div>
-    <label for=bad>Bad:</label>
-    <select id=bad class="bad">
-      <optgroup label="Odds">
-        <option>One
-        <option>Three
-        <option>Five
-        <option>Seven
-        <option>Nine
-      <optgroup label="Evens">
-        <option>Two
-        <option>Four
-        <option>Six
-        <option>Eight
-        <option>Ten
-    </select>
-    </div>
   </form>
-
-  <span class="aestheticbreak"></span>
-
-  <form class="flex-switch">
-    <!-- ... -->
-    <label for=info>Info:
-    <select id=info class="info color bg">
-      <optgroup label="Odds">
-        <option>One
-        <option>Three
-        <option>Five
-        <option>Seven
-        <option>Nine
-      <optgroup label="Evens">
-        <option>Two
-        <option>Four
-        <option>Six
-        <option>Eight
-        <option>Ten
-    </select>
-    <-- ... -->
-  </form>
-
   ~~~
 
   <hr>
 
   <form class="flex-switch">
     <div>
-    <label for=none>None:</label>
-    <select id=none>
-      <optgroup label="Odds">
+    <label for=single:dropdown:none>None:</label>
+    <select id=single:dropdown:none>
+      <optgroup label="Enabled">
         <option>One
         <option>Three
         <option>Five
         <option>Seven
         <option>Nine
-      <optgroup label="Evens">
+      <optgroup label="Disabled" disabled>
         <option>Two
         <option>Four
         <option>Six
@@ -402,15 +383,15 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     </select>
     </div>
     <div>
-    <label for=info>Info:</label>
-    <select id=info class="info">
-      <optgroup label="Odds">
+    <label for=single:dropdown:info>Info:</label>
+    <select id=single:dropdown:info class="info checks">
+      <optgroup label="Enabled">
         <option>One
         <option>Three
         <option>Five
         <option>Seven
         <option>Nine
-     <optgroup label="Evens">
+      <optgroup label="Disabled" disabled>
         <option>Two
         <option>Four
         <option>Six
@@ -419,15 +400,15 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     </select>
     </div>
     <div>
-    <label for=ok>OK:</label>
-    <select id=ok class="ok">
-      <optgroup label="Odds">
+    <label for=single:dropdown:ok>OK:</label>
+    <select id=single:dropdown:ok class="ok flip checks">
+      <optgroup label="Enabled">
         <option>One
         <option>Three
         <option>Five
         <option>Seven
         <option>Nine
-      <optgroup label="Evens">
+      <optgroup label="Disabled" disabled>
         <option>Two
         <option>Four
         <option>Six
@@ -436,30 +417,30 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     </select>
     </div>
     <div>
-    <label for=warn>Warn:</label>
-    <select id=warn class="warn">
+    <label for=single:dropdown:warn>Warn:</label>
+    <select id=single:dropdown:warn class="warn flip checkboxes">
       <option>One
       <option>Three
       <option>Five
       <option>Seven
-      <option>Nine
+      <option disabled>Disabled 1
       <option>Two
       <option>Four
-      <option>Six
+      <option disabled>Disabled 2
       <option>Eight
       <option>Ten
     </select>
     </div>
     <div>
-    <label for=bad>Bad:</label>
-    <select id=bad class="bad">
-      <optgroup label="Odds">
+    <label for=single:dropdown:bad>Bad:</label>
+    <select id=single:dropdown:bad class="bad checkboxes">
+      <optgroup label="Enabled">
         <option>One
         <option>Three
         <option>Five
         <option>Seven
         <option>Nine
-      <optgroup label="Evens">
+      <optgroup label="Disabled" disabled>
         <option>Two
         <option>Four
         <option>Six
@@ -483,15 +464,15 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
   <span class="aestheticbreak"></span>
   <form class="flex-switch">
   <div>
-    <label for=plain>Plain:</label>
-    <select id=plain class="plain bg color">
-      <optgroup label="Odds">
+    <label for=single:dropdown:plain:bg>Plain:</label>
+    <select id=single:dropdown:plain:bg class="plain bg color">
+      <optgroup label="Enabled">
         <option>One
         <option>Three
         <option>Five
         <option>Seven
         <option>Nine
-      <optgroup label="Evens">
+      <optgroup label="Disabled" disabled>
         <option>Two
         <option>Four
         <option>Six
@@ -500,15 +481,15 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     </select>
     </div>
     <div>
-    <label for=info>Info:</label>
-    <select id=info class="info bg color">
-      <optgroup label="Odds">
+    <label for=single:dropdown:info:bg>Info:</label>
+    <select id=single:dropdown:info:bg class="info bg color checks">
+      <optgroup label="Enabled">
         <option>One
         <option>Three
         <option>Five
         <option>Seven
         <option>Nine
-      <optgroup label="Evens">
+      <optgroup label="Disabled" disabled>
         <option>Two
         <option>Four
         <option>Six
@@ -517,15 +498,15 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     </select>
     </div>
     <div>
-    <label for=ok>OK:</label>
-    <select id=ok class="ok bg color">
-      <optgroup label="Odds">
+    <label for=single:dropdown:ok:bg>OK:</label>
+    <select id=single:dropdown:ok:bg class="ok bg color flip checks">
+      <optgroup label="Enabled">
         <option>One
         <option>Three
         <option>Five
         <option>Seven
         <option>Nine
-      <optgroup label="Evens">
+      <optgroup label="Disabled" disabled>
         <option>Two
         <option>Four
         <option>Six
@@ -534,30 +515,30 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
     </select>
     </div>
     <div>
-    <label for=warn>Warn:</label>
-    <select id=warn class="warn bg color">
+    <label for=single:dropdown:warn:bg>Warn:</label>
+    <select id=single:dropdown:warn:bg class="warn bg color flip checkboxes">
       <option>One
       <option>Three
       <option>Five
       <option>Seven
-      <option>Nine
+      <option disabled>Disabled 1
       <option>Two
       <option>Four
-      <option>Six
+      <option disabled>Disabled 2
       <option>Eight
       <option>Ten
     </select>
     </div>
     <div>
-    <label for=bad>Bad:</label>
-    <select id=bad class="bad bg color">
-      <optgroup label="Odds">
+    <label for=single:dropdown:bad:bg>Bad:</label>
+    <select id=single:dropdown:bad:bg class="bad bg color checkboxes">
+      <optgroup label="Enabled">
         <option>One
         <option>Three
         <option>Five
         <option>Seven
         <option>Nine
-      <optgroup label="Evens">
+      <optgroup label="Disabled" disabled>
         <option>Two
         <option>Four
         <option>Six
@@ -581,62 +562,54 @@ Missing.css will attempt to style `<select>`{.language-html} elements consistent
 
 </figure>
 
-Selects with either `size`{ .token .attr-name } or `multiple`{.token .attr-name} attributes will be styled as listboxes.
-A listbox defined in this way is subject to HTML parsing rules and does not allow rich content.
-Keep in mind that `<option selected>`{.language-html} specifies which option(s) should be selected by default.
-If you are dynamically setting selection, you should use `option.checked = true`{.language-js},
-which triggers the proper `:checked`{.token .attr-name} pseudo-class.
-Do not dynamically use the `selected`{.token .attr-name} or `aria-selected=true`{.token .attr-name} attributes.
+### Select listboxes
 
-By default, the width of the element will agree with the width of its longest `<option>`{.language-html};
-to override this, you can use the `.width:100%` utility class or set .e.g `<select size=4 style="width:20ch;">`{.language-html}.
-[Colorways][colorways] are supported.
+Selects with either `size`{ .token .attr-name } or `multiple`{.token .attr-name} attributes will be styled as listboxes.
+In the following subsection, we discuss the special case of `<select multiple size=1>`{.language-html}.
+
+**Info**:&emsp;Keep in mind that `<option selected>`{.language-html} specifies which option(s) should be selected by default.
+When updating selection with JavaScript, use the `el.checked`{.language-js } property to ensure the `:checked`{.token .attr-name} pseudo-class triggers correctly.
+Avoid toggling the `selected`{.token .attr-name} or `aria-selected=true`{.token .attr-name} HTML attributes in the DOM for dynamic updates.{.info .box}
+
+**Warning**:&emsp;Browsers that support `appearance: base-select` utilize a different set of keyboard controls.
+The updated controls are designed to be more accessible and result in a single tab stop that moves focus into the `<select>`{.language-html} element.
+This allows keyboard users to navigate between the options with arrow keys and activate them using <kbd><kbd>Space</kbd></kbd> or <kbd><kbd>Enter</kbd></kbd>.
+The older style of navigation relied on <kbd><kbd>Ctrl + Arrow</kbd></kb> to navigate between `<options>`{.language-html} while the `<select>`{.language-html} maintains focus.{.warn .box}
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Select listbox markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Single- and multi-select listbox markup</figcaption>
 
   ~~~ html
   <div class="flex-switch">
+    <!-- ... -->
     <div>
-      <label for=select:single>Mathematicians:</label>
-      <select id=select:single size=8>
+      <label for=multi:listbox:bad>Mathematicians:</label>
+      <select id=multi:listbox:bad multiple size=8 class="bad flip checkboxes"
         <optgroup label="Analysts">
           <option>Stefan Banach
-          <option selected>Augustin-Louis Cauchy
-          <!-- ... -->
-      </select>
-      <p class="<small> crowded">Choose one</p>
-    </div>
-    <div>
-      <label for=select:multiple>Mathematicians:</label>
-      <select id=select:multiple size=8 multiple class="ok">
-        <optgroup label="Analysts">
-          <option>Stefan Banach
-          <option selected>Augustin-Louis Cauchy
+          <option selected>Augustin Cauchy
           <!-- ... -->
       </select>
       <p class="<small> crowded">Choose multiple</p>
     </div>
+    <!-- ... -->
   </div>
-[browser support]: https://caniuse.com/mdn-css_properties_appearance_base-select
-[custom selects]: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
-
   ~~~
 
   <hr>
 
   <div class="flex-switch">
     <div>
-      <label for=select:single>Mathematicians:</label>
-      <select id=select:single size=8>
+      <label for=single:listbox:none>Mathematicians:</label>
+      <select id=single:listbox:none size=8>
         <optgroup label="Analysts">
           <option>Stefan Banach
-          <option selected>Augustin-Louis Cauchy
+          <option selected>Augustin Cauchy
           <option>Leonhard Euler
           <option>Joseph Fourier
           <option>David Hilbert
           <option>Karl Weierstrass
-        <optgroup label="Algebrists">
+        <optgroup label="Algebrists" disabled>
           <option>Niels Abel
           <option>Arthur Cayley
           <option>Évariste Galois
@@ -653,19 +626,122 @@ to override this, you can use the `.width:100%` utility class or set .e.g `<sele
       <p class="<small> crowded">Choose one</p>
     </div>
     <div>
-      <label for=select:multiple>Mathematicians:</label>
-      <select id=select:multiple size=8 multiple class="ok">
+      <label for=single:listbox:ok>Mathematicians:</label>
+      <select id=single:listbox:ok size=8 class="ok checks">
         <optgroup label="Analysts">
           <option>Stefan Banach
-          <option selected>Augustin-Louis Cauchy
+          <option selected>Augustin Cauchy
           <option>Leonhard Euler
           <option>Joseph Fourier
           <option>David Hilbert
-          <option selected>Karl Weierstrass
-        <optgroup label="Algebrists">
+          <option>Karl Weierstrass
+        <optgroup label="Algebrists" disabled>
           <option>Niels Abel
           <option>Arthur Cayley
-          <option selected>Évariste Galois
+          <option>Évariste Galois
+          <option>Sophus Lie
+          <option>Emmy Noether
+        <optgroup label="Topologists">
+          <option>Felix Hausdorff
+          <option>Felix Klein
+          <option>August Möbius
+          <option>Henri Poincaré
+          <option>Bernhard Riemann
+          <option>Andrei Tychonoff
+      </select>
+      <p class="<small> crowded">Choose one</p>
+    </div>
+    <div>
+      <label for=single:listbox:info>Mathematicians:</label>
+      <select id=single:listbox:info size=8 class="info color bg flip checks">
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin Cauchy
+          <option>Leonhard Euler
+          <option>Joseph Fourier
+          <option>David Hilbert
+          <option>Karl Weierstrass
+        <optgroup label="Algebrists" disabled>
+          <option>Niels Abel
+          <option>Arthur Cayley
+          <option>Évariste Galois
+          <option>Sophus Lie
+          <option>Emmy Noether
+        <optgroup label="Topologists">
+          <option>Felix Hausdorff
+          <option>Felix Klein
+          <option>August Möbius
+          <option>Henri Poincaré
+          <option>Bernhard Riemann
+          <option>Andrei Tychonoff
+      </select>
+      <p class="<small> crowded">Choose one</p>
+    </div>
+  </div>
+  <div class="flex-switch">
+    <div>
+      <label for=single:listbox:plain:bg>Mathematicians:</label>
+      <select id=single:listbox:plain:bg multiple size=8 class="plain bg color">
+        <option>Stefan Banach
+        <option selected>Augustin Cauchy
+        <option>Leonhard Euler
+        <option>Joseph Fourier
+        <option>David Hilbert
+        <option>Karl Weierstrass
+        <option>Niels Abel
+        <option>Arthur Cayley
+        <option>Évariste Galois
+        <option>Sophus Lie
+        <option>Emmy Noether
+        <option>Felix Hausdorff
+        <option>Felix Klein
+        <option>August Möbius
+        <option>Henri Poincaré
+        <option>Bernhard Riemann
+        <option>Andrei Tychonoff
+      </select>
+      <p class="<small> crowded">Choose multiple</p>
+    </div>
+    <div>
+      <label for=multi:listbox:warn:bg>Mathematicians:</label>
+      <select id=multi:listbox:warn:bg multiple size=8 class="warn color bg checkboxes">
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin Cauchy
+          <option>Leonhard Euler
+          <option>Joseph Fourier
+          <option>David Hilbert
+          <option>Karl Weierstrass
+        <optgroup label="Algebrists" disabled>
+          <option>Niels Abel
+          <option>Arthur Cayley
+          <option>Évariste Galois
+          <option>Sophus Lie
+          <option>Emmy Noether
+        <optgroup label="Topologists">
+          <option>Felix Hausdorff
+          <option>Felix Klein
+          <option>August Möbius
+          <option>Henri Poincaré
+          <option>Bernhard Riemann
+          <option>Andrei Tychonoff
+      </select>
+      <p class="<small> crowded">Choose multiple</p>
+    </div>
+    <div>
+      <label for=multi:listbox:bad>Mathematicians:</label>
+      <select id=multi:listbox:bad multiple size=8 class="bad flip checkboxes">
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin Cauchy
+          <option>Leonhard Euler
+          <option>Joseph Fourier
+          <option>David Hilbert
+          <option>Karl Weierstrass
+        <optgroup label="Algebrists" disabled>
+          <option>Niels Abel
+          <option>Arthur Cayley
+          <option>Évariste Galois
           <option>Sophus Lie
           <option>Emmy Noether
         <optgroup label="Topologists">
@@ -681,8 +757,150 @@ to override this, you can use the `.width:100%` utility class or set .e.g `<sele
   </div>
 </figure>
 
+### Multi-select dropdowns
 
-## Progress bar
+Some browsers render `<select multiple size=1>`{.language-html} as a multi-select dropdown.
+Support for this implementation will improve as customizable select continues to roll out.
+Until then, consider erring on the side of caution since browsers could render an otherwise unusable widget.
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Multi-select dropdown markup</figcaption>
+
+  ~~~ html
+  <div class="flex-switch">
+    <!-- ... -->
+    <div>
+      <label for=multi:dropdown:ok>Categorized:</label>
+      <select id=multi:dropdown:ok size=1 multiple class="ok">
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin Cauchy
+          <!-- ... -->
+      </select>
+      <p class="<small> crowded">Choose multiple</p>
+    </div>
+    <!-- ... -->
+  </div>
+  ~~~
+
+  <hr>
+
+  <div class="flex-switch">
+    <div>
+      <label for=multi:dropdown:ok>Categorized:</label>
+      <select id=multi:dropdown:ok size=1 multiple class="ok">
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin Cauchy
+          <option>Leonhard Euler
+          <option>Joseph Fourier
+          <option>David Hilbert
+          <option selected>Karl Weierstrass
+        <optgroup label="Algebrists" disabled>
+          <option>Niels Abel
+          <option>Arthur Cayley
+          <option selected>Évariste Galois
+          <option>Sophus Lie
+          <option>Emmy Noether
+        <optgroup label="Topologists">
+          <option>Felix Hausdorff
+          <option>Felix Klein
+          <option>August Möbius
+          <option>Henri Poincaré
+          <option>Bernhard Riemann
+          <option>Andrei Tychonoff
+      </select>
+      <p class="<small> crowded">Choose multiple</p>
+    </div>
+    <div>
+      <label for=multi:dropdown:warn:bg>Uncategorized:</label>
+      <select id=multi:dropdown:warn:bg size=1 multiple class="warn bg checkboxes">
+        <option>Stefan Banach
+        <option selected>Augustin Cauchy
+        <option>Leonhard Euler
+        <option>Joseph Fourier
+        <option>David Hilbert
+        <option selected>Karl Weierstrass
+        <option disabled>Niels Abel
+        <option disabled>Arthur Cayley
+        <option selected>Évariste Galois
+        <option>Sophus Lie
+        <option>Emmy Noether
+        <option disabled>Felix Hausdorff
+        <option disabled>Felix Klein
+        <option>August Möbius
+        <option>Henri Poincaré
+        <option>Bernhard Riemann
+        <option>Andrei Tychonoff
+      </select>
+      <p class="<small> crowded">Choose multiple</p>
+    </div>
+    <div>
+      <label for=multi:dropdown:bad>Categorized:</label>
+      <select id=multi:dropdown:bad size=1 multiple class="bad flip">
+        <optgroup label="Analysts">
+          <option>Stefan Banach
+          <option selected>Augustin Cauchy
+          <option>Leonhard Euler
+          <option>Joseph Fourier
+          <option>David Hilbert
+          <option selected>Karl Weierstrass
+        <optgroup label="Algebrists">
+          <option>Niels Abel
+          <option>Arthur Cayley
+          <option selected>Évariste Galois
+          <option>Sophus Lie
+          <option>Emmy Noether
+        <optgroup label="Topologists" disabled>
+          <option>Felix Hausdorff
+          <option>Felix Klein
+          <option>August Möbius
+          <option>Henri Poincaré
+          <option>Bernhard Riemann
+          <option>Andrei Tychonoff
+      </select>
+      <p class="<small> crowded">Choose multiple</p>
+    </div>
+  </div>
+</figure>
+
+
+### New parsing rules
+
+Finally, missing.css will not interfere with the new `<selectedcontent>`{.language-html} element, if authors wish to use it.
+The customizable select API also allows the `<legend>`{.language-html} element to be used to provide a label inside of an `<optgroup>`{.language-html} instead of the `label`{.token .attr-name} attribute.
+We suggest retaining the `label`{.token .attr-name} attribute for backwards compatibility with older parsers.
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Expanded select markup</figcaption>
+
+  ~~~ html
+  <select>
+    <button>
+    Selected:&nbsp;<selectedcontent></selectedcontent>
+    </button>
+    <optgroup label="Saxophonists">
+      <legend>Saxophonists</legend>
+      <option>Coleman Hawkins
+      <option>Charlie Parker
+      <option>John Coltrane
+      <option>Sonny Rollins
+      <option>Hank Mobley
+    <optgroup label="Trumpeters">
+      <legend>Trumpeters</legend>
+      <option>Buddy Bolden
+      <option>Louis Armstrong
+      <option>Dizzy Gillespie
+      <option>Miles Davis
+  </select>
+  ~~~
+</figure>
+
+[browser support]: https://caniuse.com/mdn-css_properties_appearance_base-select
+[customizable select]: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
+
+
+## Progress bars
 
 Create a progress bar using the `<progress>`{.language-html} element.
 This element should be used to represent how much of a specific, ongoing process has been completed.
@@ -695,7 +913,7 @@ The element can be styled by setting `--border-width`, `--border-style`, and `--
 When not explicitly set, the element inherits from `--interactive-border-width`, `--interactive-border-style`, and `--tab-border-radius`.
 
 For full-width progress bars, use the `.inline-size:100%` utility class.
-[Colorways](colorways) are supported.
+[Colorways][] are supported.
 
 When used with vertical writing modes, the indeterminate state requires a parent element with either `.writing-mode:vertical-lr` or `.writing-mode:vertical-rl` set.
 
@@ -741,13 +959,13 @@ When used with vertical writing modes, the indeterminate state requires a parent
 
 </figure>
 
-## Meter
+## Meters
 
 Use the `<meter>`{.language-html} element to create a meter guage.
 This element is used to indicate a measurement within a known range and is semantically differen from the `<progress>`{.language-html} element.
 
 Similar to the `<progress>`{.language-html} element, you can style a `<meter>`{.language-html} by setting `--border-width`, `--border-style`, and `--border-radius` directly on the element.
-The `<meter>`{.language-html} element derives its colors from the `.ok`, `.warn`, and `.bad` [colorways]().
+The `<meter>`{.language-html} element derives its colors from the `.ok`, `.warn`, and `.bad` [colorways][].
 
 <div class="warn box">
 
