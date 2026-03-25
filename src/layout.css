@@ -3,9 +3,6 @@
  Typography
 ***/
 
-.writing-mode\:vertical-lr { writing-mode:vertical-lr }
-.writing-mode\:vertical-rl { writing-mode:vertical-rl }
-
 .textcolumns {
   --col-width: 30ch;
 

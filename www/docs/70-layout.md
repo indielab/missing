@@ -15,20 +15,6 @@ Mechanisms of creating layouts.
 </details>
 
 
-## Writing Modes
-
-Use the <dfn>`.writing-mode:vertical-lr`</dfn> and <dfn>`.writing-mode:vertical-rl`</dfn> classes to enable vertical layouts.
-If used, we recommended placing them on the `<html>`{.language-html} element for best results.
-
-While missing.css prioritizes logical properties, a few components still rely on physical property values (like `transform()`{.language-css}) and require the writing mode classes in order to orient correctly:
-
- - The `.fullbleed` and `.fullscreen` layout utilities,
- - The `[role=switch]` input toggle, and
- - `<progress>`{.language-html} bars (specifically the "indeterminate" animation when `@prefers-reduced-motion()`{.language-css} is not set).
-
-If you aren't using these specific components, missing.css will handle vertical writing-mode natively without the need for extra classes (assuming the author sets `writing-mode` somewhere in their css).
-
-
 ## Centering
 
 <dfn>`.text-align:center`</dfn> center-aligns text.
