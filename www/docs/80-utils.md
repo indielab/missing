@@ -300,7 +300,17 @@ Use `<meta name=color-scheme content=light>`{.language-html} instead.
 
 </figure>
 
-    
+
+## Writing Modes
+
+Generally speaking, missing.css will work "out of the box" with all writing modes and directions.
+Until browser support for detecting vertical writing modes has improved,
+  authors should use the <dfn>`.vertical`</dfn> class to correct the animations on [toggle switches][] and indeterminate [progress bars][].
+
+[toggle switches]: /docs/aria/#toggle-switch
+[progress bars]: /docs/forms/#progress-bars
+
+
 ## Reset
     
 ~~Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
