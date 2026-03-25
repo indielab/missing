@@ -377,7 +377,7 @@ kbd kbd {
   line-height: 1.1em;
 
   background: var(--interactive-bg);
-  border: 1px outset var(--graphical-fg);
+  border: 1px outset var(--bg);
   border-block-end-width: 3px;
   border-radius: var(--interactive-border-radius);
 }
@@ -772,9 +772,10 @@ select {
 
   ***/
 
+  --focus-color: var(--accent);
   --hover-color: color-mix(currentColor 10%, transparent);
-  --checked-color: color-mix(var(--graphical-fg) 20%, transparent);
-  --active-color: color-mix(var(--graphical-fg) 50%, transparent);
+  --checked-color: color-mix(var(--graphical-fg) 50%, var(--box-bg));
+  --active-color: color-mix(var(--graphical-fg) 75%, var(--box-bg));
   --padding: calc(var(--rhythm, 1rlh) / 4);
   --indented: 1em;
 
@@ -904,7 +905,7 @@ select {
     padding-inline: var(--padding);
 
     &:focus-visible {
-      outline: 2px dotted var(--graphical-fg);
+      outline: 2px dotted var(--focus-color);
     }
     &:enabled:hover {
       background-color: var(--hover-color);
@@ -923,25 +924,37 @@ select {
     }
   }
 
+  &:focus option:checked {
+    /**
+     We can override UA's `background-color: SelectedItem !important` with a gradient.
+     In order for this to work, the chosen color cannot be color-mixed with transparent.
+
+     We can't override `color: SelectedItemText !important`, which is an inversion of
+     foreground text, so we need to be careful to provide sufficient contrast for text
+     and checkmarks. For this reason, we use `--focus-color` for now, in the future we
+     should probably just use `--checked-color`. We also force the foregound color to
+     invert to match browsers that do not support `base-select`.
+
+     This will not be necessary once all browsers support `base-select`. Chrome has a bug
+     until version 147 that requires this hack too.
+    **/
+    background: linear-gradient(
+      0deg,
+      var(--focus-color) 0%,
+      var(--focus-color) 100%
+    );
+    color: var(--bg);
+
+    @supports (appearance: base-select) {
+      &::checkmark { background-color: var(--bg) };
+    }
+  }
+
   @supports not (appearance: base-select) {
-    & > optgroup::before {
-      padding-inline: var(--padding);
-    }
+    /* Firefox fixes */
+    &:focus option:checked { color: var(--fg); }
 
-    &:focus option:checked {
-      /**
-       We can override UA's `background-color: SelectedItem !important` with a gradient.
-       In order for this to work, the chosen color cannot be color-mixed with transparent.
-
-       We can't override `color: SelectedItemText !important`, which is an inversion of
-       foreground text, so we use `--graphical-fg` to provide sufficient contrast.
-      **/
-      background: linear-gradient(
-        0deg,
-        var(--graphical-fg) 0%,
-        var(--graphical-fg) 100%
-      );
-    }
+    & > optgroup::before { padding-inline: var(--padding); }
   }
 }
 
