@@ -314,20 +314,23 @@ details,
   }
 }
 
-small[role=note] {
+small[role=note],
+aside[role=note] {
   /* Sidenote */
-  --full-width: 100vi;
   --sidenote-width: 20ch;
-  --gutter-width: max(
-    var(--rhythm, 1rlh),
-    (var(--full-width) - var(--line-length)) / 2
+  --gutter-width: calc(
+    (var(--full-width) - var(--eff-line-length)) / 2
   );
-  --margin-inline: calc(
-    0px - min(
-      var(--gutter-width) - 1em,
-      var(--sidenote-width) + 1em
-    ) + 1em - 1ch
+  --margin-inline: min(
+    0px,
+    calc(
+      0px - min(
+        var(--gutter-width) - var(--rhythm, 1rlh),
+        var(--sidenote-width) + var(--rhythm, 1rlh)
+      ) + var(--rhythm, 1rlh) - 1ch
+    )
   );
+  --density: 0.5;
 
   display: block;
 
@@ -344,12 +347,6 @@ small[role=note] {
   border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) transparent;
   border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) transparent;
 
-  &:hover, &:focus-within {
-    border-color: var(--graphical-fg);
-    border-radius: var(--border-radius);
-    background: var(--box-bg);
-  }
-
   float: inline-end;
   clear: inline-end;
   margin-inline: 1ch var(--margin-inline);
@@ -360,5 +357,14 @@ small[role=note] {
     clear: inline-start;
     margin-inline: var(--margin-inline) 1ch;
     text-align: end;
+  }
+
+  & p:first-child { margin-block-start: 0 }
+  & p:last-child  { margin-block-end:   0 }
+
+  &:hover, &:focus-within {
+    border-color: var(--graphical-fg);
+    border-radius: var(--border-radius);
+    background: var(--box-bg);
   }
 }

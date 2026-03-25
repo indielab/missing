@@ -24,11 +24,13 @@ This page has a few sidenotes which are implemented using markup similar to the 
 	By default it will float to the the inline-end side.
 	The default value for <code>--sidenote-width</code> is <code>20ch</code>.
 </small>
-<small role=note class="ok bg color flip" style="--sidenote-width:40ch;">
+<aside role=note class="ok bg color flip" style="--sidenote-width:40ch;">
+    <p>
 	This is the second sidenote.
+    <p>
 	It will float to the inline-start side due to the <code>.flip</code> class.
 	Since I wanted to change the width of the sidenote, I set the <code>--sidenote-width</code> variable to <code>40ch</code>.
-</small>
+</aside>
 ~~~
 
 </figure>
@@ -62,11 +64,13 @@ You don't have to do that, you know.
 I had a rough night and I hate the Eagles.
 What in God's name are you blathering about?
 
-<small role=note class="ok bg color flip" style="--sidenote-width:40ch;">
+<aside role=note class="ok bg color flip" style="--sidenote-width:40ch;">
+<p>
 This is the second sidenote.
+<p>
 It will float to the inline-start side due to the <code>.flip</code> class.
 Since I wanted to change the width of the sidenote, I set the <code>--sidenote-width</code> variable to <code>40ch</code>.
-</small>
+</aside>
 
 I am the Walrus.
 Or was it, Karl Hungus?

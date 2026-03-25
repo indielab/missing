@@ -448,9 +448,11 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
 
 ## Sidenotes
 
-Sidenotes are created with the `<small role=note>`{ .language-html } element.
+Sidenotes are created with the `<small role=note>`{ .language-html } or `<aside role=note>`{.language-html} elements.
 Sidenotes are supplemental notes or comments placed in the margins of a page, typically alongside the main text.
 They provide additional information, context, or commentary related to the adjacent text.
+If a sidenote requires one or more `<p>`{.language-html} elements, the `<aside role=note>` should be used.
+Otherwise, the note can be the inner text of a `<small role=note>`{.language-html} element.
 
 The width of a sidenote is set using the `--sidenote-width` variable (which defaults to `20ch`).
 On smaller screens, the notes will be floated inside the main text.
@@ -468,11 +470,13 @@ To switch sides apply the `.flip` class.
 	By default it will float to the the inline-end side.
 	The default value for <code>--sidenote-width</code> is <code>20ch</code>.
 </small>
-<small role=note class="ok bg color flip" style="--sidenote-width:40ch;">
-	This is the second sidenote.
-	It will float to the inline-start side due to the <code>.flip</code> class.
+<aside role=note class="ok bg color flip" style="--sidenote-width:40ch;">
+	<p>
+    This is the second sidenote.
+	<p>
+    It will float to the inline-start side due to the <code>.flip</code> class.
 	Since I wanted to change the width of the sidenote, I set the <code>--sidenote-width</code> variable to <code>40ch</code>.
-</small>
+</aside>
 ~~~
 
 **<a href=/demos/sidenotes class="<button>">Sidenote demo &rarr;</a>**
