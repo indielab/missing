@@ -1080,8 +1080,8 @@ progress {
     --track-animation-direction: to right;
     --track-bg-position-start: right;
     --track-bg-position-end: left;
-    .writing-mode\:vertical-lr &,
-    .writing-mode\:vertical-rl & {
+    &.vertical {
+      /* Opt-in animation fix until :writing-mode() is supported */
       --track-size: 100% 225%;
       --track-animation-direction: to bottom;
       --track-bg-position-start: bottom;
