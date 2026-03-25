@@ -772,6 +772,7 @@ select {
 
   ***/
 
+  --picker-icon: var(--chevron-down-icon);
   --focus-color: var(--accent);
   --hover-color: color-mix(currentColor 10%, transparent);
   --checked-color: color-mix(var(--graphical-fg) 50%, var(--box-bg));
@@ -806,7 +807,7 @@ select {
       mask-size: contain;
       mask-position: center;
       mask-repeat: no-repeat;
-      mask-image: var(--chevron-icon);
+      mask-image: var(--picker-icon);
     }
 
     & > button:first-child {
