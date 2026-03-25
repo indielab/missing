@@ -240,6 +240,9 @@ Use <dfn>`[role=switch]`{.token .attr-value}</dfn> with `<input type=checkbox>`{
 
 The indeterminate state is supported, but it must be set with JavaScript.
 
+Toggle direction will honor both left-to-right and right-to-left directions (using the `:dir()`{.language-css} pseudo-function).
+Authors using vertical writing modes must add the `.vertical` class until browsers implement logical `translate()`{.language-css} directions (or the `:writing-mode()`{.language-css} pseudo-function).
+
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Toggle switch markup</figcaption>
 
