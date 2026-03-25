@@ -309,7 +309,7 @@ Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-l
 ## Selects
 
 Missing.css will attempt to style `<select>`{.language-html} elements consistently across browsers.
-Support for the new [custom select][] API is implemented, as are [colorways][].
+Support for the new [customizable select][] API is implemented, as are [colorways][].
 
 **Warning**:&emsp;While [browser support][] is improving, please be aware that many browsers still force their native dropdown select picker styles.
 In the spirit of progressive enhancement, missing.css implements a few hacks to add partial colorway support to unsupported browsers.
@@ -324,10 +324,10 @@ use the `.width:100%` utility class or set .e.g `<select size=4 style="width:20c
 
 Depending on the attributes specified, `<select>`{.language-html} elements can be divided into the following categories:
 
-- Single-select dropdowns,
-- Single-select listboxes,
-- Multi-select listboxes, and
-- Multi-select dropdowns.
+- single-select dropdowns,
+- single-select listboxes,
+- sulti-select listboxes, and
+- multi-select dropdowns.
 
 Checkmarks can be enabled by using the `.checks` or `.checkboxes` variant classes on the `<select>`{.language-html} (provided the viewer's browser supports them).
 Checkmarks will be placed on the inline-start side unless the `.flip`{.language-css} utilty class is also added to the `<select>`{.language-html}.
@@ -897,7 +897,7 @@ We suggest retaining the `label`{.token .attr-name} attribute for backwards comp
 </figure>
 
 [browser support]: https://caniuse.com/mdn-css_properties_appearance_base-select
-[custom select]: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
+[customizable select]: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
 
 
 ## Progress bars
