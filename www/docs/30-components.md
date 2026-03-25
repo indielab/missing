@@ -458,7 +458,6 @@ The width of a sidenote is set using the `--sidenote-width` variable (which defa
 On smaller screens, the notes will be floated inside the main text.
 
 By default, sidenotes will be placed in the `inline-end`{.token .attr-name} side on larger screens and floated to `inline-end`{.token .attr-name} on small screens.
-Sidenotes will respect both the `[dir=rtl|ltr]`{.token .attr-name} attribute and `writing-mode`{.token .attr-name} CSS property.
 To switch sides apply the `.flip` class.
 
 <figure>

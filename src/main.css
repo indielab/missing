@@ -492,7 +492,7 @@ label :is(input, select):not([specificity-hack]) {
   .\<button\>
 ):not(.\<a\>) {
   /* Any changes made here must also be made to ::file-selector-button below */
-  display: inline-block;
+  display: inline-flex;
   padding-block: 0;
   padding-inline: calc(var(--rhythm, 1rlh) / 4);
   vertical-align: middle;
@@ -513,7 +513,6 @@ label :is(input, select):not([specificity-hack]) {
     /* a-specific resets */
     color: var(--fg);
     text-decoration: none;
-    display: inline-flex;  /* TODO: Above we have display: inline-block */
     justify-content: center;
     align-items: center;
     cursor: default;
@@ -625,7 +624,7 @@ input::file-selector-button {
    We have to duplicate styles from above.
   **/
 
-  display: inline-block;
+  display: inline-flex;
   padding-block: 0;
   padding-inline: calc(var(--rhythm, 1rlh) / 4);
   vertical-align: middle;
@@ -1080,8 +1079,8 @@ progress {
     --track-animation-direction: to right;
     --track-bg-position-start: right;
     --track-bg-position-end: left;
-    .writing-mode\:vertical-lr &,
-    .writing-mode\:vertical-rl & {
+    &.vertical {
+      /* Opt-in animation fix until :writing-mode() is supported */
       --track-size: 100% 225%;
       --track-animation-direction: to bottom;
       --track-bg-position-start: bottom;

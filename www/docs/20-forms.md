@@ -326,7 +326,7 @@ Depending on the attributes specified, `<select>`{.language-html} elements can b
 
 - single-select dropdowns,
 - single-select listboxes,
-- sulti-select listboxes, and
+- multi-select listboxes, and
 - multi-select dropdowns.
 
 Checkmarks can be enabled by using the `.checks` or `.checkboxes` variant classes on the `<select>`{.language-html} (provided the viewer's browser supports them).
@@ -908,14 +908,13 @@ Be sure to add a `<label>`{.language-html} for accessibility (in conjunction wit
 
 The element can be put in an indeterminate state by not including the `value`{.token .attr-name} attribute.
 Indeterminate `<progress>`{.language-html} elements will show a pending animation if the user does not have `@prefers-reduced-motion`{.language-css} set.
+When utilizing a vertical writing-mode, the indeterminate animation can be fixed by adding the `.vertical`{.language-css} class.
 
 The element can be styled by setting `--border-width`, `--border-style`, and `--border-radius` variables directly on the `<progress>`{.language-html} element.
 When not explicitly set, the element inherits from `--interactive-border-width`, `--interactive-border-style`, and `--tab-border-radius`.
 
 For full-width progress bars, use the `.inline-size:100%` utility class.
 [Colorways][] are supported.
-
-When used with vertical writing modes, the indeterminate state requires a parent element with either `.writing-mode:vertical-lr` or `.writing-mode:vertical-rl` set.
 
 
 <figure>

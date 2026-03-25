@@ -131,15 +131,20 @@ input[type=checkbox][role=switch] {
   --toggle-nub-margin: 2px;
   --toggle-nub-background: var(--graphical-fg);
 
+
+  /* Hack until logical translate comes out */
+  &:dir(ltr) { --dir:  1 }
+  &:dir(rtl) { --dir: -1 }
+
   --toggle-translate-end: translateX(
-    calc(100% + 2 * var(--toggle-nub-margin))
+    calc(var(--dir) * (100% + 2 * var(--toggle-nub-margin)))
   );
   --toggle-translate-mid: translateX(
-    calc(50% + var(--toggle-nub-margin))
+    calc(var(--dir) * (50% + var(--toggle-nub-margin)))
   );
 
-  .writing-mode\:vertical-lr &,
-  .writing-mode\:vertical-rl & {
+  &.vertical {
+    /* Hack until :writing-mode() comes out */
     --toggle-translate-end: translateY(
       calc(100% + 2 * var(--toggle-nub-margin))
     );
