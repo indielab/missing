@@ -117,8 +117,10 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   Maximum line length for prose.
 
 <dfn>`--input-inline-size`</dfn> {#var-input-inline-size}
-:   The `inline-size`{.token .attr-name} of input elements.
+:   The `inline-size`{.token .attr-name} for selects, text inputs, and textareas.
     Defaults to `20ch`{.token .attr-value}.
+    Can be overridden by using `<input size=n>`{.language-html}, `<textarea cols=n>`{.language-html}, or `.wide-inputs`{.language-css}.
+
 
 ## Borders
    
