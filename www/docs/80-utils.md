@@ -34,13 +34,16 @@ The `<main>`{.language-html} element does the same, but carries semantic baggage
 
 ## Forms
 
-The following classes can be used to set form input widths:
+The following classes can be used to set the inline sizes of most form controls:
 
  - <dfn>`.wide-inputs`</dfn>
  - <dfn>`.narrow-inputs`</dfn>
 
 Wide inputs are 100% wide, while narrow inputs are set by the `--input-inline-size`{.token .attr-name} variable, which defaults to `20ch`.
 Pseudo-tables (`.table`) default to wide inputs, but can be overridden with the `.narrow-inputs` class.
+
+Sizes can also be manually overridden using the `<input size=30>`{.language-html} attribute or `<textarea cols=30>`{.language-html} attribute.
+
 
 ## Density {#density}
 

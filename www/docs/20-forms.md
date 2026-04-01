@@ -291,7 +291,7 @@ Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-l
         <div><label><input type=radio name=color value="0000ff"> Blue</label></div>
       </div>
     </div>
-  </form><
+  </form>
   ~~~
 
   <hr>
@@ -329,9 +329,6 @@ Please be sure to review your implementation across multiple browsers.{.warn .bo
 
 **Tip**:&emsp;Closing tags for `<optgroup>`{.language-html} and `<option>`{.language-html} can typically be omitted.
 You can also use `<optgroup disabled>`{.language-html} to disable an entire group of `<options>`{.language-html}.{.info .box}
-
-The width of the `<select>`{.language-html} element will agree with the width of its longest `<option>`{.language-html};
-use the `.width:100%` utility class or set .e.g `<select size=4 style="width:20ch;">`{.language-html} to change this.
 
 Depending on the attributes specified, `<select>`{.language-html} elements can be divided into the following categories:
 
