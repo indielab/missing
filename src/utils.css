@@ -1,4 +1,7 @@
 
+.wide-inputs   { --input-inline-size-internal: 100%; }
+.narrow-inputs { --input-inline-size-internal: var(--input-inline-size); }
+
 .airy     { --density: 3;  }
 .spacious { --density: 2;  }
 .dense    { --density: 1;  }

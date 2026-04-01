@@ -36,6 +36,7 @@
   /* Lengths */
   --rhythm: 1.4rem; /* Deprecated, but must provide in case people use it in calc() */
   --line-length: 40rem; /* Maximum line length for prose. */
+  --input-inline-size: 20ch; /* Default size for text inputs and selects. */
 
   /* Borders */
   --border-width: 1px; /* Single value; set for uniform border widths */

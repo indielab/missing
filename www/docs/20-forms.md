@@ -43,7 +43,7 @@ Input placeholders are styled with `text-align:end`{.language-css} to better dis
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Placeholder markup</figcaption>
 
   ~~~ html
-  <form class="flex-row">
+  <form class="flex-switch">
     <div>
       <label for=category>Category:</label>
       <select id=category placeholder="Select a category...">
@@ -64,7 +64,7 @@ Input placeholders are styled with `text-align:end`{.language-css} to better dis
 
   <hr>
 
-  <form class="flex-row">
+  <form class="flex-switch">
     <div>
       <label for=category>Category:</label>
       <select id=category placeholder="Select a category...">
@@ -230,6 +230,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
 ## Tabular forms
 
 You can use the `.table` and `.rows` classes to create a form with inputs lined up like cells of a table.
+Tabular forms default to wide inputs, but can be overridden with the `.narrow-inputs` utility class.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Tabular form markup</figcaption>
@@ -274,19 +275,28 @@ Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-l
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Radio group markup for tabular forms</figcaption>
 
   ~~~ html
-  <div role=radiogroup aria-labelledby=color-lbl>
-    <span id=color-lbl>Color</span>
+  <form class="table rows narrow-inputs">
     <div>
-      <div><label><input type=radio name=color value="ff0000"> Red</label></div>
-      <div><label><input type=radio name=color value="00ff00"> Green</label></div>
-      <div><label><input type=radio name=color value="0000ff"> Blue</label></div>
+      <label for=item>Item</label>
+      <select id=item>
+        <option>Wallet
+        ...
+      </select>
     </div>
-  </div>
+    <div role=radiogroup aria-labelledby=color-lbl>
+      <span id=color-lbl>Color</span>
+      <div>
+        <div><label><input type=radio name=color value="ff0000"> Red</label></div>
+        <div><label><input type=radio name=color value="00ff00"> Green</label></div>
+        <div><label><input type=radio name=color value="0000ff"> Blue</label></div>
+      </div>
+    </div>
+  </form><
   ~~~
 
   <hr>
 
-  <form class="table rows">
+  <form class="table rows narrow-inputs">
     <div>
       <label for=item>Item</label>
       <select id=item>
@@ -303,7 +313,8 @@ Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-l
         <div><label><input type=radio name=color value="0000ff"> Blue</label></div>
       </div>
     </div>
-  </form></figure>
+  </form>
+</figure>
 
 
 ## Selects
@@ -343,7 +354,7 @@ Select elements without the `multiple`{.token .attr-name} or `size`{.token .attr
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Single-select dropdown markup</figcaption>
 
   ~~~ html
-  <form class="flex-switch">
+  <form class="flex-row flex-wrap:wrap">
     <!-- ... -->
     <div>
     <label for=single:dropdown:warn:bg>Warn:</label>
@@ -364,7 +375,7 @@ Select elements without the `multiple`{.token .attr-name} or `size`{.token .attr
 
   <hr>
 
-  <form class="flex-switch">
+  <form class="flex-row flex-wrap:wrap">
     <div>
     <label for=single:dropdown:none>None:</label>
     <select id=single:dropdown:none>
@@ -460,11 +471,8 @@ Select elements without the `multiple`{.token .attr-name} or `size`{.token .attr
         <option>appears
     </select>
     </div>
-  </form>
-  <span class="aestheticbreak"></span>
-  <form class="flex-switch">
-  <div>
-    <label for=single:dropdown:plain:bg>Plain:</label>
+    <div>
+    <label for=single:dropdown:plain:bg>Plain (Color):</label>
     <select id=single:dropdown:plain:bg class="plain bg color">
       <optgroup label="Enabled">
         <option>One
@@ -481,7 +489,7 @@ Select elements without the `multiple`{.token .attr-name} or `size`{.token .attr
     </select>
     </div>
     <div>
-    <label for=single:dropdown:info:bg>Info:</label>
+    <label for=single:dropdown:info:bg>Info (Color):</label>
     <select id=single:dropdown:info:bg class="info bg color checks">
       <optgroup label="Enabled">
         <option>One
@@ -498,7 +506,7 @@ Select elements without the `multiple`{.token .attr-name} or `size`{.token .attr
     </select>
     </div>
     <div>
-    <label for=single:dropdown:ok:bg>OK:</label>
+    <label for=single:dropdown:ok:bg>OK (Color):</label>
     <select id=single:dropdown:ok:bg class="ok bg color flip checks">
       <optgroup label="Enabled">
         <option>One
@@ -515,7 +523,7 @@ Select elements without the `multiple`{.token .attr-name} or `size`{.token .attr
     </select>
     </div>
     <div>
-    <label for=single:dropdown:warn:bg>Warn:</label>
+    <label for=single:dropdown:warn:bg>Warn (Color):</label>
     <select id=single:dropdown:warn:bg class="warn bg color flip checkboxes">
       <option>One
       <option>Three
@@ -530,7 +538,7 @@ Select elements without the `multiple`{.token .attr-name} or `size`{.token .attr
     </select>
     </div>
     <div>
-    <label for=single:dropdown:bad:bg>Bad:</label>
+    <label for=single:dropdown:bad:bg>Bad (Color):</label>
     <select id=single:dropdown:bad:bg class="bad bg color checkboxes">
       <optgroup label="Enabled">
         <option>One
@@ -580,7 +588,7 @@ The older style of navigation relied on <kbd><kbd>Ctrl + Arrow</kbd></kb> to nav
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Single- and multi-select listbox markup</figcaption>
 
   ~~~ html
-  <div class="flex-switch">
+  <div class="flex-switch wide-inputs">
     <!-- ... -->
     <div>
       <label for=multi:listbox:bad>Mathematicians:</label>
@@ -598,7 +606,7 @@ The older style of navigation relied on <kbd><kbd>Ctrl + Arrow</kbd></kb> to nav
 
   <hr>
 
-  <div class="flex-switch">
+  <div class="flex-switch wide-inputs">
     <div>
       <label for=single:listbox:none>Mathematicians:</label>
       <select id=single:listbox:none size=8>
@@ -678,7 +686,7 @@ The older style of navigation relied on <kbd><kbd>Ctrl + Arrow</kbd></kb> to nav
       <p class="<small> crowded">Choose one</p>
     </div>
   </div>
-  <div class="flex-switch">
+  <div class="flex-switch wide-inputs">
     <div>
       <label for=single:listbox:plain:bg>Mathematicians:</label>
       <select id=single:listbox:plain:bg multiple size=8 class="plain bg color">
@@ -767,7 +775,7 @@ Until then, consider erring on the side of caution since browsers could render a
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Multi-select dropdown markup</figcaption>
 
   ~~~ html
-  <div class="flex-switch">
+  <div class="flex-switch wide-inputs">
     <!-- ... -->
     <div>
       <label for=multi:dropdown:ok>Categorized:</label>
@@ -785,7 +793,7 @@ Until then, consider erring on the side of caution since browsers could render a
 
   <hr>
 
-  <div class="flex-switch">
+  <div class="flex-switch wide-inputs">
     <div>
       <label for=multi:dropdown:ok>Categorized:</label>
       <select id=multi:dropdown:ok size=1 multiple class="ok">

@@ -32,6 +32,16 @@ Other uses include providing instructions for interactive elements or detailed d
 The `<main>`{.language-html} element does the same, but carries semantic baggage that might not be appropriate for all contexts.
 
 
+## Forms
+
+The following classes can be used to set form input widths:
+
+ - <dfn>`.wide-inputs`</dfn>
+ - <dfn>`.narrow-inputs`</dfn>
+
+Wide inputs are 100% wide, while narrow inputs are set by the `--input-inline-size`{.token .attr-name} variable, which defaults to `20ch`.
+Pseudo-tables (`.table`) default to wide inputs, but can be overridden with the `.narrow-inputs` class.
+
 ## Density {#density}
 
 The density utilities set the <dfn>`--density`</dfn> [CSS variable][], which controls the amount of spacing between elements.

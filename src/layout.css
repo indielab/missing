@@ -211,6 +211,7 @@
   display: table;
   inline-size: 100%;
   margin: 0;
+  --input-inline-size-internal: calc(100% - var(--gap));
 }
 
 .row, .rows > * {

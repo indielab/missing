@@ -626,6 +626,7 @@ input::file-selector-button {
   **/
 
   display: inline-flex;
+  align-items: center;
   padding-block: 0;
   padding-inline: calc(var(--rhythm, 1rlh) / 4);
   vertical-align: middle;
@@ -681,7 +682,6 @@ strong > input:disabled::file-selector-button {
   /* c.f. strong > button:disabled */
 }
 
-
 input:not([type]),
 input[type=text],
 input[type=search],
@@ -709,6 +709,10 @@ textarea {
   color: var(--fg);
   border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
   border-radius: var(--interactive-border-radius);
+
+  &:not(input[size]) {
+    inline-size: var(--input-inline-size-internal, var(--input-inline-size));
+  }
 
   &:focus-visible {
     border-color: var(--accent);

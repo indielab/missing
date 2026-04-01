@@ -116,7 +116,9 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 <dfn>`--line-length`</dfn> {#var-line-length}
 :   Maximum line length for prose.
 
-
+<dfn>`--input-inline-size`</dfn> {#var-input-inline-size}
+:   The `inline-size`{.token .attr-name} of input elements.
+    Defaults to `20ch`{.token .attr-value}.
 
 ## Borders
    

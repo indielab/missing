@@ -322,6 +322,8 @@ Set the `overflow`{.token .attr-name} property with these utility classes.
 The <dfn>`.table`</dfn> class makes an element act like a table for the purposes of layout.
 The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
 
+Pseudo-tables default to wide inputs, but can be overridden with the `.narrow-inputs` utility class.
+
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Pseudo-table markup for aligning forms</figcaption>
 
