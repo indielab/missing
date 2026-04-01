@@ -293,7 +293,7 @@ Authors using vertical writing modes must add the `.vertical` class until browse
         <label for=toggle-1>Toggle me</label>
       </div>
       <div>
-        <input id=toggle-2type=checkbox role=switch checked>
+        <input id=toggle-2 type=checkbox role=switch checked>
         <label for=toggle-2>But not me</label>
       </div>
       <div>

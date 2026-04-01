@@ -41,7 +41,7 @@ For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
   ~~~ html
   <dl class="textcolumns">
     <dt>Term 1
-    <dd>This is an explaination of the first term.
+    <dd>This is an explanation of the first term.
     <!-- ... -->
   </dl>
   ~~~
@@ -50,13 +50,13 @@ For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
 
   <dl class="textcolumns">
     <dt>Term 1
-    <dd>This is an explaination of the first term.
+    <dd>This is an explanation of the first term.
     <dt>Term 2
-    <dd>This is an explaination of the second term.
+    <dd>This is an explanation of the second term.
     <dt>Term 3
-    <dd>This is an explaination of the third term, and missing.css will prevent it from being split <b>if the browser supports it</b>.
+    <dd>This is an explanation of the third term, and missing.css will prevent it from being split <b>if the browser supports it</b>.
     <dt>Term 4
-    <dd>This is an explaination of the fourth term.
+    <dd>This is an explanation of the fourth term.
   </dl>
 </figure>
 
@@ -67,7 +67,7 @@ For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
   <dl class="textcolumns">
     <div>
     <dt>Term 1
-    <dd>This is an explaination of the first term, and missing.css will make sure it doesn't get split from its sibling `<dt>` tag.
+    <dd>This is an explanation of the first term, and missing.css will make sure it doesn't get split from its sibling `<dt>` tag.
     </div>
     <!-- ... -->
   </dl>
@@ -78,19 +78,19 @@ For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
   <dl class="textcolumns">
     <div>
     <dt>Term 1
-    <dd>This is an explaination of the first term.
+    <dd>This is an explanation of the first term.
     </div>
     <div>
     <dt>Term 2
-    <dd>This is an explaination of the second term.
+    <dd>This is an explanation of the second term.
     </div>
     <div>
     <dt>Term 3
-    <dd>This is an explaination of the third term, and missing.css will prevent it from being split <b>in all supported browsers</b>.
+    <dd>This is an explanation of the third term, and missing.css will prevent it from being split <b>in all supported browsers</b>.
     </div>
     <div>
     <dt>Term 4
-    <dd>This is an explaination of the fourth term.
+    <dd>This is an explanation of the fourth term.
     </div>
 
   </dl>
@@ -423,7 +423,7 @@ Pseudo-tables work nicely with description lists:
     Use together with `.fixed` or `.sticky`.
 
 <dfn>`.inset-inline-end`</dfn>
-:   Set `inside-inline-end: 0`.
+:   Set `inset-inline-end: 0`.
     Use together with `.fixed` or `.sticky`.
 
 <dfn>`.inset-block-end`</dfn>

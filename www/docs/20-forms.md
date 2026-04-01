@@ -338,7 +338,7 @@ Depending on the attributes specified, `<select>`{.language-html} elements can b
 - multi-select dropdowns.
 
 Checkmarks can be enabled by using the `.checks` or `.checkboxes` variant classes on the `<select>`{.language-html} (provided the viewer's browser supports them).
-Checkmarks will be placed on the inline-start side unless the `.flip`{.language-css} utilty class is also added to the `<select>`{.language-html}.
+Checkmarks will be placed on the inline-start side unless the `.flip`{.language-css} utility class is also added to the `<select>`{.language-html}.
 By default, `<options>`{.language-html} inside of a single-select will be rendered without their `::checkmark`{.language-css} pseudo-element and multi-selects will be equivalent to `<select multiple class="checks">`.
 
 Each of the examples below highlights a different combination of these classes and attributes.
@@ -965,8 +965,8 @@ For full-width progress bars, use the `.inline-size:100%` utility class.
 
 ## Meters
 
-Use the `<meter>`{.language-html} element to create a meter guage.
-This element is used to indicate a measurement within a known range and is semantically differen from the `<progress>`{.language-html} element.
+Use the `<meter>`{.language-html} element to create a meter gauge.
+This element is used to indicate a measurement within a known range and is semantically different from the `<progress>`{.language-html} element.
 
 Similar to the `<progress>`{.language-html} element, you can style a `<meter>`{.language-html} by setting `--border-width`, `--border-style`, and `--border-radius` directly on the element.
 The `<meter>`{.language-html} element derives its colors from the `.ok`, `.warn`, and `.bad` [colorways][].
