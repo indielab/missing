@@ -830,7 +830,7 @@ select {
       padding-inline: var(--padding);
     }
 
-    &[multiple][size=1] {
+    &[multiple][size="1"] {
       padding: var(--padding);  /* Add back */
     }
   }
