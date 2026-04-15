@@ -34,7 +34,7 @@ The Missing project uses [mise-en-place] to install tools and run tasks.
 
   * Install your tools:
     ~~~
-    mise install
+    mise setup
     ~~~
 
   * Start a development server:

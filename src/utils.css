@@ -1,4 +1,7 @@
 
+.wide-inputs   { --input-inline-size-internal: 100%; }
+.narrow-inputs { --input-inline-size-internal: var(--input-inline-size); }
+
 .airy     { --density: 3;  }
 .spacious { --density: 2;  }
 .dense    { --density: 1;  }
@@ -12,34 +15,34 @@
 .packed-inside > *   { --density: 0;  }
 
 .autodensity {
-    --density: 1;
-    @media (min-width: 768px)  { --density: 2 }
-    @media (min-width: 1024px) { --density: 3 }
+  --density: 1;
+  @media (min-width: 768px)  { --density: 2 }
+  @media (min-width: 1024px) { --density: 3 }
 }
 .vh, v-h {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	block-size: 1px;
-	inline-size: 1px;
-	overflow: hidden;
-	white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  block-size: 1px;
+  inline-size: 1px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .all\:initial {
-	all: initial;
+  all: initial;
 }
 
 .bold { font-weight: bold }
 .italic {
-	font-style: italic;
-	& em, & cite, & dfn, & var, & i, & address {
-		font-style: normal;
-	}
+  font-style: italic;
+  & em, & cite, & dfn, & var, & i, & address {
+    font-style: normal;
+  }
 }
 
 .allcaps {
-	text-transform: uppercase;
-	letter-spacing: .1rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
 }
 
 
@@ -49,9 +52,14 @@
 .mono-font, .monospace { font-family: var(--mono-font) }
 
 .massivetext {
-    font-size: calc(.13 * var(--eff-line-length));
-	line-height: 1em;
-    letter-spacing: 0;
+  --eff-line-length:
+    min(
+      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      var(--line-length)
+    );
+  font-size: calc(.13 * var(--eff-line-length));
+  line-height: 1em;
+  letter-spacing: 0;
 }
 
 .background-clip\:text {
@@ -70,10 +78,10 @@
 }
 
 .aestheticbreak {
-    display: block;
-    margin: 0;
-    padding: 0;
-    height: calc(.5 * var(--gap));
+  display: block;
+  margin: 0;
+  padding: 0;
+  block-size: calc(.5 * var(--gap));
 }
 
 @media screen {

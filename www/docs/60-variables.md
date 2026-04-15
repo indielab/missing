@@ -116,6 +116,11 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 <dfn>`--line-length`</dfn> {#var-line-length}
 :   Maximum line length for prose.
 
+<dfn>`--input-inline-size`</dfn> {#var-input-inline-size}
+:   The `inline-size`{.token .attr-name} for selects, text inputs, and textareas.
+    Defaults to `20ch`{.token .attr-value}.
+    Can be overridden by using `<input size=n>`{.language-html}, `<textarea cols=n>`{.language-html}, or `.wide-inputs`{.language-css}.
+
 
 ## Borders
 
@@ -256,6 +261,10 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   Sets the width of a column for `.textcolumns`.
     Default is `30ch`{.token .attr-value}.
 
+<dfn>`--sidebar-width`</dfn> {#var-sidebar-width}
+:   Sets the width of the sidebar for the `.sidebar-layout` component.
+    Default is `25ch`{.token .attr-value}.
+
 <dfn>`--grid-row-width`</dfn> {#var-grid-row-width}
 :   Sets the width of a row in a `.grid`.
     Default is `1fr`{.token .attr-value}.
@@ -264,10 +273,12 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   Sets the width of a column in a `.grid`.
     Default is `1fr`{.token .attr-value}.
 
-<!--
+<dfn>`--sidebar-width`</dfn> {#var-sidebar-width}
+:   Sets the width of the sidebar for the `.sidebar-layout` component.
+    Default is `25ch`{.token .attr-value}.
+
 <dfn>`--sidenote-width`</dfn> {#var-sidenote-width}
 :   Sets the width of a `<small role=note>`{.language-html} sidenote.
     Default is `20ch`{.token .attr-value}.
--->
 
 [colorway]: /docs/colorways

@@ -27,9 +27,22 @@ Other uses include providing instructions for interactive elements or detailed d
 ## Container
 
 <dfn>`.container`</dfn>
-:   Imposes a maximum width on an element and centers it.
+:   Imposes a maximum width (`inline-size`) on an element and centers it.
 
 The `<main>`{.language-html} element does the same, but carries semantic baggage that might not be appropriate for all contexts.
+
+
+## Forms
+
+The following classes can be used to set the inline sizes of most form controls:
+
+ - <dfn>`.wide-inputs`</dfn>
+ - <dfn>`.narrow-inputs`</dfn>
+
+Wide inputs are 100% wide, while narrow inputs are set by the `--input-inline-size`{.token .attr-name} variable, which defaults to `20ch`{.token .attr-value}.
+Pseudo-tables (`.table`) default to wide inputs, but can be overridden with the `.narrow-inputs` class.
+
+Sizes can also be overridden using `<input size=n>`{.language-html} or `<textarea cols=n>`{.language-html}.
 
 
 ## Density {#density}
@@ -48,7 +61,7 @@ We provide the following utility classes that set `--density`:
 | <dfn>`.airy`</dfn>        | `--density` = 3                            |
 | <dfn>`.autodensity`</dfn> | sets density based on viewport width       |
 
-{ .width:100% }
+{ .inline-size:100% }
 
 You can also use the following classes to set density on child elements while maintaining a separate density for the containing element:
 
@@ -222,7 +235,7 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
  
   <div class="flex-row align-items:center">
     <button class="<big> bad">Big Bad Button</button>
-    <a class="bad <button>" href=#>&lt;a&gt; Bad Button</a>
+    <a class="bad <button>" href=#>&lt;a> Bad Button</a>
   </div>
   
   <aside class="<big>">
@@ -237,7 +250,7 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
  
   <div class="flex-row align-items:center">
     <button class="<big> bad">Big Bad Button</button>
-    <a class="bad <button>" href=#>&lt;a&gt; Bad Button</a>
+    <a class="bad <button>" href=#>&lt;a> Bad Button</a>
   </div>
   
   <aside class="<big>">
@@ -300,7 +313,17 @@ Use `<meta name=color-scheme content=light>`{.language-html} instead.
 
 </figure>
 
-    
+
+## Writing Modes
+
+Generally speaking, missing.css will work "out of the box" with all writing modes and directions.
+Until browser support for detecting vertical writing modes has improved,
+  authors should use the <dfn>`.vertical`</dfn> class to correct the animations on [toggle switches][] and indeterminate [progress bars][].
+
+[toggle switches]: /docs/aria/#toggle-switch
+[progress bars]: /docs/forms/#progress-bars
+
+
 ## Reset
     
 ~~Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an

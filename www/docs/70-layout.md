@@ -41,7 +41,7 @@ For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
   ~~~ html
   <dl class="textcolumns">
     <dt>Term 1
-    <dd>This is an explaination of the first term.
+    <dd>This is an explanation of the first term.
     <!-- ... -->
   </dl>
   ~~~
@@ -50,13 +50,13 @@ For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
 
   <dl class="textcolumns">
     <dt>Term 1
-    <dd>This is an explaination of the first term.
+    <dd>This is an explanation of the first term.
     <dt>Term 2
-    <dd>This is an explaination of the second term.
+    <dd>This is an explanation of the second term.
     <dt>Term 3
-    <dd>This is an explaination of the third term, and missing.css will prevent it from being split <b>if the browser supports it</b>.
+    <dd>This is an explanation of the third term, and missing.css will prevent it from being split <b>if the browser supports it</b>.
     <dt>Term 4
-    <dd>This is an explaination of the fourth term.
+    <dd>This is an explanation of the fourth term.
   </dl>
 </figure>
 
@@ -67,7 +67,7 @@ For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
   <dl class="textcolumns">
     <div>
     <dt>Term 1
-    <dd>This is an explaination of the first term, and missing.css will make sure it doesn't get split from its sibling `<dt>` tag.
+    <dd>This is an explanation of the first term, and missing.css will make sure it doesn't get split from its sibling `<dt>` tag.
     </div>
     <!-- ... -->
   </dl>
@@ -78,19 +78,19 @@ For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
   <dl class="textcolumns">
     <div>
     <dt>Term 1
-    <dd>This is an explaination of the first term.
+    <dd>This is an explanation of the first term.
     </div>
     <div>
     <dt>Term 2
-    <dd>This is an explaination of the second term.
+    <dd>This is an explanation of the second term.
     </div>
     <div>
     <dt>Term 3
-    <dd>This is an explaination of the third term, and missing.css will prevent it from being split <b>in all supported browsers</b>.
+    <dd>This is an explanation of the third term, and missing.css will prevent it from being split <b>in all supported browsers</b>.
     </div>
     <div>
     <dt>Term 4
-    <dd>This is an explaination of the fourth term.
+    <dd>This is an explanation of the fourth term.
     </div>
 
   </dl>
@@ -110,6 +110,8 @@ The <dfn>`.flow-gap`</dfn> class adds vertical margins between its children.
 Add the <dfn>`.fullbleed`</dfn> class to make an element go outside its container and span the whole width of the viewport.
 
 The <dfn>`.fullscreen`</dfn> class will size an element to fill the screen.
+
+These classes will not work on flex children (e.g. children of `.flex-row`, `.flex-column`, or `.flex-switch` containers).
 
 
 ## Layout utilities
@@ -175,6 +177,7 @@ To remove padding or margin, use one of the following classes:
 
 Make an element full-width with the <dfn>`.width:100%`</dfn> class.
 Similarly with <dfn>`.height:100%`</dfn>.
+Logical variants <dfn>`.inline-size:100%`</dfn> and <dfn>`.block-size:100%`</dfn> are also available.
 
 [density utilities]: /docs/utils/#density
 
@@ -272,8 +275,7 @@ To set the aspect ratio of an element, use the `aspect-ratio`{.token .attr-name}
 <figure>
 
   ~~~html
-  <style>#aspect-ratio-example > .box { height: 10vh }</style>
-  <div id="aspect-ratio-example" class="flex-row flex-wrap:wrap">
+  <div id=aspect-ratio-example class="flex-row align-items:center overflow:auto">
     <div class="box" style="aspect-ratio: 1/1">1:1</div>
     <div class="box" style="aspect-ratio: 4/3">4:3</div>
     <div class="box" style="aspect-ratio: 16/9">16:9</div>
@@ -285,8 +287,7 @@ To set the aspect ratio of an element, use the `aspect-ratio`{.token .attr-name}
   </div>
   ~~~
 
-  <style>#aspect-ratio-example > .box { height: 10vh }</style>
-  <div id="aspect-ratio-example" class="flex-row flex-wrap:wrap">
+  <div id=aspect-ratio-example class="flex-row align-items:center overflow:auto">
     <div class="box" style="aspect-ratio: 1/1">1:1</div>
     <div class="box" style="aspect-ratio: 4/3">4:3</div>
     <div class="box" style="aspect-ratio: 16/9">16:9</div>
@@ -320,6 +321,8 @@ Set the `overflow`{.token .attr-name} property with these utility classes.
 
 The <dfn>`.table`</dfn> class makes an element act like a table for the purposes of layout.
 The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
+
+Pseudo-tables default to wide inputs, but can be overridden with the `.narrow-inputs` utility class.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Pseudo-table markup for aligning forms</figcaption>
@@ -358,7 +361,7 @@ Pseudo-tables work nicely with description lists:
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Pseudo-table markup for description lists</figcaption>
 
   ~~~ html
-  <dl class="table rows" style="width: auto;">
+  <dl class="table rows" style="inline-size: auto;">
     <div><dt>Name:     <dd>Anakin Skywalker</div>
     <div><dt>Alias:    <dd>Darth Vader     </div>
     <div><dt>Species:  <dd>Human           </div>
@@ -370,7 +373,7 @@ Pseudo-tables work nicely with description lists:
 
   <hr>
 
-  <dl class="table rows" style="width: auto;">
+  <dl class="table rows" style="inline-size: auto;">
     <div><dt>Name:     <dd>Anakin Skywalker</div>
     <div><dt>Alias:    <dd>Darth Vader     </div>
     <div><dt>Species:  <dd>Human           </div>
@@ -415,11 +418,41 @@ Pseudo-tables work nicely with description lists:
 :   Set `left: 0`.
     See `.top`.
 
+<dfn>`.inset-block-start`</dfn>
+:   Set `inset-block-start: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-inline-end`</dfn>
+:   Set `inset-inline-end: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-block-end`</dfn>
+:   Set `inset-block-end: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-inline-start`</dfn>
+:   Set `inset-inline-start: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-block`</dfn>
+:   Set `inset-block: 0`.
+    Use together with `.fixed` or `.sticky`.
+
+<dfn>`.inset-inline`</dfn>
+:   Set `inset-inline: 0`.
+    Use together with `.fixed` or `.sticky`.
+
 <dfn>`.float:left`</dfn>
 :   Set `float: left`.
 
 <dfn>`.float:right`</dfn>
 :   Set `float: right`.
+
+<dfn>`.float:inline-start`</dfn>
+:   Set `float: inline-start`.
+
+<dfn>`.float:inline-end`</dfn>
+:   Set `float: inline-end`.
 
 ## Printing
 

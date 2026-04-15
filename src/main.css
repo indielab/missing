@@ -2,119 +2,118 @@
 /***
  4.1 The document element
  https://html.spec.whatwg.org/multipage/semantics.html#the-root-element
+ ***/
 
+html {
+  font-family: var(--main-font);
+  line-height: var(--rhythm, 1.4rem);
+
+  background: var(--bg);
+  color: var(--fg);
+
+  scroll-padding-block-start: calc(4 * var(--gap));
+  scrollbar-color: var(--accent) transparent;
+  scrollbar-width: auto;
+
+  & * {
+    @supports (accent-color: #000) { accent-color: var(--accent) }
+    scrollbar-color: var(--accent) transparent;
+    scrollbar-width: thin;
+  }
+}
+
+/***
  4.3 Sections
  https://html.spec.whatwg.org/multipage/sections.html
  ***/
 
-html {
-	font-family: var(--main-font);
-	line-height: var(--rhythm, 1.4rem);
-
-	background: var(--bg);
-	color: var(--fg);
-
-	scroll-padding-block-start: calc(4 * var(--gap));
-  @supports selector(::-webkit-scrollbar-thumb) {
-    ::-webkit-scrollbar-thumb { background-color: var(--accent); }
-    ::-webkit-scrollbar-track { background-color: transparent;   }
-  }
-  @supports (scrollbar-color: gray transparent) {
-    scrollbar-color: var(--accent) transparent;
-  }
-}
-html, body {
-  scrollbar-width: auto;
-  & * { scrollbar-width: thin; }
-}
-
 body {
-	margin: 0;
+  margin: 0;
+  scrollbar-width: auto;
 }
 
 header, footer, section + section {
-	margin-block: calc(2 * var(--gap));
+  margin-block: calc(2 * var(--gap));
 }
 
 nav {
-	& :is(a:not(.\<button\>), .\<a\>) {
-		text-decoration: none;
-		color: var(--accent);
-	}
+  & :is(a:not(.\<button\>), .\<a\>) {
+    text-decoration: none;
+    color: var(--accent);
+  }
 }
 
 aside {
-	font-size: .8em;
-	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
-	--gap: calc(var(--rhythm, 1rlh) * var(--density) * 2 / 3);
+  font-size: .8em;
+  line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+  --gap: calc(var(--rhythm, 1rlh) * var(--density) * 2 / 3);
 
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
-	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
-	padding-block: var(--gap);
-	margin-block: calc(var(--gap) * 3 / 2);
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
+  padding-block: var(--gap);
+  margin-block: calc(var(--gap) * 3 / 2);
 
-	&.bg {
-		padding-inline: var(--gap);
-	}
+  &.bg {
+    padding-inline: var(--gap);
+  }
 
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5,
-	& h6 {
-		font-size: 1em;
-		text-transform: none;
-		letter-spacing: normal;
-	}
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    font-size: 1em;
+    text-transform: none;
+    letter-spacing: normal;
+  }
 
-	&:is(.big, .\<big\>) {
-		/* Pull quote */
-		background: none;
-		border: none;
-		border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--muted-fg);
-		border-radius: 0;
-		padding: 0;
-		padding-inline-start: var(--rhythm, 1rlh);
-		font-style: italic;
-		color: var(--accent);
-	}
+  &:is(.big, .\<big\>) {
+    /* Pull quote */
+    background: none;
+    border: none;
+    border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--muted-fg);
+    border-radius: 0;
+    padding: 0;
+    padding-inline-start: var(--rhythm, 1rlh);
+    font-style: italic;
+    color: var(--accent);
+  }
 }
 
 h1, h2, h3, h4, h5, h6,
 .\<h1\>, .\<h2\>, .\<h3\>, .\<h4\>, .\<h5\>, .\<h6\> {
-	margin-block-end: var(--gap);
-	font-family: var(--display-font);
-	font-size: 1em;
-	margin-block-start: calc(2 * var(--gap));
-	position: relative;
+  font-family: var(--display-font);
+  font-size: 1em;
+  margin-block: calc(2 * var(--gap)) var(--gap);
+  position: relative;
 }
 
 h1, .\<h1\> {
-	font-size: 2em;
-	text-transform: none;
-	line-height: calc(2 * var(--rhythm, 1rlh));
-	letter-spacing: 0;
+  font-size: 2em;
+  text-transform: none;
+  line-height: calc(2 * var(--rhythm, 1rlh));
+  letter-spacing: 0;
 }
 
 h2, .\<h2\> {
-	font-size: 1.6em;
-	text-transform: none;
-	line-height: calc(1.5 * var(--rhythm, 1rlh));
-	letter-spacing: 0;
+  font-size: 1.6em;
+  text-transform: none;
+  line-height: calc(1.5 * var(--rhythm, 1rlh));
+  letter-spacing: 0;
 }
 
 h3, .\<h3\> {
-	font-size: 1.17em;
-	line-height: calc(1 * var(--rhythm, 1rlh));
+  font-size: 1.17em;
+  line-height: calc(1 * var(--rhythm, 1rlh));
 }
 
 h4, .\<h4\>, h5, .\<h5\>, h6, .\<h6\> {
-	font-size: 1em;
-	text-transform: none;
-	line-height: calc(1 * var(--rhythm, 1rlh));
-	letter-spacing: 0;
-	margin-block-start: var(--gap);
+  font-size: 1em;
+  text-transform: none;
+  line-height: calc(1 * var(--rhythm, 1rlh));
+  letter-spacing: 0;
+  margin-block-start: var(--gap);
 }
 
 h1 + h2,
@@ -128,7 +127,7 @@ h3:first-child,
 h4:first-child,
 h5:first-child,
 h6:first-child {
-	margin-block-start: var(--gap);
+  margin-block-start: var(--gap);
 }
 
 h1:target,
@@ -137,38 +136,44 @@ h3:target,
 h4:target,
 h5:target,
 h6:target {
-	outline: none;
-	&::before {
-		content: "";
-		display: block;
-		position: absolute;
-		left: -.5em;
-		width: 4px;
-		height: 100%;
-		background: var(--accent);
-	}
+  outline: none;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset-inline-start: -.5em;
+    inline-size: 4px;
+    block-size: 100%;
+    background: var(--accent);
+  }
 }
 
 header {
-	font-family: var(--display-font);
-	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
+  font-family: var(--display-font);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
 }
 
 footer {
-	font-family: var(--secondary-font);
-	font-size: .8em;
-	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+  font-family: var(--secondary-font);
+  font-size: .8em;
+  line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
 }
 
 body > header,
 body > footer,
 main + footer {
-	padding: var(--rhythm, 1rlh) calc((100% - var(--eff-line-length)) / 2)
+  --eff-line-length:
+    min(
+      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      var(--line-length)
+    );
+  padding-block: var(--rhythm, 1rlh);
+  padding-inline: calc((var(--full-width) - var(--eff-line-length)) / 2);
 }
 
 address {
-	--density: 0;
+  --density: 0;
 }
 
 /***
@@ -177,67 +182,67 @@ address {
  ***/
 
 p {
-	margin-block: var(--gap);
+  margin-block: var(--gap);
 }
 
 hr {
-	color: inherit;
-	margin-inline: 0;
-	margin-block: var(--gap);
+  color: inherit;
+  margin-inline: 0;
+  margin-block: var(--gap);
 
-	flex: 0 1 0px;
-	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--accent);
-	block-size: auto;
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--accent);
-	border-block-end: none;
-	border-inline-end: none;
+  flex: 0 1 0px;
+  border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--accent);
+  block-size: auto;
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--accent);
+  border-block-end: none;
+  border-inline-end: none;
 }
 
 pre {
-	font-family: var(--mono-font);
-	font-size: .9em;
-	line-height: var(--rhythm, 1rlh);
-	tab-size: 2;
+  font-family: var(--mono-font);
+  font-size: .9em;
+  line-height: var(--rhythm, 1rlh);
+  tab-size: 2;
 
-	margin: var(--gap) 0;
+  margin-block: var(--gap);
+  margin-inline: 0;
 
-	overflow-x: auto;
+  overflow-x: auto;
 }
 
 blockquote {
-	margin-inline: 0 var(--gap);
-	padding-inline: var(--gap) 0;
-	margin-block: var(--gap);
+  margin-inline: 0 var(--gap);
+  padding-inline: var(--gap) 0;
+  margin-block: var(--gap);
 
-	font-size: 1.1em;
-	line-height: var(--rhythm, 1rlh);
-	font-style: italic;
+  font-size: 1.1em;
+  line-height: var(--rhythm, 1rlh);
+  font-style: italic;
 
-	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
-	color: var(--muted-fg);
+  border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
+  color: var(--muted-fg);
 
-	& em, & cite, & dfn, & var, & i, & address {
-		font-style: normal;
-	}
+  & em, & cite, & dfn, & var, & i, & address {
+    font-style: normal;
+  }
 
-	& footer {
-		text-align: right;
-		text-align: end;
-	}
+  & footer {
+    text-align: end;
+  }
 }
 
 ul, ol {
-	padding-inline-start: var(--rhythm, 1rlh);
-	margin-block: var(--gap);
+  padding-inline-start: var(--rhythm, 1rlh);
+  margin-block: var(--gap);
 
-	& & {
-		padding-inline-start: var(--gap);
-	}
+  & & {
+    padding-inline-start: var(--gap);
+  }
 
-	&[role="list"], &[role="listbox"] {
-		padding-inline-start: 0;
-		list-style: none;
-	}
+  &[role=list], &[role=listbox] {
+    padding-inline-start: 0;
+    list-style: none;
+  }
 }
 
 ul {
@@ -247,194 +252,164 @@ ol {
 }
 
 dl {
-	margin-block: var(--gap);
+  margin-block: var(--gap);
 }
-	dt {
-		font-weight: bold;
-		font-family: var(--secondary-font);
-	}
+dt {
+  font-weight: bold;
+  font-family: var(--secondary-font);
+}
 
-	dd {
-		margin-inline-start: var(--rhythm, 1rlh);
-	}
+dd {
+  margin-inline-start: var(--rhythm, 1rlh);
+}
 
 @supports selector(li::marker) {
   li::marker {
-  	font-family: var(--secondary-font);
+    font-family: var(--secondary-font);
   }
 }
 
 figure {
-	max-width: 100%;
-	margin-inline: 0;
-
-    /* SEE components/box.css */
+  /* extends components/box.css */
+  max-inline-size: 100%;
+  margin-inline: 0;
 }
 figcaption {
-	margin-block: var(--gap);
+  margin-block: var(--gap);
 
-	font-family: var(--secondary-font);
+  font-family: var(--secondary-font);
 
-	color: var(--muted-fg);
+  color: var(--muted-fg);
 }
 
 main {
-	max-inline-size: var(--eff-line-length);
-	inline-size: 100%;
-	margin-inline: auto;
+  --eff-line-length:
+    min(
+      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      var(--line-length)
+    );
+  max-inline-size: var(--eff-line-length);
+  inline-size: 100%;
+  margin-inline: auto;
 
-	&:first-child { padding-top: var(--gap); }
+  &:first-child { padding-block-start: var(--gap); }
 }
 
 /***
  4.5 Text-level semantics
  https://html.spec.whatwg.org/multipage/text-level-semantics.html
+ ***/
 
+a, .\<a\> {
+  color: var(--link-fg, var(--accent));
+  border-radius: var(--interactive-border-radius);
+  outline-offset: 1px;
+  background: none;
+  border: none;
+  font-size: 1em;
+  font-family: inherit;
+  text-decoration: 1px dotted underline;
+
+  &:is(button) {
+    /* button-specific resets */
+    padding: 0;
+  }
+
+  .list-of-links & {
+    text-decoration: none;
+  }
+
+  &:hover, &:focus {
+    text-decoration: 2px solid underline;
+    cursor: pointer;
+    outline: none;
+  }
+}
+
+small, .\<small\> {
+  font-size: .8em;
+  line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+}
+
+s {
+  color: var(--bad-fg);
+}
+
+q {
+  font-style: italic;
+
+  & em, & cite, & dfn, & var, & i, & address {
+    font-style: normal;
+  }
+}
+
+time {
+  font-variant-numeric: tabular-nums;
+}
+
+code, samp, kbd {
+  font-family: var(--mono-font);
+  font-style: normal;
+}
+
+samp {
+  color: var(--ok-fg);
+}
+
+kbd kbd {
+  /***
+   We apply the key-like styling to a nested kbd element, a pattern shown in
+   WHATWG HTML for marking up keyboard input:
+
+   > Here the kbd element is used to indicate keys to press:
+   >   ~~~ html
+   >   <p>To make George eat an apple, press <kbd><kbd>Shift</kbd> + <kbd>F3</kbd></kbd></p>
+   >   ~~~
+
+   The plain kbd element can also be used for clicking menus (<kbd>File |
+   New...</kbd>) or voice input (<kbd>Hey Siri, </kbd>)
+   ***/
+  display: inline-block;
+
+  padding-block: 0;
+  padding-inline: .3em;
+  font-size: .8em;
+  line-height: 1.1em;
+
+  background: var(--interactive-bg);
+  border: 1px outset var(--bg);
+  border-block-end-width: 3px;
+  border-radius: var(--interactive-border-radius);
+}
+
+sub {
+  vertical-align: bottom;
+  line-height: 1;
+}
+
+sup {
+  vertical-align: top;
+  line-height: 1;
+}
+
+mark {
+  background: var(--warn-bg);
+  color: var(--warn-fg);
+}
+
+/***
  4.7 Edits
  https://html.spec.whatwg.org/multipage/edits.html
  ***/
 
-/* Text-level semantics */
-
-a, .\<a\> {
-	color: var(--link-fg, var(--accent));
-	border-radius: var(--interactive-border-radius);
-	outline-offset: 1px;
-	background: none;
-	border: none;
-	font-size: 1em;
-  font-family: inherit;
-	text-decoration: 1px dotted underline;
-
-	/* button-specific resets */
-  padding: 0;
-
-	.list-of-links & {
-		text-decoration: none;
-	}
-
-	&:hover, &:focus {
-		text-decoration: 2px solid underline;
-		cursor: pointer;
-		outline: none;
-	}
-}
-
-small[role="note"] {
-	/***
-	 Sidenote
-	 ***/
-	display: block;
-	float: inline-end;
-	clear: inline-end;
-
-	--sidenote-width: 20ch;
-
-	max-inline-size: var(--sidenote-width);
-	padding-inline: 1.5ch 1ch;
-
-	margin-inline-end: calc(1em - var(--sidenote-width));
-	margin-block-end: var(--rhythm, 1rlh);
-
-	font-family: var(--secondary-font);
-
-	background: var(--bg);
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) transparent;
-	border-block-end: var(--border-block-end-width) var(--border-block-end-style) transparent;
-	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) transparent;
-	border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) transparent;
-
-	transition: transform .1s ease-in-out;
-
-	&:hover, &:focus-within {
-		border-color: var(--graphical-fg);
-		border-radius: var(--border-radius);
-		transform: translateX(calc(
-			0px - var(--sidenote-width)
-			+ min(var(--gutter-width), var(--sidenote-width))
-		))
-	}
-}
-
-small, .\<small\> {
-	font-size: .8em;
-	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
-}
-
-s {
-	color: var(--bad-fg);
-}
-
-q {
-	font-style: italic;
-
-	& em, & cite, & dfn, & var, & i, & address {
-		font-style: normal;
-	}
-}
-
-time {
-	font-variant-numeric: tabular-nums;
-}
-
-code, samp, kbd {
-	font-family: var(--mono-font);
-	font-style: normal;
-}
-
-samp {
-	color: var(--ok-fg);
-}
-
-kbd kbd /*
-	We apply the key-like styling to a nested kbd element, a pattern shown in
-	WHATWG HTML for marking up keyboard input:
-
-	> Here the kbd element is used to indicate keys to press:
-	>   ~~~ html
-	>   <p>To make George eat an apple, press <kbd><kbd>Shift</kbd> + <kbd>F3</kbd></kbd></p>
-	>   ~~~
-
-	The plain kbd element can also be used for clicking menus (<kbd>File |
-	New...</kbd>) or voice input (<kbd>Hey Siri, </kbd>)
-*/ {
-	display: inline-block;
-
-	padding: 0 .3em;
-	font-size: .8em;
-	line-height: 1.1em;
-
-	background: var(--interactive-bg);
-	border: 1px outset var(--graphical-fg);
-	border-block-end-width: 3px;
-	border-radius: var(--interactive-border-radius);
-}
-
-sub {
-	vertical-align: bottom;
-	line-height: 1;
-}
-
-sup {
-	vertical-align: top;
-	line-height: 1;
-}
-
-mark {
-	background: var(--warn-bg);
-	color: var(--warn-fg);
-}
-
-/* Edits */
-
 ins {
-	background: var(--ok-bg);
-	color: var(--ok-fg);
+  background: var(--ok-bg);
+  color: var(--ok-fg);
 }
 
 del {
-	background: var(--bad-bg);
-	color: var(--bad-fg);
+  background: var(--bad-bg);
+  color: var(--bad-fg);
 }
 
 /***
@@ -443,9 +418,9 @@ del {
  ***/
 
 img, video, audio, iframe, object, embed {
-	max-inline-size: 100%;
-	inline-size: max-content;
-	block-size: auto;
+  max-inline-size: 100%;
+  inline-size: max-content;
+  block-size: auto;
 }
 :is(object, embed)[type="image/svg+xml"] {
   /* https://issues.chromium.org/issues/40811132 */
@@ -458,19 +433,19 @@ img, video, audio, iframe, object, embed {
  ***/
 
 table {
-	font-variant-numeric: tabular-nums;
-	font: inherit;
+  font-variant-numeric: tabular-nums;
+  font: inherit;
 }
 
 caption {
-	text-align: start;
-	font-family: var(--secondary-font);
-	font-style: italic;
+  text-align: start;
+  font-family: var(--secondary-font);
+  font-style: italic;
 }
 
 tbody {
-	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--faded-fg);
-	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--faded-fg);
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--faded-fg);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--faded-fg);
 }
 
 thead {
@@ -484,20 +459,20 @@ tr {
 }
 
 td, th {
-	vertical-align: top;
+  vertical-align: top;
 
-	&:not(:last-child) {
-		padding-inline-end: var(--rhythm, 1rlh);
-	}
+  &:not(:last-child) {
+    padding-inline-end: var(--rhythm, 1rlh);
+  }
 }
 
-	td {
-	}
+td {
+}
 
-	th {
-		font-family: var(--secondary-font);
-		text-align: start;
-	}
+th {
+  font-family: var(--secondary-font);
+  text-align: start;
+}
 
 /***
  4.10 Forms
@@ -506,40 +481,47 @@ td, th {
 
 input { display: block; }
 label :is(input, select):not([specificity-hack]) {
-	display: inline; padding-block: 0;
+  display: inline; padding-block: 0;
 }
 
 :where(
   button,
-  input[type="submit"],
-  input[type="reset"],
-  input[type="button"],
+  input[type=submit],
+  input[type=reset],
+  input[type=button],
   .\<button\>
 ):not(.\<a\>) {
   /* Any changes made here must also be made to ::file-selector-button below */
-	display: inline-block;
-	padding: 0 calc(var(--rhythm, 1rlh) / 4);
-	vertical-align: middle;
-	box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  padding-block: 0;
+  padding-inline: calc(var(--rhythm, 1rlh) / 4);
+  vertical-align: middle;
+  box-sizing: border-box;
 
-	font-size: .8rem;
-	line-height: 1.125em;
-	font-family: var(--secondary-font);
-	min-height: var(--rhythm, 1rlh);
+  font-size: .8rem;
+  line-height: 1.125em;
+  font-family: var(--secondary-font);
+  min-block-size: var(--rhythm, 1rlh);
 
-	background: var(--interactive-bg);
-	color: var(--fg);
-	border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
-	box-shadow: var(--shadow);
-	border-radius: var(--interactive-border-radius);
+  background: var(--interactive-bg);
+  color: var(--fg);
+  border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
+  box-shadow: var(--shadow);
+  border-radius: var(--interactive-border-radius);
 
-	/* a-specific resets */
-	color: var(--fg);
-	text-decoration: none;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-  cursor: default;
+  &:is(a) {
+    /* a-specific resets */
+    color: var(--fg);
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
 
   &:is(.plain, .info, .ok, .warn, .bad) {
     /* Must define these before pseudo-classes */
@@ -548,46 +530,42 @@ label :is(input, select):not([specificity-hack]) {
     --fg: var(--accent);
   }
 
-	&:hover, &:focus-visible {
-		filter: brightness(1.1);
-		box-shadow: var(--shadow-focus);
+  &:hover, &:focus-visible {
+    filter: brightness(1.1);
+    box-shadow: var(--shadow-focus);
   }
-  &:hover, &:focus {
-		/* a-specific resets */
-		text-decoration: none;
-	}
 
-	&:active {
-		box-shadow: var(--shadow-active);
-	}
+  &:active {
+    box-shadow: var(--shadow-active);
+  }
 
-	&:active:is([aria-pressed], [aria-expanded]) {
-		color: var(--accent);
-		box-shadow: var(--pressed-shadow-active);
-	}
+  &:active:is([aria-pressed], [aria-expanded]) {
+    color: var(--accent);
+    box-shadow: var(--pressed-shadow-active);
+  }
 
-	&:where([aria-pressed="true"], [aria-expanded="true"]) {
-		box-shadow: var(--pressed-shadow);
-		background: var(--pressed-interactive-bg);
-		color: var(--accent);
+  &:where([aria-pressed=true], [aria-expanded=true]) {
+    box-shadow: var(--pressed-shadow);
+    background: var(--pressed-interactive-bg);
+    color: var(--accent);
 
-		&:hover, &:focus-visible {
-			box-shadow: var(--pressed-shadow-focus);
-		}
-	}
+    &:hover, &:focus-visible {
+      box-shadow: var(--pressed-shadow-focus);
+    }
+  }
 
-	&:disabled {
+  &:disabled {
     cursor: not-allowed;
-		--fg: var(--muted-fg);
-		box-shadow: var(--shadow-disabled);
-	}
+    --fg: var(--muted-fg);
+    box-shadow: var(--shadow-disabled);
+  }
 
-	&:is(.big, .\<big\>) {
-		min-block-size: calc(1.5 * var(--rhythm, 1rlh));
-		font-size: 1rem;
-		padding-inline: calc(.5 * var(--rhythm, 1rlh));
-		line-height: var(--rhythm, 1rlh);
-	}
+  &:is(.big, .\<big\>) {
+    min-block-size: calc(1.5 * var(--rhythm, 1rlh));
+    font-size: 1rem;
+    padding-inline: calc(.5 * var(--rhythm, 1rlh));
+    line-height: var(--rhythm, 1rlh);
+  }
 }
 a.\<button\>:not([specificity-hack]) {
   /* ¯\_(ツ)_/¯ */
@@ -596,62 +574,74 @@ a.\<button\>:not([specificity-hack]) {
 
 strong > :where(
   button,
-  input[type="submit"],
-  input[type="reset"],
-  input[type="button"],
+  input[type=submit],
+  input[type=reset],
+  input[type=button],
   .\<button\>
 ):not(.\<a\>) {
-	background: var(--accent);
-	color: var(--box-bg);
-	border-color: transparent;
-	font-weight: bold;
+  background: var(--accent);
+  color: var(--box-bg);
+  border-color: transparent;
+  font-weight: bold;
 
   &:is(.plain, .info, .ok, .warn, .bad) {
     --fg: var(--box-bg);
-    --muted-accent: var(--graphical-fg);
   }
 
-	&:active:is([aria-pressed], [aria-expanded]) {
+  &:active:is([aria-pressed], [aria-expanded]) {
     color: var(--graphical-fg);
-		box-shadow: var(--pressed-shadow-active);
-	}
+    box-shadow: var(--pressed-shadow-active);
+  }
 
-	&:where([aria-pressed="true"], [aria-expanded="true"]) {
-		box-shadow: var(--pressed-shadow);
-		background: var(--pressed-interactive-bg);
-		color: var(--graphical-fg);
+  &:where([aria-pressed=true], [aria-expanded=true]) {
+    box-shadow: var(--pressed-shadow);
+    background: var(--pressed-interactive-bg);
+    color: var(--graphical-fg);
     border-color: var(--muted-fg);
 
-		&:hover, &:focus-visible {
-			box-shadow: var(--pressed-shadow-focus);
-		}
-	}
+    &:hover, &:focus-visible {
+      box-shadow: var(--pressed-shadow-focus);
+    }
+  }
 
   &:disabled {
     /* c.f. strong > input:disabled::file-selector-button */
   }
 }
+strong:has(
+  button,
+  input[type=submit],
+  input[type=reset],
+  input[type=button],
+  .\<button\>
+) {
+  line-height: 1.125em;
+}
 
 
 input::file-selector-button {
-  /* CSS nesting does not support pseudo-elements such as ::file-selector-button, so
-   * we have to duplicate styles from above. */
+  /**
+   CSS nesting does not support pseudo-elements such as ::file-selector-button.
+   We have to duplicate styles from above.
+  **/
 
-	display: inline-block;
-	padding: 0 calc(var(--rhythm, 1rlh) / 4);
-	vertical-align: middle;
-	box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  padding-block: 0;
+  padding-inline: calc(var(--rhythm, 1rlh) / 4);
+  vertical-align: middle;
+  box-sizing: border-box;
 
-	font-size: .8rem;
-	line-height: 1.125em;
-	font-family: var(--secondary-font);
-	min-height: var(--rhythm, 1rlh);
+  font-size: .8rem;
+  line-height: 1.125em;
+  font-family: var(--secondary-font);
+  min-block-size: var(--rhythm, 1rlh);
 
-	background: var(--interactive-bg);
-	color: var(--fg);
-	border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
-	box-shadow: var(--shadow);
-	border-radius: var(--interactive-border-radius);
+  background: var(--interactive-bg);
+  color: var(--fg);
+  border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
+  box-shadow: var(--shadow);
+  border-radius: var(--interactive-border-radius);
 }
 input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
   --interactive-bg: var(--box-bg);
@@ -659,137 +649,318 @@ input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
   --fg: var(--accent);
 }
 input::file-selector-button:is(:hover, :focus-visible) {
-	filter: brightness(1.1);
-	box-shadow: var(--shadow-focus);
-
-	/* a-specific resets */
-	text-decoration: none;
+  filter: brightness(1.1);
+  box-shadow: var(--shadow-focus);
 }
 input::file-selector-button:active {
-	box-shadow: var(--shadow-active);
+  box-shadow: var(--shadow-active);
 }
 input:disabled::file-selector-button {
   cursor: not-allowed;
-	--fg: var(--muted-fg);
-	box-shadow: var(--shadow-disabled);
+  --fg: var(--muted-fg);
+  box-shadow: var(--shadow-disabled);
 }
 input:is(.big, .\<big\>)::file-selector-button {
-	min-block-size: calc(1.5 * var(--rhythm, 1rlh));
-	font-size: 1rem;
-	padding-inline: calc(.5 * var(--rhythm, 1rlh));
-	line-height: var(--rhythm, 1rlh);
+  min-block-size: calc(1.5 * var(--rhythm, 1rlh));
+  font-size: 1rem;
+  padding-inline: calc(.5 * var(--rhythm, 1rlh));
+  line-height: var(--rhythm, 1rlh);
 }
 strong > input::file-selector-button {
-	background: var(--accent);
-	color: var(--box-bg);
-	border-color: transparent;
-	font-weight: bold;
+  background: var(--accent);
+  color: var(--box-bg);
+  border-color: transparent;
+  font-weight: bold;
+}
+strong:has(input::file-selector-button) {
+  line-height: 1.125em;
 }
 strong > input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
   --fg: var(--box-bg);
-  --muted-accent: var(--graphical-fg);
 }
 strong > input:disabled::file-selector-button {
   /* c.f. strong > button:disabled */
 }
 
-
 input:not([type]),
-input[type="text"],
-input[type="search"],
-input[type="tel"],
-input[type="url"],
-input[type="email"],
-input[type="password"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="number"],
+input[type=text],
+input[type=search],
+input[type=tel],
+input[type=url],
+input[type=email],
+input[type=password],
+input[type=date],
+input[type=month],
+input[type=week],
+input[type=time],
+input[type=datetime],
+input[type=datetime-local],
+input[type=number],
 select,
 textarea {
-	padding: calc(var(--rhythm, 1rlh) / 4);
-	vertical-align: top;
+  padding: calc(var(--rhythm, 1rlh) / 4);
+  vertical-align: top;
 
-	font-size: 1rem;
-	line-height: inherit;
-	font-family: var(--main-font);
+  font-size: 1rem;
+  line-height: inherit;
+  font-family: var(--main-font);
 
-	background: var(--bg);
-	color: var(--fg);
-	border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
-	border-radius: var(--interactive-border-radius);
+  background: var(--bg);
+  color: var(--fg);
+  border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
+  border-radius: var(--interactive-border-radius);
 
-	vertical-align: top;
+  &:not(input[size], textarea[cols]) {
+    inline-size: var(--input-inline-size-internal, var(--input-inline-size));
+  }
 
-	&:focus-visible {
-		border: var(--interactive-border-width) var(--interactive-border-style) var(--accent);
-	}
+  &:focus-visible {
+    border-color: var(--accent);
+  }
 
-	&::placeholder {
-		color: var(--muted-fg);
-		opacity: 1;
-		text-align: end;
-	}
+  &::placeholder {
+    color: var(--muted-fg);
+    opacity: 1;
+    text-align: end;
+  }
 }
 
-input[type="range"] {
-	width: 100%;
-	padding: calc(var(--gap) / 4);
+input[type=range] {
+  inline-size: 100%;
+  padding: calc(var(--gap) / 4);
 }
 
-input[type="color"] {
-	padding: 0;
-	margin: 0;
-	height: calc(1.5 * var(--rhythm, 1rlh));
+input[type=color] {
+  padding: 0;
+  margin: 0;
+  block-size: calc(1.5 * var(--rhythm, 1rlh));
 
-	border: none;
-	background: none;
+  border: none;
+  background: none;
 }
 
-input[type="file"] {
-	padding: calc(var(--gap) / 4) 0;
-	font: inherit;
-	line-height: calc(var(--rhythm, 1rlh) / 2);
-	&::file-selector-button {
-		margin-block: .1em 0;
-		margin-inline-end: 1ch;
-	}
+input[type=file] {
+  padding-block: calc(var(--gap) / 4);
+  padding-inline: 0;
+  font: inherit;
+  line-height: calc(var(--rhythm, 1rlh) / 2);
+  &::file-selector-button {
+    margin-block: .1em 0;
+    margin-inline-end: 1ch;
+  }
 }
 
 select {
-	/* UAs force `line-height: normal` instead of `inherit` */
-	height: calc(
-		2 * var(--interactive-border-width)  /* Top and bottom borders */
-		+ 3/2 * var(--rhythm, 1lh)           /* Plus line height and padding-block */
-	);
+  /***
+   15.5.16 Rendering: The select element
+   https://html.spec.whatwg.org/multipage/rendering.html#the-select-element-2
 
-	background: var(--bg);
-	color: var(--fg);
+   - Revisit the spec above once browserlist supports base-select,
+     since some of the styles are just for e.g. Firefox.
 
-	& option {
-		background: inherit;
-		color: inherit;
-		border: inherit;
+   - It's possible that a pseudo-element (e.g. :is-listbox) will eventually
+     be implemented, until then we follow the guidance of:
+     https://github.com/whatwg/html/issues/8189#issuecomment-2877242732
 
-		&:hover {
-			/* This currently doesn't do anything */
-			background: var(--accent);
-			color: var(--bg);
-		}
-	}
+   - Eventually, `field-sizing: fixed` will re-implement the automagic
+     width of the base appearance select.
 
-}
+   - Keep in mind that `appearance: base-select` changes the keyboard
+     controls of a multiple select to be more accessible.
 
-select[multiple] {
-	vertical-align: top;
-}
+   - While the spec change has relaxed the parsing rules for `<select>`,
+     deno-dom and html5ever have not updated to the spec yet (see this
+     issue for more: https://github.com/b-fuze/deno-dom/issues/199).
+     This means we cannot display <select><button><selectedcontent> or
+     <optgroup><legend> in our docs yet.
 
-optgroup::before {
-	color: var(--muted-fg);
-	font-style: normal;
+  ***/
+
+  --picker-icon: var(--chevron-down-icon);
+  --focus-color: var(--accent);
+  --hover-color: color-mix(currentColor 10%, transparent);
+  --checked-color: color-mix(var(--graphical-fg) 50%, var(--box-bg));
+  --active-color: color-mix(var(--graphical-fg) 75%, var(--box-bg));
+  --padding: calc(var(--rhythm, 1rlh) / 4);
+  --indented: 1em;
+
+  &[multiple],
+  &[size]:not([size="1"]) {
+    /* Renders as a listbox */
+    padding: unset;
+  }
+
+  @supports (appearance: base-select) {
+    appearance: base-select;
+    field-sizing: fixed;
+    display: inline-flex !important;
+
+    &::picker(select) {
+      appearance: base-select;
+
+      color: inherit;
+      background: inherit;
+      border: inherit;
+      border-radius: inherit;
+      scrollbar-width: inherit;
+    }
+
+    &::picker-icon {
+      background-color: var(--accent);
+      opacity: 0.7;
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-image: var(--picker-icon);
+    }
+
+    & > button:first-child {
+      /* Force UA styles */
+      all: unset;
+      display: contents;
+      interactivity: inert;
+      white-space: normal;
+    }
+
+    & > optgroup > legend {
+      /* Force UA styles */
+      all: unset;
+      display: block;
+      unicode-bidi: isolate;
+      padding-inline: var(--padding);
+    }
+
+    &[multiple][size="1"] {
+      padding: var(--padding);  /* Add back */
+    }
+  }
+
+  @supports selector(option::checkmark) {
+    & option::checkmark {
+      content: "";
+      visibility: hidden;  /* must opt in */
+
+      block-size: 1em;
+      aspect-ratio: 1 / 1;
+
+      background-color: var(--accent);
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      opacity: 0.7;
+    }
+
+    &:not([multiple], .checks, .checkboxes) {
+      /* Default for single select is no checkmarks */
+      & option::checkmark { display: none }
+    }
+
+    &:is([multiple], .checks, .checkboxes) {
+      /* Default for multi-select is checkmarks */
+      & option:checked::checkmark {
+        visibility: visible;
+        mask-image: var(--check-icon);
+      }
+      & > optgroup > option {
+        padding-inline-start: var(--padding);
+      }
+    }
+
+    &.checkboxes {
+      & option:not(:checked)::checkmark {
+        visibility: visible;
+        mask-image: var(--square-icon);
+      }
+      & option:checked::checkmark {
+        visibility: visible;
+        mask-image: var(--square-check-icon);
+      }
+    }
+
+    &.flip {
+      & option::checkmark {
+        order: 1;
+        margin-inline-start: auto;
+      }
+      & > optgroup > option {
+        padding-inline-start: var(--indented);
+      }
+    }
+  }
+
+  & > optgroup {
+    color: var(--muted-fg);
+    font-style: normal;
+    font-weight: bolder;
+
+    &:disabled {
+      cursor: not-allowed;
+      filter: grayscale(1);
+      opacity: 0.7;
+    }
+
+    & > option {
+      padding-inline: var(--indented) var(--padding);
+    }
+  }
+
+  & option {
+    color: var(--fg);
+    font-weight: normal;
+    padding-inline: var(--padding);
+
+    &:focus-visible {
+      outline: 2px dotted var(--focus-color);
+    }
+    &:enabled:hover {
+      background-color: var(--hover-color);
+    }
+    &:enabled:checked {
+      background-color: var(--checked-color);
+    }
+    &:enabled:checked:hover,
+    &:enabled:active {
+      background-color: var(--active-color);
+    }
+    :not(optgroup:disabled &):disabled {
+      cursor: not-allowed;
+      filter: grayscale(1);
+      opacity: 0.7;
+    }
+  }
+
+  &:focus option:checked {
+    /**
+     We can override UA's `background-color: SelectedItem !important` with a gradient.
+     In order for this to work, the chosen color cannot be color-mixed with transparent.
+
+     We can't override `color: SelectedItemText !important`, which is an inversion of
+     foreground text, so we need to be careful to provide sufficient contrast for text
+     and checkmarks. For this reason, we use `--focus-color` for now, in the future we
+     should probably just use `--checked-color`. We also force the foregound color to
+     invert to match browsers that do not support `base-select`.
+
+     This will not be necessary once all browsers support `base-select`. Chrome has a bug
+     until version 147 that requires this hack too.
+    **/
+    background: linear-gradient(
+      0deg,
+      var(--focus-color) 0%,
+      var(--focus-color) 100%
+    );
+    color: var(--bg);
+
+    @supports (appearance: base-select) {
+      &::checkmark { background-color: var(--bg) };
+    }
+  }
+
+  @supports not (appearance: base-select) {
+    /* Firefox fixes */
+    &:focus option:checked { color: var(--fg); }
+
+    & > optgroup::before { padding-inline: var(--padding); }
+  }
 }
 
 meter, progress {
@@ -805,7 +976,7 @@ meter, progress {
   ) {
     appearance: none;
 
-  	box-sizing: border-box;
+    box-sizing: border-box;
     display: inline-block;
     position: relative;
 
@@ -908,17 +1079,31 @@ progress {
   }
   &:not([value]) {
     /* Indeterminate state */
-    --track-bg-color: linear-gradient(to right,
+    --track-animation: progress-indeterminate 4s infinite ease-in-out;
+
+    --track-size: 225% 100%;
+    --track-animation-direction: to right;
+    --track-bg-position-start: right;
+    --track-bg-position-end: left;
+    &.vertical {
+      /* Opt-in animation fix until :writing-mode() is supported */
+      --track-size: 100% 225%;
+      --track-animation-direction: to bottom;
+      --track-bg-position-start: bottom;
+      --track-bg-position-end: top;
+    }
+
+    --track-bg-color: linear-gradient(
+      var(--track-animation-direction),
       var(--box-bg) 45%,
       var(--accent) 0%,
       var(--accent) 55%,
       var(--box-bg) 0%
     );
-    --track-size: 225% 100%;
-    --track-bg-position: right;
-    --track-animation: progress-loading 4s infinite ease-in-out;
+
     @media (prefers-reduced-motion) {
-      --track-bg-position: center;
+      --track-bg-position-start: center;
+      --track-bg-position-end: center;
       --track-animation: none;
     }
 
@@ -930,7 +1115,7 @@ progress {
         position: absolute;
         background: var(--track-bg-color);
         background-size: var(--track-size);
-        background-position: var(--track-bg-position);
+        background-position: var(--track-bg-position-start);
         animation: var(--track-animation);
       }
     }
@@ -938,7 +1123,7 @@ progress {
       &::-webkit-progress-bar {
         background: var(--track-bg-color);
         background-size: var(--track-size);
-        background-position: var(--track-bg-position);
+        background-position: var(--track-bg-position-start);
         animation: var(--track-animation);
       }
     }
@@ -946,36 +1131,36 @@ progress {
       &::-moz-progress-bar {
         background: var(--track-bg-color);
         background-size: var(--track-size);
-        background-position: var(--track-bg-position);
+        background-position: var(--track-bg-position-start);
         animation: var(--track-animation);
       }
     }
   }
 }
-@keyframes progress-loading {
-  50% { background-position: left; }
+@keyframes progress-indeterminate {
+  50% { background-position: var(--track-bg-end) }
 }
 
 label[for] {
-	display: block;
-	padding-block: calc(var(--gap) / 4);
+  display: block;
+  padding-block: calc(var(--gap) / 4);
 }
 
 fieldset {
-	position: relative;
+  position: relative;
 
-    padding: var(--gap);
-	margin: var(--gap) 0;
-	width: 100%;
-	border-radius: var(--border-radius);
+  padding: var(--gap);
+  margin-block: var(--gap);
+  margin-inline: 0;
+  inline-size: 100%;
+  border-radius: var(--border-radius);
 
-	& > legend + * { margin-block-start: 0 }
+  & > legend + * { margin-block-start: 0 }
 
   border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
   border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
   border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
   border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
-
 }
 /***
  4.11 Interactive elements
@@ -983,27 +1168,25 @@ fieldset {
  ***/
 
 details:not(specificity-hack) {
-    /* SEE components/box.css */
-
-	padding-block-start: 0;
-	&:not([open]) { padding-block-end: 0; }
+  /* extends components/box.css */
+  padding-block-start: 0;
+  &:not([open]) { padding-block-end: 0; }
 }
 
 summary {
-	margin: calc(0px - var(--gap));
-	margin-top: calc(0px - var(--gap));
-	margin-bottom: 0;
-	padding-inline: var(--gap);
+  margin-inline: calc(0px - var(--gap));
+  margin-block: calc(0px - var(--gap)) 0;
+  padding-inline: var(--gap);
 
-	font-family: var(--secondary-font);
-	font-weight: bold;
+  font-family: var(--secondary-font);
+  font-weight: bold;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	&:focus-visible, &:active {
-		filter: brightness(.8);
-		outline: none;
-	}
+  &:focus-visible, &:active {
+    filter: brightness(.8);
+    outline: none;
+  }
 }
 
 @supports selector(::details-content) {
@@ -1011,32 +1194,32 @@ summary {
 }
 
 dialog {
-    /* SEE components/box.css */
+  /* extends components/box.css */
 
-    inset-inline: 0;
+  inset-inline: 0;
 
-	block-size: fit-content;
-    inline-size: fit-content;
+  block-size: fit-content;
+  inline-size: fit-content;
 
-	margin: auto !important;
+  margin: auto !important;
 
-    background-color: var(--bg);
-    color: var(--fg);
-	border-color: var(--fg);
+  background-color: var(--bg);
+  color: var(--fg);
+  border-color: var(--fg);
 }
 
 dialog:is([open], [popover])::backdrop {
-	display: block;
-	background: black;
-	opacity: .4;
-	animation: bg 2s;
+  display: block;
+  background: black;
+  opacity: .4;
+  animation: bg 2s;
 }
 
 @keyframes bg {
-	from { background: transparent; }
+  from { background: transparent; }
 }
 
 dialog:not([popover], [open]),
-[popover]:not(:popover-over) {
-    display: none;
+[popover]:not(:popover-open) {
+  display: none;
 }
